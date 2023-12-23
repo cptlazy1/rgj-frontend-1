@@ -1,8 +1,5 @@
 body {
-    background-color: #003880;
+    background-color: var(--blue);
 }
 
-p {
-    color: white;
-    font-family: Inter, sans-serif;
-}
+
