@@ -1,6 +1,5 @@
 import React from 'react'
-import {useNavigate, NavLink} from "react-router-dom"
-import logo from '../assets/RGJ logo.png'
+import {NavLink} from "react-router-dom"
 import './NavigationBar.css'
 
 function NavigationBar() {
@@ -23,7 +22,7 @@ function NavigationBar() {
                             <NavLink className="navigation-links" to="/sign-up">Sign up</NavLink>
                         </li>
                         <li>
-                            <NavLink className="navigation-links"  to="/log-in">Log in</NavLink>
+                            <NavLink className="navigation-links" to="/sign-up">Log in</NavLink>
                         </li>
                     </ul>
                 </div>

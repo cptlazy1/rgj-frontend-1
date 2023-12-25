@@ -9,13 +9,14 @@ function Header() {
     return (
         <>
             <header className="outer-header-container">
+
                 <div>
                     <img src={logo} alt="logo"/>
                 </div>
+
                 <div className="inner-header-container">
                     <NavigationBar/>
                 </div>
-
 
             </header>
 
