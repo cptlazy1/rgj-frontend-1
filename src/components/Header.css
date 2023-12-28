@@ -1,7 +1,7 @@
 .outer-header-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     height: 150px;
     background-color: var(--red);

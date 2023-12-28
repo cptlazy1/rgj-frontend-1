@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import {NavLink} from "react-router-dom";
+
 
 function Footer() {
     const year = new Date().getFullYear();
@@ -11,20 +11,7 @@ function Footer() {
             <button>
                 &copy; {year}
             </button>
-            <div >
-                <ul className="inner-footer-container">
-                    <li>
-                        <NavLink className="footer-navigation-links" to="/home">Privacy policy</NavLink>
-                    </li>
-                    <li>
-                        <NavLink className="footer-navigation-links" to="/faq">About</NavLink>
-                    </li>
-                    <li>
-                        <NavLink className="footer-navigation-links" to="/sign-up">Contact</NavLink>
-                    </li>
 
-                </ul>
-            </div>
             </div>
         </footer>
     );
