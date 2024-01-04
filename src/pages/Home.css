@@ -41,16 +41,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 600px;
-    margin: auto auto;
+    max-width: 50%;
+    max-height: 10%;
+    margin: auto;
 }
 
 .game-room img {
 
     max-width: 100%;
-    height: auto;
+    /*max-height: 80%;*/
     border-radius: 10px;
     /*padding-bottom: 40px;*/
 
-    margin-bottom: auto;
+    /*margin-bottom: auto;*/
 }

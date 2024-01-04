@@ -1,4 +1,3 @@
-import React from 'react'
 import logo from "../assets/RGJ logo.png"
 import './Header.css'
 import NavigationBar from "./NavigationBar.jsx";

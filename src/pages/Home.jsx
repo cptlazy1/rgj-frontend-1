@@ -29,9 +29,12 @@ function Home() {
                 </section>
 
             </div>
-            <div className="game-room">
+            <figure className="game-room">
                 <img src={gameroom} alt="game room"/>
-            </div>
+            </figure>
+            {/*<div className="game-room">*/}
+            {/*    <img src={gameroom} alt="game room"/>*/}
+            {/*</div>*/}
         </>
     )
 }
