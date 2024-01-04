@@ -17,11 +17,13 @@ function Home() {
                 </p>
                 <section className="counters-container">
                     <div className="total-games">
+                        <label className="counter-label">Total games</label>
                         <p className="counter">
                             0123456789
                         </p>
                     </div>
                     <div className="total-systems">
+                        <label className="counter-label">Total systems</label>
                         <p className="counter">
                             0123456789
                         </p>

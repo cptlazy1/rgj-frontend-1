@@ -12,7 +12,7 @@ function Footer() {
                 &copy; {year}
             </button>
             <div >
-                <ul className="inner-footer-container">
+                <ul className="footer-nav-links">
                     <li>
                         <NavLink className="footer-navigation-links" to="/home">Privacy policy</NavLink>
                     </li>
