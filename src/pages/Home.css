@@ -3,7 +3,6 @@ body {
 }
 
 .body-container {
-    /*flex-basis: 1200px;*/
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
@@ -11,7 +10,8 @@ body {
 
 .welcome-text {
     max-width: 360px;
-    max-height: 360px;
+    /*max-height: 360px;*/
+    width: 100%;
     min-width: 180px;
     min-height: 180px;
     background-color: var(--white);
@@ -19,8 +19,8 @@ body {
     padding: 20px;
     color: var(--black);
     border-radius: 10px;
-
 }
+
 
 .counters-container {
     display: flex;
@@ -36,6 +36,11 @@ body {
     color: var(--black);
     padding: 20px;
     border-radius: 10px;
+}
+
+.counter-label {
+    display: flex;
+    font-size: 1.5rem;
 }
 
 .game-room {
@@ -61,8 +66,3 @@ body {
     color: var(--white);
     }
 
-.counter-label {
-    display: flex;
-    font-size: 1.5rem;
-
-}

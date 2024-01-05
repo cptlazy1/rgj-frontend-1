@@ -7,20 +7,20 @@ function Footer() {
 
     return (
         <footer>
-            <div className="outer-footer-container">
+            <div className="inner-footer-container">
             <button>
                 &copy; {year}
             </button>
             <div >
-                <ul className="footer-nav-links">
+                <ul className="footer-nav-links-container">
                     <li>
-                        <NavLink className="footer-navigation-links" to="/home">Privacy policy</NavLink>
+                        <NavLink className="footer-nav-links" to="/privacy-policy">Privacy policy</NavLink>
                     </li>
                     <li>
-                        <NavLink className="footer-navigation-links" to="/faq">About</NavLink>
+                        <NavLink className="footer-nav-links" to="/about">About</NavLink>
                     </li>
                     <li>
-                        <NavLink className="footer-navigation-links" to="/sign-up">Contact</NavLink>
+                        <NavLink className="footer-nav-links" to="/contact">Contact</NavLink>
                     </li>
 
                 </ul>

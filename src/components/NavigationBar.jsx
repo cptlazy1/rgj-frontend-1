@@ -10,7 +10,7 @@ function NavigationBar() {
             <nav className="navigation-bar">
                 <ul>
                     <li>
-                        <NavLink className="navigation-links" to="/home">Home</NavLink>
+                        <NavLink className="navigation-links" to="/">Home</NavLink>
                     </li>
                     <li>
                         <NavLink className="navigation-links" to="/faq">FAQ</NavLink>
@@ -19,7 +19,7 @@ function NavigationBar() {
                         <NavLink className="navigation-links" to="/sign-up">Sign up</NavLink>
                     </li>
                     <li>
-                        <NavLink className="navigation-links" to="/sign-up">Log in</NavLink>
+                        <NavLink className="navigation-links" to="/log-in">Log in</NavLink>
                     </li>
                 </ul>
 

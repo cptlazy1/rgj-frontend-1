@@ -1,9 +1,9 @@
-/* Footer.css */
-
 footer {
+    position: sticky;
+    bottom: 0;
     display: flex;
     justify-content: center;
-    margin-top: 16px;
+    margin-top: 16vh;
     background-color: #7A0004;
 }
 
@@ -14,18 +14,18 @@ footer button {
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 1.2rem;
     margin: 4px 24px;
     cursor: pointer;
     border-radius: 4px;
+
 }
 
-.footer-navigation-links {
-    color: var(--white);
-    text-decoration: none;
+footer button:hover {
+    background-color: var(--green);
 }
 
-.footer-nav-links {
+.footer-nav-links-container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -35,18 +35,24 @@ footer button {
     height: 50px;
 }
 
-.outer-footer-container {
-    flex-basis: 1200px;
+.footer-nav-links {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 40px;
+    font-size: 1.2rem;
+}
+
+li {
+    list-style: none;
+}
+
+.inner-footer-container {
+    flex-basis: 800px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     min-height: 100px;
     background-color: var(--red);
-    /*border: 2px solid black;*/
 }
 
-li {
-    margin: 0 20px;
-    list-style: none;
-}

@@ -8,16 +8,15 @@ function Header() {
 
     return (
         <>
-            <header >
-
+            <header>
                 <div className="outer-header-container">
-                <div>
-                    <img src={logo} alt="logo"/>
-                </div>
+                    <div>
+                        <img src={logo} alt="logo"/>
+                    </div>
 
-                <div className="nav-links-container">
-                    <NavigationBar/>
-                </div>
+                    <div className="nav-links-container">
+                        <NavigationBar/>
+                    </div>
                 </div>
             </header>
 

@@ -1,0 +1,18 @@
+.privacy-policy-outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.privacy-policy-inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+}
+
+h1 {
+    color: black;
+    font-size: 32px;
+    margin: 32px 0 32px 0;
+}
