@@ -1,0 +1,71 @@
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /*border: 2px solid yellow;*/
+  flex-wrap: wrap;
+}
+
+.profile-inner-left-container {
+  flex-basis: 200px;
+  display: flex;
+  flex-direction: column;
+  margin: 24px;
+  padding: 24px;
+  /*border: 2px solid white;*/
+}
+
+.profile-inner-right-container {
+
+  flex-basis: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 24px;
+  padding: 24px;
+  /*border: 2px solid red;*/
+}
+
+.profile-label {
+  display: flex;
+  font-size: 1.5rem;
+}
+
+.profile-inner-left-container img {
+  max-width: 250px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.profile-inner-right-container img {
+  max-width: 450px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  /*border: 2px solid green;*/
+  padding: 12px;
+}
+
+button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 4px solid var(--white);
+  margin: 24px 10px 0 10px;
+  background-color: var(--blue);
+  color: var(--white);
+  font-weight: bold;
+  font-size: 16px;
+  width: 200px;
+}
+
+button:hover {
+  background-color: var(--red);
+  color: var(--white);
+  border: 4px solid var(--white);
+}

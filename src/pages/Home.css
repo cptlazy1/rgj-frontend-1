@@ -4,13 +4,20 @@ body {
 
 .body-container {
     display: flex;
-    flex-direction: row-reverse;
     justify-content: center;
+    /*border: 3px solid yellow;*/
 }
 
+.inner-body-container {
+    display: flex;
+    flex-basis: 1200px;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    /*border: 2px dashed red;*/
+
+}
 .welcome-text {
     max-width: 360px;
-    /*max-height: 360px;*/
     width: 100%;
     min-width: 180px;
     min-height: 180px;
@@ -26,6 +33,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 16px 0 0 -16px;
+    /*border: 3px dashed yellow;*/
 }
 
 .counter {
@@ -45,15 +53,13 @@ body {
 
 .game-room {
     display: flex;
-    justify-content: center;
-    align-items: center;
     max-width: 600px;
     margin: auto auto;
+    /*border: 3px dashed red;*/
 }
 
 .game-room img {
     max-width: 100%;
-    height: auto;
     border-radius: 10px;
 }
 
@@ -64,5 +70,6 @@ body {
     align-items: center;
     margin-top: 40px;
     color: var(--white);
+    /*border: 3px dashed greenyellow;*/
     }
 

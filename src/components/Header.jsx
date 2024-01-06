@@ -5,17 +5,24 @@ import NavigationBar from "./NavigationBar.jsx";
 
 function Header() {
 
+    const links = [
+        {name: "Home", path: "/"},
+        {name: "FAQ", path: "/faq"},
+        {name: "Sign up", path: "/sign-up"},
+        {name: "Log in", path: "/log-in"},
+    ]
+
 
     return (
         <>
             <header>
-                <div className="outer-header-container">
+                <div className="inner-header-container">
                     <div>
                         <img src={logo} alt="logo"/>
                     </div>
 
-                    <div className="nav-links-container">
-                        <NavigationBar/>
+                    <div>
+                        <NavigationBar links={links}/>
                     </div>
                 </div>
             </header>

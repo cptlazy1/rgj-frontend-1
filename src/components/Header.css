@@ -2,40 +2,25 @@ header {
     display: flex;
     justify-content: center;
     background-color: #7A0004;
+    /*border: 2px solid yellow;*/
 }
 
 
-.outer-header-container {
-    flex-basis: 800px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    min-height: 150px;
-    background-color: var(--red);
-    /*border: 2px solid black;*/
-}
-
-.outer-header-container img {
-    height: 120px;
-    width: 120px;
-    margin: 20px 24px;
-    border-radius: 10%;
-}
-
-.nav-links-container {
-
+.inner-header-container {
+    flex-basis: 1200px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    background-color: var(--blue);
-    border-radius: 100px;
-    height: 60px;
-    margin: 0 72px;
-    font-size: 1.2rem;
+    min-height: 150px;
+    background-color: var(--red);
+    /*border: 2px solid blue;*/
 }
 
-.header-holder {
-
+.inner-header-container img {
+    height: 120px;
+    width: 120px;
+    margin: 20px 24px;
+    border-radius: 10%;
+    /*border: 2px solid blue;*/
 }

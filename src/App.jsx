@@ -9,6 +9,8 @@ import Login from "./pages/Login.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
+import Profile from "./pages/Profile.jsx";
+import Game from "./pages/Game.jsx";
 
 function App() {
 
@@ -26,6 +28,8 @@ function App() {
                 <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
                 <Route path="/about" element={<About/>}/>
                 <Route path="/contact" element={<Contact/>}/>
+                <Route path="/user-profile" element={<Profile/>}/>
+                <Route path="/user-profile/games" element={<Game/>}/>
             </Routes>
             <div className="footer-holder">
                 <Footer/>

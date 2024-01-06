@@ -5,6 +5,18 @@ footer {
     justify-content: center;
     margin-top: 16vh;
     background-color: #7A0004;
+    /*border: 3px solid yellow;*/
+}
+
+.inner-footer-container {
+    flex-basis: 1200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 100px;
+    background-color: var(--red);
+    /*border: 3px solid blue;*/
 }
 
 footer button {
@@ -18,41 +30,12 @@ footer button {
     margin: 4px 24px;
     cursor: pointer;
     border-radius: 4px;
-
 }
 
 footer button:hover {
     background-color: var(--green);
 }
 
-.footer-nav-links-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: var(--blue);
-    border-radius: 100px;
-    height: 50px;
-}
 
-.footer-nav-links {
-    color: var(--white);
-    text-decoration: none;
-    margin: 0 40px;
-    font-size: 1.2rem;
-}
 
-li {
-    list-style: none;
-}
-
-.inner-footer-container {
-    flex-basis: 800px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    min-height: 100px;
-    background-color: var(--red);
-}
 
