@@ -30,6 +30,8 @@ function System() {
                         <ToggleSwitch/>
                         <label>Modified</label>
                         <ToggleSwitch/>
+                        <label>Ready to play</label>
+                        <ToggleSwitch/>
                     </div>
 
                 </div>
@@ -37,7 +39,7 @@ function System() {
                 <div className="system-buttons-container">
 
                     <Button text="My systems" onClick={() => console.log("My systems button clicked. Really!!")}/>
-                    <Button text="Add a stytem" onClick={() => navigate("/user-profile/add-system")}/>
+                    <Button text="Add a system" onClick={() => navigate("/user-profile/add-system")}/>
                     <Button text="Delete system" onClick={() => console.log("Delete button clicked. Really!!")}/>
                     <Button text="Random system" onClick={() => console.log("Random system button clicked. Really!!")}/>
 

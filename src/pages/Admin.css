@@ -1,0 +1,16 @@
+.admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin-settings {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.change-email {
+    margin-left: -8px;
+    margin-top: 8px;
+}

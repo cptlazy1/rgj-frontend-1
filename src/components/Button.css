@@ -17,3 +17,9 @@ button:hover {
     color: var(--white);
     border: 4px solid var(--white);
 }
+
+button:active {
+    background-color: var(--green);
+    color: var(--white);
+    border: 4px solid var(--white);
+}

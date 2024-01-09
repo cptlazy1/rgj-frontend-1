@@ -7,7 +7,6 @@ async function getGamesCount() {
                 'Accept': 'application/json'
             }
         )
-
         return response.data.length
     } catch (error) {
         console.error('An error occurred while fetching the games:', error)

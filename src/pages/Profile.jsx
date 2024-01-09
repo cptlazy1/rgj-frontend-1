@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 
 function Profile() {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     return (
         <div className="profile-container">
@@ -34,9 +34,8 @@ function Profile() {
                 </section>
 
                 <div className="buttons-container-profile-a">
-                    <Button text="My Collection" onClick={() => console.log("Got to my collection. Really!!")}/>
                     <Button text="Account Settings"
-                            onClick={() => console.log("Got to account settings. Really!!")}/>
+                            onClick={() => navigate("/user-profile/account")}/>
                 </div>
 
             </div>
@@ -46,10 +45,10 @@ function Profile() {
                 <img src={gameRoom2} alt="game room picture"/>
 
                 <div className="buttons-container-profile-b">
-                    <Button text="My systems" onClick={() => navigate("/user-profile/system")}/>
-                    <Button text="Add a system" onClick={() => console.log("Add a system button clicked. Really!!")}/>
-                    <Button text="My games" onClick={() => navigate("/user-profile/game")}/>
-                    <Button text="Add a game" onClick={() => console.log("Add a game button clicked. Really!!")}/>
+                    <Button text="My systems" onClick={() => navigate("/user-profile/my-systems")}/>
+                    <Button text="Add a system" onClick={() => navigate("/user-profile/add-system")}/>
+                    <Button text="My games" onClick={() => navigate("/user-profile/my-games")}/>
+                    <Button text="Add a game" onClick={() => navigate("/user-profile/add-game")}/>
                     <Button text="Random game" onClick={() => console.log("Random game button clicked. Really!!")}/>
                     <Button text="Random system" onClick={() => console.log("Random system button clicked. Really!!")}/>
                 </div>

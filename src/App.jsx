@@ -17,7 +17,11 @@ import AddSystem from "./pages/AddSystem.jsx";
 import MyGames from "./pages/MyGames.jsx";
 import MySystems from "./pages/MySystems.jsx";
 import PageNotFound from "./pages/PageNotFound.jsx";
-
+import Account from "./pages/Account.jsx";
+import Password from "./pages/Password.jsx";
+import Email from "./pages/Email.jsx";
+import Admin from "./pages/Admin.jsx";
+import Users from "./pages/Users.jsx";
 function App() {
 
 
@@ -41,6 +45,12 @@ function App() {
                 <Route path="/user-profile/add-system" element={<AddSystem/>}/>
                 <Route path="/user-profile/my-games" element={<MyGames/>}/>
                 <Route path="/user-profile/my-systems" element={<MySystems/>}/>
+                <Route path="/user-profile/account" element={<Account/>}/>
+                <Route path="/user-profile/password" element={<Password/>}/>
+                <Route path="/user-profile/email" element={<Email/>}/>
+
+                <Route path="/admin" element={<Admin/>}/>
+                <Route path="/admin/users" element={<Users/>}/>
 
                 <Route path="*" element={<PageNotFound/>}/>
             </Routes>

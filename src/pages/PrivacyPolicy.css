@@ -3,11 +3,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .privacy-policy-inner-container {
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,3 +13,6 @@
     margin-top: 12px;
 }
 
+li {
+    margin: 12px;
+}
