@@ -1,10 +1,10 @@
 import {NavLink} from "react-router-dom"
 import './NavigationBar.css'
 
-function NavigationBar() {
-
-
+// eslint-disable-next-line react/prop-types
+function NavigationBar({links}) {
     return (
+<<<<<<< HEAD
         <>
 
 
@@ -36,6 +36,18 @@ function NavigationBar() {
                 </div>
             </nav>
         </>
+=======
+        <nav className="navigation-bar">
+            <ul>
+                {/* eslint-disable-next-line react/prop-types */}
+                {links.map((link, index) => (
+                    <li key={index}>
+                        <NavLink className="navigation-links" to={link.path}>{link.name}</NavLink>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+>>>>>>> responsive
     )
 }
 

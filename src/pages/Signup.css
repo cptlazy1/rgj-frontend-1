@@ -1,0 +1,28 @@
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.signup-input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin: 5px 0 0 0;
+}
+
+.signup-label {
+  margin: 10px 0 0 0;
+  color: var(--white);
+}
+.signup-form button {
+  margin: 8px;
+}
+
