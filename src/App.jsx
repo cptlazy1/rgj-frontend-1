@@ -16,6 +16,7 @@ import AddGame from "./pages/AddGame.jsx";
 import AddSystem from "./pages/AddSystem.jsx";
 import MyGames from "./pages/MyGames.jsx";
 import MySystems from "./pages/MySystems.jsx";
+import PageNotFound from "./pages/PageNotFound.jsx";
 
 function App() {
 
@@ -40,6 +41,8 @@ function App() {
                 <Route path="/user-profile/add-system" element={<AddSystem/>}/>
                 <Route path="/user-profile/my-games" element={<MyGames/>}/>
                 <Route path="/user-profile/my-systems" element={<MySystems/>}/>
+
+                <Route path="*" element={<PageNotFound/>}/>
             </Routes>
             <div className="footer-holder">
                 <Footer/>
