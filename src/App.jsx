@@ -13,6 +13,9 @@ import Profile from "./pages/Profile.jsx";
 import Game from "./pages/Game.jsx";
 import System from "./pages/System.jsx";
 import AddGame from "./pages/AddGame.jsx";
+import AddSystem from "./pages/AddSystem.jsx";
+import MyGames from "./pages/MyGames.jsx";
+import MySystems from "./pages/MySystems.jsx";
 
 function App() {
 
@@ -31,9 +34,12 @@ function App() {
                 <Route path="/about" element={<About/>}/>
                 <Route path="/contact" element={<Contact/>}/>
                 <Route path="/user-profile" element={<Profile/>}/>
-                <Route path="/user-profile/games" element={<Game/>}/>
-                <Route path="/user-profile/systems" element={<System/>}/>
+                <Route path="/user-profile/game" element={<Game/>}/>
+                <Route path="/user-profile/system" element={<System/>}/>
                 <Route path="/user-profile/add-game" element={<AddGame/>}/>
+                <Route path="/user-profile/add-system" element={<AddSystem/>}/>
+                <Route path="/user-profile/my-games" element={<MyGames/>}/>
+                <Route path="/user-profile/my-systems" element={<MySystems/>}/>
             </Routes>
             <div className="footer-holder">
                 <Footer/>

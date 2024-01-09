@@ -46,9 +46,9 @@ function Profile() {
                 <img src={gameRoom2} alt="game room picture"/>
 
                 <div className="buttons-container-profile-b">
-                    <Button text="My systems" onClick={() => navigate("/user-profile/systems")}/>
+                    <Button text="My systems" onClick={() => navigate("/user-profile/system")}/>
                     <Button text="Add a system" onClick={() => console.log("Add a system button clicked. Really!!")}/>
-                    <Button text="My games" onClick={() => navigate("/user-profile/games")}/>
+                    <Button text="My games" onClick={() => navigate("/user-profile/game")}/>
                     <Button text="Add a game" onClick={() => console.log("Add a game button clicked. Really!!")}/>
                     <Button text="Random game" onClick={() => console.log("Random game button clicked. Really!!")}/>
                     <Button text="Random system" onClick={() => console.log("Random system button clicked. Really!!")}/>

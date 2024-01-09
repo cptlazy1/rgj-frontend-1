@@ -1,4 +1,4 @@
-.add-game-form{
+.add-system-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,10 +14,11 @@
     /*border: 2px dashed green;*/
 }
 
-.details-container input, label{
-    margin: 0 0 8px 0;
-    font-size: 1.2rem;
-}
+/*.details-container, input, label{*/
+/*    margin: 0 0 8px 0;*/
+/*    font-size: 1.2rem;*/
+
+/*}*/
 
 .conditions-container {
     display: flex;
@@ -27,7 +28,7 @@
     /*border: 2px dashed blue;*/
 }
 
-.add-game-condition-container {
+.add-system-condition-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -39,7 +40,6 @@
     flex-direction: row-reverse;
     justify-content: space-around;
     align-items: center;
-    width: 720px;
     /*border: 2px solid red;*/
 }
 
@@ -49,7 +49,7 @@
     color: var(--white);
 }
 
-.add-game-picture-container{
+.add-system-picture-container{
     display: flex;
     flex-direction: column;
     align-items: flex-end;

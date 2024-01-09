@@ -2,9 +2,14 @@ import './System.css'
 import systemPicture from '../assets/Megadrive.jpg'
 import ToggleSwitch from "../components/ToggleSwitch.jsx";
 import Button from "../components/Button.jsx";
+import {useNavigate} from "react-router-dom";
 
 function System() {
+
+    const navigate = useNavigate();
+
     return (
+
         <>
 
             <div className="system-container">
@@ -32,7 +37,7 @@ function System() {
                 <div className="system-buttons-container">
 
                     <Button text="My systems" onClick={() => console.log("My systems button clicked. Really!!")}/>
-                    <Button text="Add a stytem" onClick={() => console.log("Add a system button clicked. Really!!")}/>
+                    <Button text="Add a stytem" onClick={() => navigate("/user-profile/add-system")}/>
                     <Button text="Delete system" onClick={() => console.log("Delete button clicked. Really!!")}/>
                     <Button text="Random system" onClick={() => console.log("Random system button clicked. Really!!")}/>
 

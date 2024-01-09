@@ -11,3 +11,30 @@ h1 {
     background-color: white;
 }
 
+label {
+    font-family: Digital, sans-serif;
+    font-size: 1.2rem;
+    color: var(--white);
+}
+
+table {
+    border-collapse: collapse;
+    /*max-width: 1000px;*/
+    /*table-layout: fixed;*/
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td {
+    color: white;
+    overflow-wrap: break-word;
+    font-size: 12px;
+}
