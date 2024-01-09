@@ -3,9 +3,9 @@ import './Faq.css'
 function Faq() {
     return (
         <>
-            <h1>FAQ</h1>
-            <div className="faq-container">
 
+            <div className="faq-container">
+                <h1>FAQ</h1>
                 <div className="faq-questions-container">
                     <div className="faq-question">
                         <h3>What is the RGJ?</h3>

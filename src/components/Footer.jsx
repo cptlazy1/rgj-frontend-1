@@ -7,7 +7,7 @@ function Footer() {
     const year = new Date().getFullYear();
 
     const links = [
-        {name: "Privacy policy", path: "/"},
+        {name: "Privacy policy", path: "/privacy-policy"},
         {name: "About", path: "/about"},
         {name: "Contact", path: "/contact"}
     ]

@@ -11,6 +11,8 @@ import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Profile from "./pages/Profile.jsx";
 import Game from "./pages/Game.jsx";
+import System from "./pages/System.jsx";
+import AddGame from "./pages/AddGame.jsx";
 
 function App() {
 
@@ -30,6 +32,8 @@ function App() {
                 <Route path="/contact" element={<Contact/>}/>
                 <Route path="/user-profile" element={<Profile/>}/>
                 <Route path="/user-profile/games" element={<Game/>}/>
+                <Route path="/user-profile/systems" element={<System/>}/>
+                <Route path="/user-profile/add-game" element={<AddGame/>}/>
             </Routes>
             <div className="footer-holder">
                 <Footer/>

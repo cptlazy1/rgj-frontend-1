@@ -1,0 +1,13 @@
+h1 {
+    display: flex;
+    justify-content: center;
+    font-family: Digital, sans-serif;
+    font-size: 2.5rem;
+    margin: 40px 0;
+    padding: 12px;
+    border-radius: 10px;
+    width: 720px;
+    color: var(--black);
+    background-color: white;
+}
+

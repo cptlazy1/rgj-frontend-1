@@ -3,10 +3,10 @@ import './PrivacyPolicy.css'
 function PrivacyPolicy() {
     return (
         <>
-
             <div className="privacy-policy-outer-container">
+                <h1>Privacy Policy</h1>
                 <div className="privacy-policy-inner-container">
-                    <h1>Privacy Policy</h1>
+
                     <p>
                         Your privacy is important to us. It is My Company Name's policy to respect your privacy
                         regarding any information we may collect from you across our website, <a

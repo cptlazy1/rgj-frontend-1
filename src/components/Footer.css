@@ -1,22 +1,23 @@
 footer {
-    position: sticky;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    margin-top: 16vh;
+    position: relative;
+    width: 100%;
+    display: block;
+    margin-top: 60vh;
+    height: 100px;
     background-color: #7A0004;
     /*border: 3px solid yellow;*/
 }
 
 .inner-footer-container {
-    flex-basis: 1200px;
+    flex-basis: 1100px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    min-height: 100px;
+    min-height: 100%;
     background-color: var(--red);
-    /*border: 3px solid blue;*/
+    /*padding: 20px;*/
+    /*border: 3px dashed blue;*/
 }
 
 footer button {

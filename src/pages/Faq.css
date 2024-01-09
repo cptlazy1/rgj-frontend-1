@@ -1,15 +1,9 @@
 body {
     background-color: var(--blue);
+    /*border: white 2px solid;*/
 }
 
-h1 {
-    display: flex;
-    justify-content: center;
-    font-family: Digital, sans-serif;
-    font-size: 3rem;
-    color: var(--white);
-    margin-top: 40px;
-}
+
 
 .faq-container {
     display: flex;

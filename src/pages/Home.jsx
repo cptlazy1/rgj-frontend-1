@@ -35,7 +35,7 @@ function Home() {
                     </p>
 
 
-                    <section className="counters-container">
+                    <section className="counters-container-home">
 
                         <div className="total-games">
                             <label className="counter-label">Total games</label>

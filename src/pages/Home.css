@@ -10,14 +10,14 @@ body {
 
 .inner-body-container {
     display: flex;
-    flex-basis: 1200px;
+    flex-basis: 800px;
     flex-direction: row-reverse;
     justify-content: space-evenly;
     /*border: 2px dashed red;*/
 
 }
 .welcome-text {
-    max-width: 360px;
+    max-width: 420px;
     width: 100%;
     min-width: 180px;
     min-height: 180px;
@@ -28,11 +28,9 @@ body {
     border-radius: 10px;
 }
 
-
-.counters-container {
+.counters-container-home {
     display: flex;
     flex-direction: column;
-    margin: 16px 0 0 -16px;
     /*border: 3px dashed yellow;*/
 }
 
@@ -54,6 +52,7 @@ body {
 .game-room {
     display: flex;
     max-width: 600px;
+    justify-content: center;
     margin: auto auto;
     /*border: 3px dashed red;*/
 }
@@ -61,6 +60,7 @@ body {
 .game-room img {
     max-width: 100%;
     border-radius: 10px;
+    margin: 48px;
 }
 
 .total-games, .total-systems {
@@ -68,7 +68,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 20px;
     color: var(--white);
     /*border: 3px dashed greenyellow;*/
     }

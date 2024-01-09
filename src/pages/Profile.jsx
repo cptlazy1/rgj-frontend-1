@@ -17,7 +17,7 @@ function Profile() {
                     <img src={gamerProfilePicture} alt="gamer profile picture"/>
                 </div>
 
-                <section className="counters-container">
+                <section className="counters-container-profile">
                     <div className="total-games">
                         <label className="counter-label">Total games</label>
                         <p className="counter">
@@ -31,21 +31,22 @@ function Profile() {
                             1234567890
                         </p>
                     </div>
-
-                    <div className="buttons-container">
-                        <Button text="My Collection" onClick={() => console.log("Got to my collection. Really!!")}/>
-                        <Button text="Account Settings"
-                                onClick={() => console.log("Got to account settings. Really!!")}/>
-                    </div>
                 </section>
+
+                <div className="buttons-container-profile-a">
+                    <Button text="My Collection" onClick={() => console.log("Got to my collection. Really!!")}/>
+                    <Button text="Account Settings"
+                            onClick={() => console.log("Got to account settings. Really!!")}/>
+                </div>
+
             </div>
 
             <div className="profile-inner-right-container">
                 <label className="profile-label">My game room</label>
                 <img src={gameRoom2} alt="game room picture"/>
 
-                <div className="buttons-container">
-                    <Button text="My systems" onClick={() => console.log("My systems button clicked. Really!!")}/>
+                <div className="buttons-container-profile-b">
+                    <Button text="My systems" onClick={() => navigate("/user-profile/systems")}/>
                     <Button text="Add a system" onClick={() => console.log("Add a system button clicked. Really!!")}/>
                     <Button text="My games" onClick={() => navigate("/user-profile/games")}/>
                     <Button text="Add a game" onClick={() => console.log("Add a game button clicked. Really!!")}/>
