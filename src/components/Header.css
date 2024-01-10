@@ -1,16 +1,8 @@
 header {
     display: flex;
-<<<<<<< HEAD
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 150px;
-    background-color: var(--red);
-=======
     justify-content: center;
     background-color: #7A0004;
     /*border: 2px solid yellow;*/
->>>>>>> responsive
 }
 
 

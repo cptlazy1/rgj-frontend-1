@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-import React from 'react';
-import './Footer.css';
-
-=======
 import React from 'react'
 import './Footer.css'
 import NavigationBar from "./NavigationBar.jsx"
->>>>>>> responsive
 
 function Footer() {
 
@@ -20,13 +14,6 @@ function Footer() {
 
     return (
         <footer>
-<<<<<<< HEAD
-            <div className="outer-footer-container">
-            <button>
-                &copy; {year}
-            </button>
-
-=======
             <div className="inner-footer-container">
                 <button>
                     &copy; {year}
@@ -34,7 +21,6 @@ function Footer() {
                 <div>
                     <NavigationBar links={links}/>
                 </div>
->>>>>>> responsive
             </div>
         </footer>
     );
