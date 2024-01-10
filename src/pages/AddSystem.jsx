@@ -24,7 +24,7 @@ function AddSystem() {
                 gameSystemName: name,
                 gameSystemBrand: brand,
                 gameSystemYearOfRelease: parseInt(year, 10),
-                isReadyToPlay: false
+                isReadyToPlay: isReadyToPlay
             },
             gameSystemConditionDto: {
                 hasBox: box,
@@ -62,8 +62,7 @@ function AddSystem() {
                                onChange={(e) => setYear(e.target.value)}/>
 
                         <label>Is ready to play</label>
-                        <ToggleSwitch checked={isReadyToPlay} onChange={(e) => setIsReadyToPlay(e.target.checked)}/>
-
+                        <ToggleSwitch isOn={isReadyToPlay} handleToggle={(checked) => setIsReadyToPlay(checked)}/>
                         <Button text="Add system to collection" onClick={handleSubmit}/>
 
                     </div>
@@ -77,11 +76,11 @@ function AddSystem() {
                 <div className="conditions-container">
                     <div className="add-system-condition-container">
                         <label>Box</label>
-                        <ToggleSwitch checked={box} onChange={(e) => setBox(e.target.checked)}/>
+                        <ToggleSwitch isOn={box} handleToggle={(checked) => setBox(checked)}/>
                         <label>Cables</label>
-                        <ToggleSwitch checked={cables} onChange={(e) => setCables(e.target.checked)}/>
+                        <ToggleSwitch isOn={cables} handleToggle={(checked) => setCables(checked)}/>
                         <label>Modified</label>
-                        <ToggleSwitch checked={modified} onChange={(e) => setModified(e.target.checked)}/>
+                        <ToggleSwitch isOn={modified} handleToggle={(checked) => setModified(checked)}/>
                     </div>
                 </div>
 
