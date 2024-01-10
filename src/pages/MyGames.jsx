@@ -1,48 +1,60 @@
 import './MyGames.css'
-import truncateString from "../helpers/truncateString";
+import React, {useState, useEffect} from "react"
+import truncateString from "../helpers/truncateString"
+import getUsersGames from "../helpers/getUsersGames.js"
 
 function MyGames() {
 
-  return (
-      <div className="my-games">
-          <h1>My Games</h1>
-          <table>
-              <thead>
-              <tr>
-                  <th>Title</th>
-                  <th>Publisher</th>
-                  <th>System</th>
-                  <th>Year</th>
-                  <th>Is original</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                  <td>{truncateString('Sonic the Hedgehog')}</td>
-                  <td>{truncateString('Sega')}</td>
-                  <td>{truncateString('MegaDrive')}</td>
-                  <td>{truncateString('1990')}</td>
-                  <td>{truncateString('Yes')}</td>
-              </tr>
-              <tr>
-                  <td>{truncateString('Super Mario Bros. 3')}</td>
-                  <td>{truncateString('Nintendo')}</td>
-                  <td>{truncateString('Nintendo Entertainment System')}</td>
-                  <td>{truncateString('1992')}</td>
-                  <td>{truncateString('No')}</td>
-              </tr>
-              <tr>
-                  <td>{truncateString('Halo 2')}</td>
-                  <td>{truncateString('Microsoft')}</td>
-                  <td>{truncateString('Xbox')}</td>
-                  <td>{truncateString('2002')}</td>
-                  <td>{truncateString('Yes')}</td>
-              </tr>
+    const [games, setGames] = useState([])
+    const [error, setError] = useState(null)
 
-              </tbody>
-          </table>
-      </div>
-  )
+    useEffect(() => {
+        const fetchGames = async () => {
+            try {
+                const games = await getUsersGames()
+                if (!games.length) {
+                    throw new Error('No games data returned');
+                }
+                setGames(games)
+            } catch (error) {
+                setError(error.message)
+            }
+        }
+
+        void fetchGames()
+    }, [])
+
+    if (error) {
+        return <div>Error: {error}</div>
+    }
+
+    return (
+        <div className="my-games">
+            <h1>My Games</h1>
+            <table>
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Publisher</th>
+                    <th>System</th>
+                    <th>Year</th>
+                    <th>Is original</th>
+                </tr>
+                </thead>
+                <tbody>
+                {games.map((game, index) => (
+                    <tr key={index}>
+                        <td>{truncateString(game.gameName)}</td>
+                        <td>{truncateString(game.gamePublisher)}</td>
+                        <td>{truncateString(game.systemName)}</td>
+                        <td>{truncateString(game.gameYearOfRelease)}</td>
+                        <td>{truncateString(game.gameIsOriginal ? 'Yes' : 'No')}</td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+        </div>
+    )
 }
 
 export default MyGames
