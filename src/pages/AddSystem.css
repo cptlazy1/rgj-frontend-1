@@ -14,12 +14,6 @@
     /*border: 2px dashed green;*/
 }
 
-/*.details-container, input, label{*/
-/*    margin: 0 0 8px 0;*/
-/*    font-size: 1.2rem;*/
-
-/*}*/
-
 .conditions-container {
     display: flex;
     flex-direction: column;
