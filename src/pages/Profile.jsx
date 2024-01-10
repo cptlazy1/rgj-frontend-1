@@ -49,8 +49,8 @@ function Profile() {
                     <Button text="Add a system" onClick={() => navigate("/user-profile/add-system")}/>
                     <Button text="My games" onClick={() => navigate("/user-profile/my-games")}/>
                     <Button text="Add a game" onClick={() => navigate("/user-profile/add-game")}/>
-                    <Button text="Random game" onClick={() => console.log("Random game button clicked. Really!!")}/>
-                    <Button text="Random system" onClick={() => console.log("Random system button clicked. Really!!")}/>
+                    <Button text="Random game" onClick={() => navigate("/user-profile/game")}/>
+                    <Button text="Random system" onClick={() => navigate("/user-profile/system")}/>
                 </div>
 
             </div>
