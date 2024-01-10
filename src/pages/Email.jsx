@@ -1,4 +1,5 @@
 import './Email.css'
+import Button from "../components/Button.jsx";
 
 function Email() {
     return (
@@ -6,16 +7,16 @@ function Email() {
             <h1>Change email</h1>
             <div className="email-settings">
                 <p>Old email</p>
-                <input type="email" />
+                <input type="email"/>
                 <p>New email</p>
-                <input type="email" />
+                <input type="email"/>
                 <p>Confirm new email</p>
-                <input type="email" />
+                <input type="email"/>
 
-                <div className="change-email">
-                <button>Change email</button>
-                </div>
 
+            </div>
+            <div className="change-email">
+                <Button text="Change email"/>
             </div>
         </div>
     );

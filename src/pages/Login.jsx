@@ -20,7 +20,6 @@ function Login() {
                     <label className="login-label">Password</label>
                     <input className="login-input" type="password" placeholder="Enter password"/>
 
-
                     <Button text="Log in" onClick={() => navigate('/user-profile')}/>
 
                 </form>

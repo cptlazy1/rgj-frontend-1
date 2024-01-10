@@ -1,4 +1,5 @@
 import './Users.css'
+import Button from "../components/Button.jsx";
 
 function Users() {
 
@@ -20,7 +21,7 @@ function Users() {
                     <td>user@email.com</td>
                     <td>No</td>
                     <td>
-                        <button>Delete</button>
+                        <Button text="Delete"/>
                     </td>
                 </tr>
                 <tr>
@@ -28,7 +29,7 @@ function Users() {
                     <td>two@gamil.com</td>
                     <td>No</td>
                     <td>
-                        <button>Delete</button>
+                        <Button text="Delete"/>
                     </td>
                 </tr>
 
@@ -37,7 +38,7 @@ function Users() {
                         <td>slimshady@hotmail.com</td>
                         <td>Yes</td>
                         <td>
-                            <button>Delete</button>
+                            <Button text="Delete"/>
                         </td>
                     </tr>
                 </tbody>

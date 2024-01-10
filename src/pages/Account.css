@@ -9,3 +9,7 @@
     flex-direction: column;
     align-items: flex-start;
 }
+
+.settings Button {
+    margin-top: 24px;
+}
