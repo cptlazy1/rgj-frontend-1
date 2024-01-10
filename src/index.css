@@ -9,11 +9,13 @@
 }
 
 :root {
-/*Colour variables*/
+    /*Colour variables*/
     --red: #7A0004;
     --blue: #007bff;
     --white: #fff;
     --black: #000;
+    --green: #0b903f;
+    --light-green: #33FF33;
 
     font-family: 'Inter', 'Digital', sans-serif;
     font-synthesis: none;
@@ -22,6 +24,5 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
 }
-
 
 

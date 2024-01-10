@@ -1,32 +1,70 @@
+import {useState} from 'react'
 import './AddSystem.css'
-import Button from "../components/Button.jsx";
-import ToggleSwitch from "../components/ToggleSwitch.jsx";
-import systemPicture from "../assets/Megadrive.jpg";
+import Button from "../components/Button.jsx"
+import ToggleSwitch from "../components/ToggleSwitch.jsx"
+import systemPicture from "../assets/Megadrive.jpg"
+import addSystem from "../helpers/addSystem.js"
+
 
 function AddSystem() {
+    const [name, setName] = useState('')
+    const [brand, setBrand] = useState('')
+    const [year, setYear] = useState('')
+    const [isReadyToPlay, setIsReadyToPlay] = useState(false)
+    const [box, setBox] = useState(false)
+    const [cables, setCables] = useState(false)
+    const [modified, setModified] = useState(false)
 
+    const [message, setMessage] = useState('')
 
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        const system = {
+            gameSystemDto: {
+                gameSystemName: name,
+                gameSystemBrand: brand,
+                gameSystemYearOfRelease: parseInt(year, 10),
+                isReadyToPlay: false
+            },
+            gameSystemConditionDto: {
+                hasBox: box,
+                hasCables: cables,
+                isModified: modified
+            }
+        }
+        const username = 'porgy123' // Todo: replace with actual user id
+
+        try {
+            await addSystem(username, system)
+            setMessage('System added to collection')
+        } catch (error) {
+            console.error(error)
+            setMessage('Failed to add system to collection')
+        }
+
+    }
 
     return (
         <div>
-            <form className="add-system-form">
+            <form className="add-system-form" onSubmit={handleSubmit}>
                 <div className="details-and-image-container">
                     <div className="details-container">
                         <label>System name</label>
-                        <input type="text" placeholder="Enter system name"/>
+                        <input type="text" placeholder="Enter system name" value={name}
+                               onChange={(e) => setName(e.target.value)}/>
 
                         <label>Brand</label>
-                        <input type="text" placeholder="Enter system brand"/>
+                        <input type="text" placeholder="Enter system brand" value={brand}
+                               onChange={(e) => setBrand(e.target.value)}/>
 
                         <label>Year</label>
-                        <input type="text" placeholder="Enter system year"/>
-
+                        <input type="text" placeholder="Enter system year" value={year}
+                               onChange={(e) => setYear(e.target.value)}/>
 
                         <label>Is ready to play</label>
-                        <ToggleSwitch/>
+                        <ToggleSwitch checked={isReadyToPlay} onChange={(e) => setIsReadyToPlay(e.target.checked)}/>
 
-                        <Button text="Add system to collection"
-                                onClick={() => console.log("Sign up button clicked. Really!!")}/>
+                        <Button text="Add system to collection" onClick={handleSubmit}/>
 
                     </div>
                     <div className="add-system-picture-container">
@@ -39,18 +77,21 @@ function AddSystem() {
                 <div className="conditions-container">
                     <div className="add-system-condition-container">
                         <label>Box</label>
-                        <ToggleSwitch/>
+                        <ToggleSwitch checked={box} onChange={(e) => setBox(e.target.checked)}/>
                         <label>Cables</label>
-                        <ToggleSwitch/>
+                        <ToggleSwitch checked={cables} onChange={(e) => setCables(e.target.checked)}/>
                         <label>Modified</label>
-                        <ToggleSwitch/>
+                        <ToggleSwitch checked={modified} onChange={(e) => setModified(e.target.checked)}/>
                     </div>
                 </div>
 
             </form>
 
+            {message && <p>{message}</p>}
+
         </div>
     )
+
 }
 
 export default AddSystem

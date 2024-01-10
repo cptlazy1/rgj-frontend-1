@@ -12,7 +12,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--red);
+  background-color: var(--green); /* was red */
   -webkit-transition: .4s;
   transition: .4s;
   border: 3px solid var(--white);
@@ -33,7 +33,7 @@
 }
 
 input:checked + .slider {
-  background-color: var(--green);
+  background-color: var(--red); /* was green */
 }
 
 input:checked + .slider:before {
