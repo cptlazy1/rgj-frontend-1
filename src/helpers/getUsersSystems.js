@@ -3,11 +3,12 @@ import axios from "axios"
 async function getUsersSystems() {
     try {
         const response = await axios.get('http://localhost:8080/users/porgy123/game-systems', {
-        'Accept': 'application/json'
+            'Accept': 'application/json'
         })
-        // console.log(response.data)
+
         if (!response.data) {
-            throw new Error('No data returned from server!')
+            console.error('No data returned from server!')
+            return []
         }
         return response.data;
 
