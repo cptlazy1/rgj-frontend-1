@@ -4,6 +4,7 @@ import Button from "../components/Button.jsx"
 import ToggleSwitch from "../components/ToggleSwitch.jsx"
 import systemPicture from "../assets/Megadrive.jpg"
 import addSystem from "../helpers/addSystem.js"
+import axios from "axios";
 
 
 function AddSystem() {
@@ -14,8 +15,32 @@ function AddSystem() {
     const [box, setBox] = useState(false)
     const [cables, setCables] = useState(false)
     const [modified, setModified] = useState(false)
-
     const [message, setMessage] = useState('')
+    const [file, setFile] = useState([])
+    const [previewURL, setPreviewURL] = useState('')
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0]
+        console.log(file)
+        setFile(file)
+        setPreviewURL(URL.createObjectURL(file))
+    }
+
+    async function uploadFile(username, gameSystemID) {
+        const formData = new FormData()
+        formData.append('file', file)
+
+        try {
+            const result = await axios.post(`http://localhost:8080/users/${username}/game-systems/${gameSystemID}/upload-game-system-photo`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                },
+            })
+            console.log(result.data)
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -35,12 +60,14 @@ function AddSystem() {
         const username = 'porgy123' // Todo: replace with actual user id
 
         try {
-            await addSystem(username, system)
+            const gameSystemID = await addSystem(username, system)
             setMessage('System added to collection')
+            await uploadFile(username, gameSystemID);
         } catch (error) {
             console.error(error)
             setMessage('Failed to add system to collection')
         }
+
 
     }
 
@@ -67,10 +94,14 @@ function AddSystem() {
 
                     </div>
                     <div className="add-system-picture-container">
-                        <img className="system-picture" src={systemPicture} alt="system picture"/>
-                        <div className="edit-system-button">
-                            <Button text="Edit" onClick={() => console.log("Edit button clicked. Really!!")}/>
-                        </div>
+                        <img className="system-picture" src={previewURL || systemPicture} alt="system picture"/>
+
+                        <label htmlFor="system-image">
+                            Upload an image:
+                            <input type="file" id="system-image" name="system-image" accept="image/*"
+                                   onChange={handleFileChange}/>
+                        </label>
+
                     </div>
                 </div>
                 <div className="conditions-container">
@@ -87,7 +118,7 @@ function AddSystem() {
             </form>
 
             <div className="message">
-            {message && <p>{message}</p>}
+                {message && <p>{message}</p>}
             </div>
         </>
     )
