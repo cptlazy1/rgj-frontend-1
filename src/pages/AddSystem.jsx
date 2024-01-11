@@ -61,7 +61,7 @@ function AddSystem() {
 
         try {
             const gameSystemID = await addSystem(username, system)
-            setMessage('System added to collection')
+            setMessage(system.gameSystemDto.gameSystemName + ' added to collection')
             await uploadFile(username, gameSystemID);
         } catch (error) {
             console.error(error)
@@ -104,7 +104,7 @@ function AddSystem() {
 
                     </div>
                 </div>
-                <div className="conditions-container">
+                <div className="conditions-container-system">
                     <div className="add-system-condition-container">
                         <label>Box</label>
                         <ToggleSwitch isOn={box} handleToggle={(checked) => setBox(checked)}/>

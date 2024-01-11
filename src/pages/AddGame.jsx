@@ -71,7 +71,7 @@ function AddGame() {
 
         try {
             const gameID = await addGame(username, game)
-            setMessage("Game added successfully")
+            setMessage(game.gameDto.gameName + " added to collection")
             await uploadFile(username, gameID)
         } catch (error) {
             console.error(error)
@@ -121,7 +121,7 @@ function AddGame() {
                     </div>
                 </div>
 
-                <div className="conditions-container">
+                <div className="conditions-container-game">
                     <div className="add-game-condition-container">
                         <label>Box</label>
                         <ToggleSwitch isOn={box} handleToggle={(checked) => setBox(checked)}/>

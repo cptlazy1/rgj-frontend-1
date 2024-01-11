@@ -12,25 +12,18 @@ function Game() {
         <>
 
             <div className="game-container">
+                {/*Todo: replace with actual game name*/}
                 <h1>Super Mario Bros. 3</h1>
                 <div className="game-condition-and-image-container">
                     <div className="game-picture-container">
+                        {/*Todo: replace with actual game picture or default picture*/}
                         <img className="game-picture" src={gamePicture} alt="game picture"/>
-                        <div className="edit-game-button">
-                            <Button text="Edit" onClick={() => console.log("Edit button clicked. Really!!")}/>
-                        </div>
                     </div>
                     <div className="game-condition-container">
-                        <label>Complete</label>
-                        <ToggleSwitch/>
+                        {/*Todo: replace with actual game conditions*/}
                         <label>Box</label>
                         <ToggleSwitch/>
                         <label>Manual</label>
-                        <ToggleSwitch/>
-                    </div>
-
-                    <div className="game-condition-container">
-                        <label>Mint</label>
                         <ToggleSwitch/>
                         <label>Scratches</label>
                         <ToggleSwitch/>

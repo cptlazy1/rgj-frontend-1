@@ -13,17 +13,17 @@ function System() {
         <>
 
             <div className="system-container">
+                {/*Todo: replace with actual system name*/}
                 <h1>Sega MegaDrive</h1>
                 <div className="system-condition-and-image-container">
 
                     <div className="system-picture-container">
+                        {/*Todo: replace with actual system picture or default picture*/}
                         <img className="system-picture" src={systemPicture} alt="system picture"/>
-                        <div className ="edit-system-button" >
-                            <Button text="Edit" onClick={() => console.log("Edit button clicked. Really!!")}/>
-                        </div>
                     </div>
 
                     <div className="system-condition-container">
+                        {/*Todo: replace with actual system conditions*/}
                         <label>Box</label>
                         <ToggleSwitch/>
                         <label>Cables</label>
