@@ -97,7 +97,7 @@ function AddSystem() {
                         <img className="system-picture" src={previewURL || systemPicture} alt="system picture"/>
 
                         <label htmlFor="system-image">
-                            Upload an image:
+                            Upload system image:
                             <input type="file" id="system-image" name="system-image" accept="image/*"
                                    onChange={handleFileChange}/>
                         </label>
