@@ -45,7 +45,7 @@ function AddSystem() {
     }
 
     return (
-        <div>
+        <>
             <form className="add-system-form" onSubmit={handleSubmit}>
                 <div className="details-and-image-container">
                     <div className="details-container">
@@ -86,9 +86,10 @@ function AddSystem() {
 
             </form>
 
+            <div className="message">
             {message && <p>{message}</p>}
-
-        </div>
+            </div>
+        </>
     )
 
 }
