@@ -1,5 +1,7 @@
 import axios from "axios"
 
+
+// Todo: this function needs to accept a username as parameter
 async function getUsersSystems() {
     try {
         const response = await axios.get('http://localhost:8080/users/porgy123/game-systems', {
