@@ -8,16 +8,14 @@ function MyGames() {
     const [games, setGames] = useState([])
     const [error, setError] = useState(null)
 
+
     useEffect(() => {
         const fetchGames = async () => {
-            try {
-                const games = await getUsersGames()
-                if (!games.length) {
-                    throw new Error('No games data returned');
-                }
+            const games = await getUsersGames()
+            if (!games.length) {
+                setError('No games data returned')
+            } else {
                 setGames(games)
-            } catch (error) {
-                setError(error.message)
             }
         }
 

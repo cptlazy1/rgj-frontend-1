@@ -3,17 +3,44 @@ import gamePicture from '../assets/super-mario-bros-3-poster-nes-cover-61x91-5cm
 import ToggleSwitch from "../components/ToggleSwitch.jsx";
 import Button from "../components/Button.jsx";
 import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import getGame from "../helpers/getGame.js";
 
 function Game() {
 
     const navigate = useNavigate();
 
+    const [game, setGame] = useState({})
+    const [error, setError] = useState(null)
+
+    useEffect(() => {
+        const fetchGame = async () => {
+            const game = await getGame()
+            if (!game) {
+                setError('No game data returned')
+            } else {
+                setGame(game)
+            }
+        }
+
+        void fetchGame()
+    }, [])
+
+    if (error) {
+        return <div>Error: {error}</div>
+    }
+
+    // This is a placeholder because the sliders are static
+    const handleToggle = () => {
+        console.log('toggle')
+    }
+
     return (
         <>
 
             <div className="game-container">
-                {/*Todo: replace with actual game name*/}
-                <h1>Super Mario Bros. 3</h1>
+
+                <h1>{game?.gameDto?.gameName || 'Default Game Name'}</h1>
                 <div className="game-condition-and-image-container">
                     <div className="game-picture-container">
                         {/*Todo: replace with actual game picture or default picture*/}
@@ -22,15 +49,15 @@ function Game() {
                     <div className="game-condition-container">
                         {/*Todo: replace with actual game conditions*/}
                         <label>Box</label>
-                        <ToggleSwitch/>
+                        <ToggleSwitch isOn={game.gameConditionDto.hasCase} handleToggle={handleToggle}/>
                         <label>Manual</label>
-                        <ToggleSwitch/>
+                        <ToggleSwitch isOn={game.gameConditionDto.hasManual} handleToggle={handleToggle}/>
                         <label>Scratches</label>
-                        <ToggleSwitch/>
+                        <ToggleSwitch isOn={game.gameConditionDto.hasScratches} handleToggle={handleToggle}/>
                         <label>Stickers</label>
-                        <ToggleSwitch/>
+                        <ToggleSwitch isOn={game.gameConditionDto.hasStickers} handleToggle={handleToggle}/>
                         <label>Writing</label>
-                        <ToggleSwitch/>
+                        <ToggleSwitch isOn={game.gameConditionDto.hasWriting} handleToggle={handleToggle}/>
                     </div>
 
 

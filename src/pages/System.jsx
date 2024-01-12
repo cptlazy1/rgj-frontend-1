@@ -13,13 +13,15 @@ function System() {
         <>
 
             <div className="system-container">
-                {/*Todo: replace with actual system name*/}
+                {/*Todo: replace with actual system brand and name*/}
                 <h1>Sega MegaDrive</h1>
                 <div className="system-condition-and-image-container">
 
                     <div className="system-picture-container">
                         {/*Todo: replace with actual system picture or default picture*/}
                         <img className="system-picture" src={systemPicture} alt="system picture"/>
+                        {/*Todo: replace with actual system release date*/}
+                        <label>Year of release: 1989</label>
                     </div>
 
                     <div className="system-condition-container">
