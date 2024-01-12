@@ -1,10 +1,11 @@
 import axios from "axios"
 
-// Todo: this function needs to accept a game id and username as parameters
-async function getGame() {
+async function getGameImage() {
+
     try {
-        const response = await axios.get(`http://localhost:8080/users/porgy123/games/2`, {
-            'Accept': 'application/json'
+        const response = await axios.get(`http://localhost:8080/users/porgy123/games/2/download-game-photo/Samurai_Shodown_II_Box_Art.jpg`, {
+            // server will be sending binary data
+            responseType: "blob"
         })
 
         if (!response.data) {
@@ -18,6 +19,7 @@ async function getGame() {
         console.error('An error occurred while fetching the game:', error)
         return []
     }
+
 }
 
-export default getGame
+export default getGameImage

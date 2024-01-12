@@ -17,4 +17,9 @@ ToggleSwitch.propTypes = {
     handleToggle: PropTypes.func.isRequired
 }
 
+// Default value for isOn is false
+ToggleSwitch.defaultProps = {
+    isOn: false
+}
+
 export default ToggleSwitch
