@@ -58,7 +58,6 @@ function Game() {
                 <h1>{game?.gameDto?.gameName || 'Default Game Name'}</h1>
                 <div className="game-condition-and-image-container">
                     <div className="game-picture-container">
-                        {/*Todo: replace with actual game picture or default picture*/}
                         <img className="game-picture" src={gameImage || gamePicture} alt="game picture"/>
                     </div>
                     <div className="game-condition-container">

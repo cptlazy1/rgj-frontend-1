@@ -3,37 +3,84 @@ import systemPicture from '../assets/Megadrive.jpg'
 import ToggleSwitch from "../components/ToggleSwitch.jsx";
 import Button from "../components/Button.jsx";
 import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import getSystem from "../helpers/getSystem.js";
+import getSystemImage from "../helpers/getSystemImage.js";
+import game from "./Game.jsx";
 
 function System() {
 
     const navigate = useNavigate();
+
+    const [system, setSystem] = useState({})
+    const [systemImage, setSystemImage] = useState([])
+    const [error, setError] = useState(null)
+
+
+    useEffect(() => {
+        const fetchSystem = async () => {
+            const system = await getSystem()
+            if (!system) {
+                setError('No system data returned')
+            } else {
+                setSystem(system)
+            }
+        }
+
+        void fetchSystem()
+    }, [])
+
+    useEffect(() => {
+        const fetchSystemImage = async () => {
+            const systemImage = await getSystemImage()
+            if (!systemImage) {
+                setError('No system image returned')
+            } else {
+                const systemImageUrl = URL.createObjectURL(systemImage)
+                setSystemImage(systemImageUrl)
+            }
+        }
+
+        void fetchSystemImage()
+    }, [])
+
+
+    if (error) {
+        return <div>Error: {error}</div>
+    }
+
+    const handleToggle = () => {
+        console.log('toggle')
+    }
 
     return (
 
         <>
 
             <div className="system-container">
-                {/*Todo: replace with actual system brand and name*/}
-                <h1>Sega MegaDrive</h1>
+
+                <h1>{
+                    system?.gameSystemDto?.gameSystemBrand + " " + system?.gameSystemDto?.gameSystemName || "Default System Name"}
+                </h1>
                 <div className="system-condition-and-image-container">
 
                     <div className="system-picture-container">
-                        {/*Todo: replace with actual system picture or default picture*/}
-                        <img className="system-picture" src={systemPicture} alt="system picture"/>
-                        {/*Todo: replace with actual system release date*/}
-                        <label>Year of release: 1989</label>
+
+                        <img className="system-picture" src={systemImage || systemPicture} alt="system picture"/>
+
+                        <label>Year of release: {system.gameSystemDto.gameSystemYearOfRelease}</label>
                     </div>
 
                     <div className="system-condition-container">
                         {/*Todo: replace with actual system conditions*/}
                         <label>Box</label>
-                        <ToggleSwitch/>
+                        <ToggleSwitch isOn={system.gameSystemConditionDto.hasBox} handleToggle={handleToggle}/>
                         <label>Cables</label>
-                        <ToggleSwitch/>
+                        <ToggleSwitch isOn={system.gameSystemConditionDto.hasCables} handleToggle={handleToggle}/>
                         <label>Modified</label>
-                        <ToggleSwitch/>
+                        <ToggleSwitch isOn={system.gameSystemConditionDto.isModified} handleToggle={handleToggle}/>
                         <label>Ready to play</label>
-                        <ToggleSwitch/>
+                        <ToggleSwitch isOn={system.gameSystemDto.isReadyToPlay} handleToggle={handleToggle}/>
                     </div>
 
                 </div>
