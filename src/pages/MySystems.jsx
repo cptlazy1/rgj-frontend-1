@@ -10,14 +10,11 @@ function MySystems() {
 
     useEffect(() => {
         const fetchSystems = async () => {
-            try {
-                const systems = await getUsersSystems()
-                if (!systems.length) {
-                    throw new Error('No systems data returned');
-                }
+            const systems = await getUsersSystems()
+            if (!systems.length) {
+                setError('No systems data returned')
+            } else {
                 setSystems(systems)
-            } catch (error) {
-                setError(error.message)
             }
         }
 

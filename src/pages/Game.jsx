@@ -59,6 +59,7 @@ function Game() {
                 <div className="game-condition-and-image-container">
                     <div className="game-picture-container">
                         <img className="game-picture" src={gameImage || gamePicture} alt="game picture"/>
+                        <label>Year of release {game?.gameDto?.gameYearOfRelease || "N/A"}</label>
                     </div>
                     <div className="game-condition-container">
                         <label>Box</label>

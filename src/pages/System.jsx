@@ -6,7 +6,6 @@ import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import getSystem from "../helpers/getSystem.js";
 import getSystemImage from "../helpers/getSystemImage.js";
-import game from "./Game.jsx";
 
 function System() {
 
@@ -45,10 +44,12 @@ function System() {
     }, [])
 
 
-    if (error) {
+if (error) {
         return <div>Error: {error}</div>
     }
 
+
+    // This is a placeholder because the sliders are static
     const handleToggle = () => {
         console.log('toggle')
     }
@@ -59,28 +60,26 @@ function System() {
 
             <div className="system-container">
 
-                <h1>{
-                    system?.gameSystemDto?.gameSystemBrand + " " + system?.gameSystemDto?.gameSystemName || "Default System Name"}
-                </h1>
+                <h1>{system?.gameSystemDto?.gameSystemName || "Default System Name"}</h1>
                 <div className="system-condition-and-image-container">
 
                     <div className="system-picture-container">
 
                         <img className="system-picture" src={systemImage || systemPicture} alt="system picture"/>
 
-                        <label>Year of release: {system.gameSystemDto.gameSystemYearOfRelease}</label>
+                        <label>Year of release: {system?.gameSystemDto?.gameSystemYearOfRelease || 'N/A'}</label>
                     </div>
 
                     <div className="system-condition-container">
                         {/*Todo: replace with actual system conditions*/}
                         <label>Box</label>
-                        <ToggleSwitch isOn={system.gameSystemConditionDto.hasBox} handleToggle={handleToggle}/>
+                        <ToggleSwitch isOn={system?.gameSystemConditionDto?.hasBox} handleToggle={handleToggle}/>
                         <label>Cables</label>
-                        <ToggleSwitch isOn={system.gameSystemConditionDto.hasCables} handleToggle={handleToggle}/>
+                        <ToggleSwitch isOn={system?.gameSystemConditionDto?.hasCables} handleToggle={handleToggle}/>
                         <label>Modified</label>
-                        <ToggleSwitch isOn={system.gameSystemConditionDto.isModified} handleToggle={handleToggle}/>
+                        <ToggleSwitch isOn={system?.gameSystemConditionDto?.isModified} handleToggle={handleToggle}/>
                         <label>Ready to play</label>
-                        <ToggleSwitch isOn={system.gameSystemDto.isReadyToPlay} handleToggle={handleToggle}/>
+                        <ToggleSwitch isOn={system?.gameSystemDto?.isReadyToPlay} handleToggle={handleToggle}/>
                     </div>
 
                 </div>
