@@ -4,3 +4,12 @@
     align-items: center;
 }
 
+.system-name {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.system-name:hover {
+    text-decoration: underline;
+}

@@ -4,3 +4,12 @@
     align-items: center;
 }
 
+.game-name {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.game-name:hover {
+    text-decoration: underline;
+}

@@ -44,7 +44,7 @@ function System() {
     }, [])
 
 
-if (error) {
+    if (error) {
         return <div>Error: {error}</div>
     }
 
@@ -60,7 +60,7 @@ if (error) {
 
             <div className="system-container">
 
-                <h1>{system?.gameSystemDto?.gameSystemName || "Default System Name"}</h1>
+                <h1>{system?.gameSystemDto?.gameSystemBrand + " " + system?.gameSystemDto?.gameSystemName || "Default System Name"}</h1>
                 <div className="system-condition-and-image-container">
 
                     <div className="system-picture-container">
@@ -71,7 +71,6 @@ if (error) {
                     </div>
 
                     <div className="system-condition-container">
-                        {/*Todo: replace with actual system conditions*/}
                         <label>Box</label>
                         <ToggleSwitch isOn={system?.gameSystemConditionDto?.hasBox} handleToggle={handleToggle}/>
                         <label>Cables</label>

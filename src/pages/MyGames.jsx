@@ -2,12 +2,14 @@ import './MyGames.css'
 import React, {useState, useEffect} from "react"
 import truncateString from "../helpers/truncateString"
 import getUsersGames from "../helpers/getUsersGames.js"
+import {useNavigate} from "react-router-dom";
 
 function MyGames() {
 
     const [games, setGames] = useState([])
     const [error, setError] = useState(null)
 
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchGames = async () => {
@@ -42,7 +44,11 @@ function MyGames() {
                 <tbody>
                 {games.map((game, index) => (
                     <tr key={index}>
-                        <td>{truncateString(game.gameName)}</td>
+                        <td>
+            <span className="game-name" onClick={() => navigate('/user-profile/game')}>
+                {truncateString(game.gameName)}
+            </span>
+                        </td>
                         <td>{truncateString(game.gamePublisher)}</td>
                         <td>{truncateString(game.systemName)}</td>
                         <td>{truncateString(game.gameYearOfRelease)}</td>
@@ -51,8 +57,8 @@ function MyGames() {
                 ))}
                 </tbody>
             </table>
-        </div>
-    )
+        </div>)
+
 }
 
 export default MyGames
