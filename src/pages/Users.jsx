@@ -33,19 +33,19 @@ function Users() {
                     </td>
                 </tr>
 
-                    <tr>
-                        <td>User3</td>
-                        <td>slimshady@hotmail.com</td>
-                        <td>Yes</td>
-                        <td>
-                            <Button text="Delete"/>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>User3</td>
+                    <td>slimshady@hotmail.com</td>
+                    <td>Yes</td>
+                    <td>
+                        <Button text="Delete"/>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>
 
-)
+    )
 }
 
 export default Users

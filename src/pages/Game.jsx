@@ -73,19 +73,14 @@ function Game() {
                         <label>Writing</label>
                         <ToggleSwitch isOn={game?.gameConditionDto?.hasWriting} handleToggle={handleToggle}/>
                     </div>
-
-
                 </div>
                 <div className="game-buttons-container">
-
                     <Button text="My games" onClick={() => console.log("Save button clicked. Really!!")}/>
                     <Button text="Add a game" onClick={() => navigate('/user-profile/add-game')}/>
                     <Button text="Delete game" onClick={() => console.log("Back button clicked. Really!!")}/>
                     <Button text="Random game" onClick={() => console.log("Random game button clicked. Really!!")}/>
-
                 </div>
             </div>
-
 
         </>
     )

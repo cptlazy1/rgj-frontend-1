@@ -57,9 +57,6 @@ function Home() {
             <figure className="game-room">
                 <img src={gameroom} alt="game room"/>
             </figure>
-            {/*<div className="game-room">*/}
-            {/*    <img src={gameroom} alt="game room"/>*/}
-            {/*</div>*/}
         </>
     )
 }
