@@ -14,6 +14,7 @@ function Profile() {
             <div className="profile-inner-left-container">
                 <div>
                     <label className="profile-label">Username</label>
+                    {/*TODO: Get the picture from the backend*/}
                     <img src={gamerProfilePicture} alt="gamer profile picture"/>
                 </div>
 
@@ -42,6 +43,7 @@ function Profile() {
 
             <div className="profile-inner-right-container">
                 <label className="profile-label">My game room</label>
+                {/*TODO: Get the image from the backend*/}
                 <img src={gameRoom2} alt="game room picture"/>
 
                 <div className="buttons-container-profile-b">
