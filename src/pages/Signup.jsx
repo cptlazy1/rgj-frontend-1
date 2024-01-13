@@ -29,9 +29,8 @@ function Signup() {
                     setMessage(
                         error.response.data.email ||
                         error.response.data.username ||
-                        error.response.data.password
-                    )
-
+                        error.response.data.password ||
+                        error.response.data)
                 } else {
                     console.error(error)
                     setMessage("Error signing up")
