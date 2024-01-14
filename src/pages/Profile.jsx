@@ -45,6 +45,7 @@ function Profile() {
         return <div>Loading...</div>;
     }
 
+
     return (
         <div className="profile-container">
             <div className="profile-inner-left-container">
@@ -83,7 +84,8 @@ function Profile() {
                 <img src={gameRoomPhoto ? `data:image/png;base64,${gameRoomPhoto}` : gameRoom2 } alt="game room picture"/>
 
                 <div className="buttons-container-profile-b">
-                    <Button text="My systems" onClick={() => navigate("/user-profile/my-systems")}/>
+                    <Button text="My systems" onClick={() => navigate(`/user-profile/${username}/my-systems`)}/>
+
                     <Button text="Add a system" onClick={() => navigate("/user-profile/add-system")}/>
                     <Button text="My games" onClick={() => navigate("/user-profile/my-games")}/>
                     <Button text="Add a game" onClick={() => navigate("/user-profile/add-game")}/>

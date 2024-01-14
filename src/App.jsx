@@ -53,7 +53,10 @@ function App() {
                 <Route path="/user-profile/add-game" element={<AddGame/>}/>
                 <Route path="/user-profile/add-system" element={<AddSystem/>}/>
                 <Route path="/user-profile/my-games" element={<MyGames/>}/>
-                <Route path="/user-profile/my-systems" element={<MySystems/>}/>
+
+                <Route path="/user-profile/:username/my-systems" element={<MySystems/>}/>
+
+
                 <Route path="/user-profile/account" element={<Account/>}/>
                 <Route path="/user-profile/password" element={<Password/>}/>
                 <Route path="/user-profile/email" element={<Email/>}/>

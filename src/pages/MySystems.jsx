@@ -2,18 +2,19 @@ import './MySystems.css'
 import React, {useState, useEffect} from "react"
 import truncateString from "../helpers/truncateString"
 import getUsersSystems from "../helpers/getUsersSystems.js"
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 function MySystems() {
 
     const [systems, setSystems] = useState([])
     const [error, setError] = useState(null)
+    const { username } = useParams()
 
     const navigate = useNavigate()
 
     useEffect(() => {
         const fetchSystems = async () => {
-            const systems = await getUsersSystems()
+            const systems = await getUsersSystems(username)
             if (!systems.length) {
                 setError('No systems data returned')
             } else {
