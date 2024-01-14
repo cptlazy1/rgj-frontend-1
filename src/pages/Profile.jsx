@@ -87,7 +87,9 @@ function Profile() {
                     <Button text="My systems" onClick={() => navigate(`/user-profile/${username}/my-systems`)}/>
 
                     <Button text="Add a system" onClick={() => navigate("/user-profile/add-system")}/>
-                    <Button text="My games" onClick={() => navigate("/user-profile/my-games")}/>
+
+                    <Button text="My games" onClick={() => navigate(`/user-profile/${username}/my-games`)}/>
+
                     <Button text="Add a game" onClick={() => navigate("/user-profile/add-game")}/>
                     <Button text="Random game" onClick={() => navigate("/user-profile/game")}/>
                     <Button text="Random system" onClick={() => navigate("/user-profile/system")}/>

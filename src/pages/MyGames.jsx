@@ -2,18 +2,19 @@ import './MyGames.css'
 import React, {useState, useEffect} from "react"
 import truncateString from "../helpers/truncateString"
 import getUsersGames from "../helpers/getUsersGames.js"
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 function MyGames() {
 
     const [games, setGames] = useState([])
     const [error, setError] = useState(null)
+    const {username} = useParams()
 
     const navigate = useNavigate()
 
     useEffect(() => {
         const fetchGames = async () => {
-            const games = await getUsersGames()
+            const games = await getUsersGames(username)
             if (!games.length) {
                 setError('No games data returned')
             } else {
@@ -45,7 +46,8 @@ function MyGames() {
                 {games.map((game, index) => (
                     <tr key={index}>
                         <td>
-            <span className="game-name" onClick={() => navigate('/user-profile/game')}>
+                            {/*TODO: How to make this a link to the system page dynamically instead of hard coded?*/}
+                            <span className="game-name" onClick={() => navigate('/user-profile/game')}>
                 {truncateString(game.gameName)}
             </span>
                         </td>
