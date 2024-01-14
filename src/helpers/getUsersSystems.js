@@ -1,10 +1,9 @@
 import axios from "axios"
 
 
-// Todo: this function needs to accept a username as parameter
-async function getUsersSystems() {
+async function getUsersSystems(username) {
     try {
-        const response = await axios.get('http://localhost:8080/users/porgy123/game-systems', {
+        const response = await axios.get(`http://localhost:8080/users/${username}/game-systems`, {
             'Accept': 'application/json'
         })
 

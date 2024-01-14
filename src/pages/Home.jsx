@@ -24,15 +24,15 @@ function Home() {
             <div className="body-container">
 
                 <div className="inner-body-container">
-                    <p className="welcome-text">
-                        <h2>Welcome to the RGJ</h2>
+                    <span className="welcome-text">
+                        <h2 className="welcome">Welcome to the RGJ</h2>
                         Lorem50 ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget
                         consequat ultricies, nunc nisl placerat quam, a ultrices quam nisi eget nisl. Donec auctor
                         nisl eget nisl aliquam, eget aliquam nisl ultricies. Donec euismod, nisl eget consequat
                         ultricies, nunc nisl placerat quam, a ultrices quam nisi eget nisl. Donec auctor nisl eget
                         nisl aliquam, eget aliquam nisl ultricies. Donec euismod, nisl eget consequat ultricies,
                         nunc nisl placerat quam, a ultrices quam nisi eget nisl. Donec auctor nisl eget nisl.
-                    </p>
+                    </span>
 
 
                     <section className="counters-container-home">

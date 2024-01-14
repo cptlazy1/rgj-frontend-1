@@ -76,3 +76,8 @@ body {
     color: var(--white);
     /*border: 3px dashed greenyellow;*/
 }
+
+.welcome {
+    color: var(--black);
+    margin-bottom: 4px;
+}

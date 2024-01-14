@@ -3,24 +3,35 @@ import { useNavigate} from "react-router-dom"
 
 export const AuthContext = createContext({})
 
-function AuthContextProvider(children) {
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
+// eslint-disable-next-line react/prop-types
+function AuthContextProvider( {children} ) {
+    const [isAuthenticated, setIsAuthenticated] = useState({
+        isAuthenticated: false,
+        username: "",
+    })
     const navigate = useNavigate()
 
-    function login() {
+    function login(username) {
         console.log("User logged in")
-        setIsAuthenticated(true)
-        navigate("/user-profile/profile")
+        setIsAuthenticated({
+            isAuthenticated: true,
+            username: username
+        })
+        navigate("/user-profile/" + username)
     }
 
     function logout() {
         console.log("User logged out")
-        setIsAuthenticated(false)
+        setIsAuthenticated({
+            isAuthenticated: false,
+            username: null
+        })
         navigate("/")
     }
 
     const contextData = {
-        isAuthenticated: isAuthenticated,
+        isAuthenticated: isAuthenticated.isAuthenticated,
+        username: isAuthenticated.username,
         login: login,
         logout: logout
     }

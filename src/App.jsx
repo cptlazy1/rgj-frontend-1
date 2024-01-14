@@ -43,7 +43,11 @@ function App() {
                 <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
                 <Route path="/about" element={<About/>}/>
                 <Route path="/contact" element={<Contact/>}/>
-                <Route path="/user-profile" element={<Profile/>}/>
+
+                {/*<Route path="/user-profile" element={<Profile/>}/>*/}
+
+                <Route path="/user-profile/:username" element={<Profile/>}/>
+
                 <Route path="/user-profile/game" element={<Game/>}/>
                 <Route path="/user-profile/system" element={<System/>}/>
                 <Route path="/user-profile/add-game" element={<AddGame/>}/>
