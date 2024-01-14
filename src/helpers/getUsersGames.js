@@ -3,7 +3,12 @@ import axios from "axios";
 async function getUsersGames(username) {
     try {
         const response = await axios.get(`http://localhost:8080/users/${username}/games`, {
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+
         })
 
         if (!response.data) {

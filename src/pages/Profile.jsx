@@ -20,7 +20,13 @@ function Profile() {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/users/${username}`);
+                const response = await axios.get(`http://localhost:8080/users/${username}`, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${localStorage.getItem("token")}`
+                    }
+
+                });
                 setUserData(response.data);
 
                 setProfilePhoto(response.data.profilePhotoData)
@@ -85,7 +91,7 @@ function Profile() {
 
                 <div className="buttons-container-profile-b">
                     <Button text="My systems" onClick={() => navigate(`/user-profile/${username}/my-systems`)}/>
-
+                    {/*Todo: fix the rest of these buttons with username*/}
                     <Button text="Add a system" onClick={() => navigate("/user-profile/add-system")}/>
 
                     <Button text="My games" onClick={() => navigate(`/user-profile/${username}/my-games`)}/>

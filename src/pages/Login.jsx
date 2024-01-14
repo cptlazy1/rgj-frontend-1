@@ -2,7 +2,7 @@ import './Login.css'
 import Button from "../components/Button.jsx"
 import {AuthContext} from "../context/AuthContext.jsx"
 import {useContext, useState} from "react"
-import axios from "axios";
+import axios from "axios"
 
 
 function Login() {
@@ -12,8 +12,6 @@ function Login() {
 
     const {login} = useContext(AuthContext)
 
-
-
     async function handleSubmit(event) {
         event.preventDefault()
 
@@ -22,8 +20,9 @@ function Login() {
                 username: username,
                 password: password
             })
-            console.log(response)
-            login(username)
+
+            // console.log(response.data.jwToken)
+            login(username, response.data.jwToken)
 
         } catch (error) {
             console.log("Login failed")

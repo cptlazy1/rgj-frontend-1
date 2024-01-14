@@ -48,7 +48,6 @@ function System() {
         return <div>Error: {error}</div>
     }
 
-
     // This is a placeholder because the sliders are static
     const handleToggle = () => {
         console.log('toggle')

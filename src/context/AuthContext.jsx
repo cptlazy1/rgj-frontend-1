@@ -1,21 +1,27 @@
 import React, {createContext, useState} from "react"
 import { useNavigate} from "react-router-dom"
 
+
 export const AuthContext = createContext({})
 
 // eslint-disable-next-line react/prop-types
 function AuthContextProvider( {children} ) {
     const [isAuthenticated, setIsAuthenticated] = useState({
         isAuthenticated: false,
-        username: "",
+        username: ""
     })
     const navigate = useNavigate()
 
-    function login(username) {
-        console.log("User logged in")
+    async function login(username, token) {
+        localStorage.setItem("token", token)
+
+
+
+        console.log("User: " + username + " logged in")
         setIsAuthenticated({
             isAuthenticated: true,
-            username: username
+            username: username,
+            token: token
         })
         navigate("/user-profile/" + username)
     }

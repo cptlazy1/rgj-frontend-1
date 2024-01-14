@@ -4,7 +4,11 @@ import axios from "axios"
 async function getUsersSystems(username) {
     try {
         const response = await axios.get(`http://localhost:8080/users/${username}/game-systems`, {
-            'Accept': 'application/json'
+            'Accept': 'application/json',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
         })
 
         if (!response.data) {
