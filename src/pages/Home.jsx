@@ -1,7 +1,7 @@
 import './Home.css'
 import gameroom from '../assets/game room.jpg'
-import getGamesCount from "../helpers/getTotalGames.js"
-import getSystemsCount from "../helpers/getTotalSystems.js"
+import getTotalGames from "../helpers/getTotalGames.js"
+import getTotalsystems from "../helpers/getTotalSystems.js"
 import {useEffect, useState} from "react"
 
 function Home() {
@@ -10,12 +10,12 @@ function Home() {
     const [systemsCount, setSystemsCount] = useState(0)
 
     useEffect(() => {
-            getGamesCount().then(count => setGamesCount(count));
+            getTotalGames().then(count => setGamesCount(count));
         },
         [])
 
     useEffect(() => {
-        getSystemsCount().then(count => setSystemsCount(count));
+        getTotalsystems().then(count => setSystemsCount(count));
     }, []);
 
 

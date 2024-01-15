@@ -5,6 +5,7 @@ import ToggleSwitch from "../components/ToggleSwitch.jsx"
 import systemPicture from "../assets/Megadrive.jpg"
 import addSystem from "../helpers/addSystem.js"
 import axios from "axios";
+import {useParams} from "react-router-dom";
 
 
 function AddSystem() {
@@ -18,6 +19,8 @@ function AddSystem() {
     const [message, setMessage] = useState('')
     const [file, setFile] = useState([])
     const [previewURL, setPreviewURL] = useState('')
+
+    const {username} = useParams()
 
     const handleFileChange = (event) => {
         const file = event.target.files[0]
@@ -33,7 +36,8 @@ function AddSystem() {
         try {
             const result = await axios.post(`http://localhost:8080/users/${username}/game-systems/${gameSystemID}/upload-game-system-photo`, formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
                 },
             })
             console.log(result.data)
@@ -57,7 +61,7 @@ function AddSystem() {
                 isModified: modified
             }
         }
-        const username = 'porgy123' // Todo: replace with actual user id
+
 
         try {
             const gameSystemID = await addSystem(username, system)

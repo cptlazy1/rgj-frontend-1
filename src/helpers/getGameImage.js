@@ -1,11 +1,16 @@
 import axios from "axios"
 
-async function getGameImage() {
+async function getGameImage(username, gameID) {
 
     try {
-        const response = await axios.get(`http://localhost:8080/users/porgy123/games/2/download-game-photo/Samurai_Shodown_II_Box_Art.jpg`, {
+        const response = await axios.get(`http://localhost:8080/users/${username}/games/${gameID}/download-game-photo`, {
             // server will be sending binary data
-            responseType: "blob"
+            responseType: "blob",
+            'headers': {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
         })
 
         if (!response.data) {

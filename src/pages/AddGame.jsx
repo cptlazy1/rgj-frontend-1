@@ -5,6 +5,7 @@ import ToggleSwitch from "../components/ToggleSwitch.jsx"
 import gamePicture from "../assets/super-mario-bros-3-poster-nes-cover-61x91-5cm.jpg"
 import addGame from "../helpers/addGame.js"
 import axios from "axios"
+import {useParams} from "react-router-dom";
 
 
 function AddGame() {
@@ -25,6 +26,8 @@ function AddGame() {
     const [gamePictureFile, setGamePictureFile] = useState([])
     const [previewURL, setPreviewURL] = useState('')
 
+    const {username} = useParams()
+
     const handleFileChange = (event) => {
         const file = event.target.files[0]
         console.log(file)
@@ -39,7 +42,8 @@ function AddGame() {
         try {
             const result = await axios.post(`http://localhost:8080/users/${username}/games/${gameID}/upload-game-photo`, formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'multipart/form-data',
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
                 },
             })
             console.log(result.data)
@@ -67,7 +71,7 @@ function AddGame() {
                 hasWriting: writing
             }
         }
-        const username = 'porgy123' // Todo: replace with actual user id
+
 
         try {
             const gameID = await addGame(username, game)

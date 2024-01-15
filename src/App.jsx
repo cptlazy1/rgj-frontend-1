@@ -45,11 +45,11 @@ function App() {
                 <Route path="/contact" element={<Contact/>}/>
 
                 <Route path="/user-profile/:username" element={<Profile/>}/>
+                <Route path="/user-profile/:username/game/:gameID" element={<Game/>}/>
+                <Route path="/user-profile/:username/system/:systemID" element={<System/>}/>
 
-                <Route path="/user-profile/game" element={<Game/>}/>
-                <Route path="/user-profile/system" element={<System/>}/>
-                <Route path="/user-profile/add-game" element={<AddGame/>}/>
-                <Route path="/user-profile/add-system" element={<AddSystem/>}/>
+                <Route path="/user-profile/:username/add-game" element={<AddGame/>}/>
+                <Route path="/user-profile/:username/add-system" element={<AddSystem/>}/>
 
                 <Route path="/user-profile/:username/my-games" element={<MyGames/>}/>
                 <Route path="/user-profile/:username/my-systems" element={<MySystems/>}/>

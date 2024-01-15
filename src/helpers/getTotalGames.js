@@ -2,9 +2,10 @@ import axios from "axios"
 
 async function getGamesCount() {
     try {
-        const response = await axios.get('http://localhost:8080/admin/games',
+        const response = await axios.get('http://localhost:8080/games',
             {
                 'Accept': 'application/json'
+
             }
         )
         return response.data.length

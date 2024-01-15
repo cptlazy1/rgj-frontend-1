@@ -2,7 +2,7 @@ import axios from "axios"
 
 async function getTotalSystems() {
     try {
-        const response = await axios.get('http://localhost:8080/admin/game-systems',
+        const response = await axios.get('http://localhost:8080/game-systems',
             {
                 'Accept': 'application/json'
             }

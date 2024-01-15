@@ -2,7 +2,7 @@ import './System.css'
 import systemPicture from '../assets/Megadrive.jpg'
 import ToggleSwitch from "../components/ToggleSwitch.jsx";
 import Button from "../components/Button.jsx";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import getSystem from "../helpers/getSystem.js";
 import getSystemImage from "../helpers/getSystemImage.js";
@@ -14,11 +14,12 @@ function System() {
     const [system, setSystem] = useState({})
     const [systemImage, setSystemImage] = useState([])
     const [error, setError] = useState(null)
+    const { username, systemID } = useParams()
 
 
     useEffect(() => {
         const fetchSystem = async () => {
-            const system = await getSystem()
+            const system = await getSystem(username, systemID)
             if (!system) {
                 setError('No system data returned')
             } else {
@@ -31,7 +32,7 @@ function System() {
 
     useEffect(() => {
         const fetchSystemImage = async () => {
-            const systemImage = await getSystemImage()
+            const systemImage = await getSystemImage(username, systemID)
             if (!systemImage) {
                 setError('No system image returned')
             } else {
@@ -84,8 +85,8 @@ function System() {
 
                 <div className="system-buttons-container">
 
-                    <Button text="My systems" onClick={() => console.log("My systems button clicked. Really!!")}/>
-                    <Button text="Add a system" onClick={() => navigate("/user-profile/add-system")}/>
+                    <Button text="My systems" onClick={() => navigate(`/user-profile/${username}/my-systems`)}/>
+                    <Button text="Add a system" onClick={() => navigate(`/user-profile/${username}/add-system`)}/>
                     <Button text="Delete system" onClick={() => console.log("Delete button clicked. Really!!")}/>
                     <Button text="Random system" onClick={() => console.log("Random system button clicked. Really!!")}/>
 

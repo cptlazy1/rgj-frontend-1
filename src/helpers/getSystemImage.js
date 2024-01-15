@@ -1,13 +1,17 @@
 import axios from "axios"
 
-// Todo: this function needs to accept a username, system id and image name
-async function getSystemImage() {
+async function getSystemImage(username, gameSystemId) {
 
         try {
 
-            const response = await axios.get(`http://localhost:8080/users/porgy123/game-systems/1/download-game-system-photo/dreamcast.jpeg`, {
+            const response = await axios.get(`http://localhost:8080/users/${username}/game-systems/${gameSystemId}/download-game-system-photo`, {
                 // server will be sending binary data
-                responseType: "blob"
+                responseType: "blob",
+                'headers': {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
             })
 
             if (!response.data) {

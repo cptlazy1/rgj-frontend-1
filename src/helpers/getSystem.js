@@ -1,10 +1,13 @@
 import axios from "axios"
 
-// Todo: this function needs to accept a game id and username as parameters
-async function getSystem() {
+async function getSystem(username, gameSystemId) {
     try {
-        const response = await axios.get(`http://localhost:8080/users/porgy123/game-systems/1`, {
-            'Accept': 'application/json'
+        const response = await axios.get(`http://localhost:8080/users/${username}/game-systems/${gameSystemId}`, {
+            'Accept': 'application/json',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
         })
 
         if (!response.data) {

@@ -46,8 +46,7 @@ function MyGames() {
                 {games.map((game, index) => (
                     <tr key={index}>
                         <td>
-                            {/*TODO: How to make this a link to the system page dynamically instead of hard coded?*/}
-                            <span className="game-name" onClick={() => navigate('/user-profile/game')}>
+                            <span className="game-name" onClick={() => navigate(`/user-profile/${username}/game/${game.gameID}`)}>
                 {truncateString(game.gameName)}
             </span>
                         </td>

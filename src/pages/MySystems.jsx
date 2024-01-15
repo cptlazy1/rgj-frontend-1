@@ -15,6 +15,7 @@ function MySystems() {
     useEffect(() => {
         const fetchSystems = async () => {
             const systems = await getUsersSystems(username)
+            console.log(systems)
             if (!systems.length) {
                 setError('No systems data returned')
             } else {
@@ -44,8 +45,7 @@ function MySystems() {
             {systems.map((system, index) => (
                 <tr key={index}>
                     <td>
-                        {/*TODO: How to make this a link to the system page dynamically instead of hard coded?*/}
-                        <span className="system-name" onClick={() => navigate(`/user-profile/system`)}>
+                        <span className="system-name" onClick={() => navigate(`/user-profile/${username}/system/${system.gameSystemID}`)}>
                         {truncateString(system.gameSystemName)}
                         </span>
                     </td>

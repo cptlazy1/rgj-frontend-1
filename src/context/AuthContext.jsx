@@ -13,9 +13,8 @@ function AuthContextProvider( {children} ) {
     const navigate = useNavigate()
 
     async function login(username, token) {
+
         localStorage.setItem("token", token)
-
-
 
         console.log("User: " + username + " logged in")
         setIsAuthenticated({
