@@ -13,3 +13,15 @@
 .game-name:hover {
     text-decoration: underline;
 }
+
+.my-games-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 12px;
+}
+
+.my-games-page-number {
+    margin: 12px;
+    font-size: 24px;
+}

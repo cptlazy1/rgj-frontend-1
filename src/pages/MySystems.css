@@ -13,3 +13,22 @@
 .system-name:hover {
     text-decoration: underline;
 }
+
+.my-systems-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.my-systems-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 12px;
+}
+
+.my-systems-page-number {
+    margin: 12px;
+    font-size: 24px;
+}

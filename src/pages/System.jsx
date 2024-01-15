@@ -6,6 +6,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import getSystem from "../helpers/getSystem.js";
 import getSystemImage from "../helpers/getSystemImage.js";
+import getRandomSystem from "../helpers/getRandomSystem.js";
 
 function System() {
 
@@ -88,8 +89,7 @@ function System() {
                     <Button text="My systems" onClick={() => navigate(`/user-profile/${username}/my-systems`)}/>
                     <Button text="Add a system" onClick={() => navigate(`/user-profile/${username}/add-system`)}/>
                     <Button text="Delete system" onClick={() => console.log("Delete button clicked. Really!!")}/>
-                    <Button text="Random system" onClick={() => console.log("Random system button clicked. Really!!")}/>
-
+                    <Button text="Profile" onClick={() => navigate(`/user-profile/${username}`)}/>
                 </div>
             </div>
 

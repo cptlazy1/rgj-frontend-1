@@ -5,7 +5,7 @@ import ToggleSwitch from "../components/ToggleSwitch.jsx"
 import systemPicture from "../assets/Megadrive.jpg"
 import addSystem from "../helpers/addSystem.js"
 import axios from "axios";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 
 function AddSystem() {
@@ -19,8 +19,8 @@ function AddSystem() {
     const [message, setMessage] = useState('')
     const [file, setFile] = useState([])
     const [previewURL, setPreviewURL] = useState('')
-
     const {username} = useParams()
+    const navigate = useNavigate()
 
     const handleFileChange = (event) => {
         const file = event.target.files[0]
@@ -95,6 +95,7 @@ function AddSystem() {
                         <label>Is ready to play</label>
                         <ToggleSwitch isOn={isReadyToPlay} handleToggle={(checked) => setIsReadyToPlay(checked)}/>
                         <Button text="Add system to collection" onClick={handleSubmit}/>
+                        <Button text="Profile" onClick={() => navigate(`/user-profile/${username}`)}/>
 
                     </div>
                     <div className="add-system-picture-container">

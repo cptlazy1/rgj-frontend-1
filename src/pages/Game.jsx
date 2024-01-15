@@ -1,11 +1,13 @@
 import './Game.css'
 import gamePicture from '../assets/super-mario-bros-3-poster-nes-cover-61x91-5cm.jpg'
-import ToggleSwitch from "../components/ToggleSwitch.jsx";
-import Button from "../components/Button.jsx";
-import {useNavigate, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import getGame from "../helpers/getGame.js";
+import ToggleSwitch from "../components/ToggleSwitch.jsx"
+import Button from "../components/Button.jsx"
+import {useNavigate, useParams} from "react-router-dom"
+import {useEffect, useState} from "react"
+import getGame from "../helpers/getGame.js"
 import getGameImage from "../helpers/getGameImage.js"
+import getRandomGame from "../helpers/getRandomGame.js"
+
 function Game() {
 
     const navigate = useNavigate();
@@ -13,16 +15,28 @@ function Game() {
     const [game, setGame] = useState({})
     const [gameImage, setGameImage] = useState([])
     const [error, setError] = useState(null)
-    const { username, gameID } = useParams()
+    const [loading, setLoading] = useState(false)
+    const {username, gameID} = useParams()
+
+    useEffect(() => {
+        if (game && game.gameID) {
+            navigate(`/user-profile/${username}/game/${game.gameID}`, {
+                replace: false,
+                state: {gameID: game.gameID}
+            })
+        }
+    }, [game, navigate, username]);
 
     useEffect(() => {
         const fetchGame = async () => {
+            setLoading(true)
             const game = await getGame(username, gameID)
             if (!game) {
                 setError('No game data returned')
             } else {
                 setGame(game)
             }
+            setLoading(false)
         }
 
         void fetchGame()
@@ -31,6 +45,7 @@ function Game() {
 
     useEffect(() => {
         const fetchGameImage = async () => {
+            setLoading(true)
             const gameImage = await getGameImage(username, gameID)
             if (!gameImage) {
                 setError('No game image returned')
@@ -38,26 +53,33 @@ function Game() {
                 const gameImageUrl = URL.createObjectURL(gameImage)
                 setGameImage(gameImageUrl)
             }
+            setLoading(false)
         }
 
         void fetchGameImage()
     }, [gameID, username])
 
+    if (loading) {
+        return <div>Loading...</div>
+    }
+
     if (error) {
         return <div>Error: {error}</div>
     }
+
 
     // This is a placeholder because the sliders are static
     const handleToggle = () => {
         console.log('toggle')
     }
 
+
     return (
         <>
 
             <div className="game-container">
 
-                <h1>{game?.gameDto?.gameName || 'Default Game Name'}</h1>
+                <h1>{game?.gameDto?.gameName}</h1>
                 <div className="game-condition-and-image-container">
                     <div className="game-picture-container">
                         <img className="game-picture" src={gameImage || gamePicture} alt="game picture"/>
@@ -81,7 +103,9 @@ function Game() {
                     <Button text="My games" onClick={() => navigate(`/user-profile/${username}/my-games`)}/>
                     <Button text="Add a game" onClick={() => navigate(`/user-profile/${username}/add-game`)}/>
                     <Button text="Delete game" onClick={() => console.log("Back button clicked. Really!!")}/>
-                    <Button text="Random game" onClick={() => console.log("Random game button clicked. Really!!")}/>
+                    <Button text="Profile" onClick={() => navigate(`/user-profile/${username}`)}/>
+
+
                 </div>
             </div>
 

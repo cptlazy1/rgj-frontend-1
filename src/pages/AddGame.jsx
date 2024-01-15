@@ -5,7 +5,7 @@ import ToggleSwitch from "../components/ToggleSwitch.jsx"
 import gamePicture from "../assets/super-mario-bros-3-poster-nes-cover-61x91-5cm.jpg"
 import addGame from "../helpers/addGame.js"
 import axios from "axios"
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 
 function AddGame() {
@@ -14,19 +14,16 @@ function AddGame() {
     const [system, setSystem] = useState('')
     const [year, setYear] = useState('')
     const [isOriginal, setIsOriginal] = useState(false)
-
     const [box, setBox] = useState(false)
     const [manual, setManual] = useState(false)
-
     const [scratches, setScratches] = useState(false)
     const [stickers, setStickers] = useState(false)
     const [writing, setWriting] = useState(false)
-
     const [message, setMessage] = useState('')
     const [gamePictureFile, setGamePictureFile] = useState([])
     const [previewURL, setPreviewURL] = useState('')
-
     const {username} = useParams()
+    const navigate = useNavigate()
 
     const handleFileChange = (event) => {
         const file = event.target.files[0]
@@ -109,6 +106,7 @@ function AddGame() {
                         <label>Is Original</label>
                         <ToggleSwitch isOn={isOriginal} handleToggle={(checked) => setIsOriginal(checked)}/>
                         <Button text="Add game to collection" onClick={handleSubmit}/>
+                        <Button text="Profile" onClick={() => navigate(`/user-profile/${username}`)}/>
 
                     </div>
 
