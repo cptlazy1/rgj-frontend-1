@@ -26,7 +26,8 @@ function Game() {
         }
 
         void fetchGame()
-    }, [])
+    }, [gameID, username])
+
 
     useEffect(() => {
         const fetchGameImage = async () => {
@@ -40,7 +41,7 @@ function Game() {
         }
 
         void fetchGameImage()
-    }, [])
+    }, [gameID, username])
 
     if (error) {
         return <div>Error: {error}</div>

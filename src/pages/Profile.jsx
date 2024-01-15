@@ -7,6 +7,8 @@ import {useNavigate, useParams} from "react-router-dom"
 import Button from "../components/Button.jsx"
 import getUsersGames from "../helpers/getUsersGames.js"
 import getUsersSystems from "../helpers/getUsersSystems.js"
+import getRandomGame from "../helpers/getRandomGame.js"
+import getRandomSystem from "../helpers/getRandomSystem.js"
 
 function Profile() {
     const [userData, setUserData] = useState(null)
@@ -96,8 +98,16 @@ function Profile() {
                     <Button text="Add a game" onClick={() => navigate(`/user-profile/${username}/add-game`)}/>
 
                     {/*Todo: fix the rest of these buttons with username*/}
-                    <Button text="Random game" onClick={() => navigate("/user-profile/game")}/>
-                    <Button text="Random system" onClick={() => navigate("/user-profile/system")}/>
+
+                    <Button text="Random Game" onClick={async () => {
+                        const randomGame = await getRandomGame(username)
+                        navigate(`/user-profile/${username}/game/${randomGame.gameID}`)
+                    }}/>
+
+                    <Button text="Random system" onClick={async () => {
+                        const randomSystem = await getRandomSystem(username)
+                        navigate(`/user-profile/${username}/system/${randomSystem.gameSystemID}`)
+                    }}/>
                 </div>
             </div>
         </div>

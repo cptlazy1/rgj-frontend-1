@@ -36,13 +36,13 @@ function System() {
             if (!systemImage) {
                 setError('No system image returned')
             } else {
-                const systemImageUrl = URL.createObjectURL(systemImage)
-                setSystemImage(systemImageUrl)
+                // const systemImageUrl = URL.createObjectURL(systemImage)
+                setSystemImage(systemImage)
             }
         }
 
         void fetchSystemImage()
-    }, [])
+    }, [systemID, username])
 
 
     if (error) {

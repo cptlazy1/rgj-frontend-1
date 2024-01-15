@@ -7,7 +7,7 @@ async function getGameImage(username, gameID) {
             // server will be sending binary data
             responseType: "blob",
             'headers': {
-                'Accept': 'application/json',
+                // 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
