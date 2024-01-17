@@ -6,7 +6,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import getSystem from "../helpers/getSystem.js";
 import getSystemImage from "../helpers/getSystemImage.js";
-import getRandomSystem from "../helpers/getRandomSystem.js";
+import deleteSystem from "../helpers/deleteSystem.js";
 
 function System() {
 
@@ -17,6 +17,15 @@ function System() {
     const [error, setError] = useState(null)
     const { username, systemID } = useParams()
 
+
+    useEffect(() => {
+        if (system && system.gameID) {
+            navigate(`/user-profile/${username}/system/${system.gameID}`, {
+                replace: false,
+                state: {systemID: system.gameID}
+            })
+        }
+    }, [system, navigate, username]);
 
     useEffect(() => {
         const fetchSystem = async () => {
@@ -55,6 +64,16 @@ function System() {
         console.log('toggle')
     }
 
+    const handleDelete = async () => {
+        try {
+            await deleteSystem(username, systemID)
+            navigate(`/user-profile/${username}/my-systems`)
+        }
+        catch (error) {
+            console.error("An error occurred while deleting the system" + error)
+        }
+    }
+
     return (
 
         <>
@@ -88,7 +107,7 @@ function System() {
 
                     <Button text="My systems" onClick={() => navigate(`/user-profile/${username}/my-systems`)}/>
                     <Button text="Add a system" onClick={() => navigate(`/user-profile/${username}/add-system`)}/>
-                    <Button text="Delete system" onClick={() => console.log("Delete button clicked. Really!!")}/>
+                    <Button text="Delete system" onClick={handleDelete}/>
                     <Button text="Profile" onClick={() => navigate(`/user-profile/${username}`)}/>
                 </div>
             </div>

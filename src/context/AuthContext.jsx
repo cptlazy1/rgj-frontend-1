@@ -1,7 +1,5 @@
-import React, {createContext, useEffect, useState} from "react"
+import React, {createContext, useState} from "react"
 import { useNavigate} from "react-router-dom"
-import {jwtDecode} from "jwt-decode"
-import axios from "axios"
 
 
 export const AuthContext = createContext({})
@@ -12,25 +10,6 @@ function AuthContextProvider( {children} ) {
         isAuthenticated: false,
         username: ""
     })
-
-    // useEffect(() => {
-    //     const token = localStorage.getItem("token")
-    //     if (token) {
-    //         // setIsAuthenticated({
-    //         //     isAuthenticated: true,
-    //         //     username: token
-    //         // })
-    //         void login(token)
-    //     }
-    //     else {
-    //         setIsAuthenticated({
-    //             isAuthenticated: false,
-    //             username: "",
-    //             status: "done"
-    //
-    //         })
-    //     }
-    // }, [])
 
 
     const navigate = useNavigate()
@@ -53,8 +32,9 @@ function AuthContextProvider( {children} ) {
         console.log("User logged out")
         setIsAuthenticated({
             isAuthenticated: false,
-            username: null
+            username: ""
         })
+        localStorage.removeItem("token")
         navigate("/")
     }
 

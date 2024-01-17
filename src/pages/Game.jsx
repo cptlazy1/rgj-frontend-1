@@ -6,7 +6,7 @@ import {useNavigate, useParams} from "react-router-dom"
 import {useEffect, useState} from "react"
 import getGame from "../helpers/getGame.js"
 import getGameImage from "../helpers/getGameImage.js"
-import getRandomGame from "../helpers/getRandomGame.js"
+import deleteGame from "../helpers/deleteGame.js"
 
 function Game() {
 
@@ -73,6 +73,14 @@ function Game() {
         console.log('toggle')
     }
 
+    const handleDelete = async () => {
+        try {
+            await deleteGame(username, gameID)
+            navigate(`/user-profile/${username}/my-games/`)
+        } catch (error) {
+            console.error("An error occurred while deleting the game" + error)
+        }
+    }
 
     return (
         <>
@@ -102,7 +110,7 @@ function Game() {
 
                     <Button text="My games" onClick={() => navigate(`/user-profile/${username}/my-games`)}/>
                     <Button text="Add a game" onClick={() => navigate(`/user-profile/${username}/add-game`)}/>
-                    <Button text="Delete game" onClick={() => console.log("Back button clicked. Really!!")}/>
+                    <Button text="Delete game" onClick={handleDelete}/>
                     <Button text="Profile" onClick={() => navigate(`/user-profile/${username}`)}/>
 
 
