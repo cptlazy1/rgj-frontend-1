@@ -6,15 +6,16 @@ import { AuthContext } from '../context/AuthContext.jsx'
 
 function Header() {
 
-    const { isAuthenticated, logout } = useContext(AuthContext)
+    const {logout, authStatus } = useContext(AuthContext)
 
     const [links, setLinks] = React.useState([]);
 
     useEffect(() => {
-        setLinks(isAuthenticated
+        setLinks(authStatus
             ? [
                 {name: "Home", path: "/"},
                 {name: "FAQ", path: "/faq"},
+                {name: "Log out", path: "/"},
 
             ]
             : [
@@ -23,7 +24,7 @@ function Header() {
                 {name: "Sign up", path: "/sign-up"},
                 {name: "Log in", path: "/log-in"},
             ]);
-    }, [isAuthenticated, logout]);
+    }, [authStatus, logout]);
 
 
 

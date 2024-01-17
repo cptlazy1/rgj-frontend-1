@@ -1,8 +1,10 @@
 import './Signup.css'
 import Button from "../components/Button.jsx"
-import {useState} from "react"
+import {useContext, useState} from "react"
 import signup from "../helpers/signup.js"
 import axios from "axios";
+import {useNavigate} from "react-router-dom"
+import { AuthContext } from "../context/AuthContext.jsx"
 
 function Signup() {
 
@@ -11,31 +13,38 @@ function Signup() {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const [message, setMessage] = useState("")
+    const navigate = useNavigate()
+    const { setIsAuthenticated, setAuthStatus } = useContext(AuthContext)
+
 
     async function handleSubmit(event) {
-
         event.preventDefault()
 
         if (password !== confirmPassword) {
             setMessage("Passwords don't match")
-
         } else {
-            try {
-                const response = await signup(username, password, email)
-                setMessage(response)
-            } catch (error) {
-                if (axios.isAxiosError(error) && error.response.status === 400) {
-                    console.error(error.response.data)
-                    setMessage(
-                        error.response.data.email ||
-                        error.response.data.username ||
-                        error.response.data.password ||
-                        error.response.data)
-                } else {
-                    console.error(error)
-                    setMessage("Error signing up")
-                }
-            }
+            signup(username, password, email)
+                .then(response => {
+                    setMessage(response)
+                    localStorage.setItem("token", response.jwToken)
+                    setIsAuthenticated(true)
+                    setAuthStatus(true)
+                    console.log(`Navigating to /user-profile/${username}`)
+                    navigate(`/user-profile/${username}`)
+                })
+                .catch(error => {
+                    if (axios.isAxiosError(error) && error.response.status === 400) {
+                        console.error(error.response.data)
+                        setMessage(
+                            error.response.data.email ||
+                            error.response.data.username ||
+                            error.response.data.password ||
+                            error.response.data)
+                    } else {
+                        console.error(error)
+                        setMessage("Error signing up")
+                    }
+                })
         }
     }
 

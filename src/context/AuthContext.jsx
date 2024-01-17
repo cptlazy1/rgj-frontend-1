@@ -6,6 +6,7 @@ export const AuthContext = createContext({})
 
 // eslint-disable-next-line react/prop-types
 function AuthContextProvider( {children} ) {
+    const [authStatus, setAuthStatus] = useState(false)
     const [isAuthenticated, setIsAuthenticated] = useState({
         isAuthenticated: false,
         username: ""
@@ -24,7 +25,8 @@ function AuthContextProvider( {children} ) {
             username: username,
             token: token
         })
-        navigate("/user-profile/" + username)
+        setAuthStatus(true)
+        navigate(`/user-profile/${username}`)
     }
 
 
@@ -34,6 +36,7 @@ function AuthContextProvider( {children} ) {
             isAuthenticated: false,
             username: ""
         })
+        setAuthStatus(false)
         localStorage.removeItem("token")
         navigate("/")
     }
@@ -42,7 +45,10 @@ function AuthContextProvider( {children} ) {
         isAuthenticated: isAuthenticated.isAuthenticated,
         username: isAuthenticated.username,
         login: login,
-        logout: logout
+        logout: logout,
+        setIsAuthenticated: setIsAuthenticated,
+        authStatus: authStatus,
+        setAuthStatus: setAuthStatus
     }
 
     return (

@@ -4,9 +4,9 @@ import './NavigationBar.css'
 import {AuthContext} from "../context/AuthContext.jsx";
 
 // eslint-disable-next-line react/prop-types
-function NavigationBar({links}) {
+function NavigationBar() {
 
-    const {isAuthenticated, logout} = useContext(AuthContext)
+    const {logout, authStatus} = useContext(AuthContext)
     const location = useLocation()
 
     useEffect(() => {
@@ -14,6 +14,19 @@ function NavigationBar({links}) {
             logout()
         }
     }, [location, logout])
+
+    const links = authStatus
+        ? [
+            {name: "Home", path: "/"},
+            {name: "FAQ", path: "/faq"},
+            {name: "Logout", path: "/logout"},
+        ]
+        : [
+            {name: "Home", path: "/"},
+            {name: "FAQ", path: "/faq"},
+            {name: "Sign up", path: "/sign-up"},
+            {name: "Log in", path: "/log-in"},
+        ];
 
     return (
         <nav className="navigation-bar">
@@ -24,11 +37,6 @@ function NavigationBar({links}) {
                         <NavLink className="navigation-links" to={link.path}>{link.name}</NavLink>
                     </li>
                 ))}
-                {isAuthenticated && (
-                    <li>
-                        <NavLink className="navigation-links" to="/logout">Logout</NavLink>
-                    </li>
-                )}
             </ul>
         </nav>
     )
