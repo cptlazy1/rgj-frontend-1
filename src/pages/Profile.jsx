@@ -16,7 +16,8 @@ function Profile() {
     const [systems, setSystems] = useState([])
     const [profilePhoto, setProfilePhoto] = useState(null)
     const [gameRoomPhoto, setGameRoomPhoto] = useState(null)
-    const { username } = useParams()
+    const [previewURL, setPreviewURL] = useState('')
+    const {username} = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -53,21 +54,62 @@ function Profile() {
         return <div>Loading...</div>;
     }
 
+    // Write a function that will handle the file change
+    const handleFileChange = async (event) => {
+        const file = event.target.files[0]
+        const formData = new FormData()
+        formData.append("file", file)
+        setProfilePhoto(formData)
+        setPreviewURL(URL.createObjectURL(file))
+    }
+
+
+    // Write a function that will upload the file to the server
+    const uploadFile = async (username) => {
+
+        try {
+            const response = await axios.post(`http://localhost:8080/users/${username}/upload-pp`, profilePhoto, {
+                headers: {
+                    // "Content-Type": "multipart/form-data",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+
+            setProfilePhoto(response.data.profilePhotoData)
+
+        } catch (error) {
+            console.error("Error uploading profile photo", error)
+        }
+    }
+
+    // Write a function that will handle to submit
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        try {
+            await uploadFile(username)
+        } catch (error) {
+            console.error("Error uploading profile photo", error)
+        }
+    }
+
 
     return (
         <div className="profile-container">
             <div className="profile-inner-left-container">
-                <div>
+                <div className="profile-picture">
                     <label className="profile-label">{userData.username}</label>
 
-                    <img src={profilePhoto ? `data:image/png;base64,${profilePhoto}` : gamerProfilePicture}
+                    {/*<img src={profilePhoto ? `data:image/png;base64,${profilePhoto}` : gamerProfilePicture}*/}
+                    <img src={previewURL ? `data:image/png;base64,${previewURL}` : gamerProfilePicture}
                          alt="gamer profile picture"/>
+                    <input type="file" onChange={handleFileChange}/>
+                    <Button text="Change profile picture" onClick={handleSubmit}/>
 
                 </div>
 
                 <section className="counters-container-profile">
                     <div className="total-games">
-                    <label className="counter-label">Total games</label>
+                        <label className="counter-label">Total games</label>
                         <p className="counter">
                             {games && games.length > 0 ? games.length.toString().padStart(10, '0') : '0000000000'}
                         </p>
@@ -89,8 +131,11 @@ function Profile() {
 
             <div className="profile-inner-right-container">
                 <label className="profile-label">My game room</label>
-                <img src={gameRoomPhoto ? `data:image/png;base64,${gameRoomPhoto}` : gameRoom2 } alt="game room picture"/>
+                <img src={gameRoomPhoto ? `data:image/png;base64,${gameRoomPhoto}` : gameRoom2}
+                     alt="game room picture"/>
 
+                <input type="file" onChange={handleFileChange}/>
+                <Button text="Change game room picture" onClick={handleSubmit}/>
                 <div className="buttons-container-profile-b">
                     <Button text="My systems" onClick={() => navigate(`/user-profile/${username}/my-systems`)}/>
                     <Button text="Add a system" onClick={() => navigate(`/user-profile/${username}/add-system`)}/>

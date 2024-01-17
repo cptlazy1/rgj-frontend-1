@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /*border: 2px solid yellow;*/
+  /*border: 2px dashed yellow;*/
 }
 
 .profile-inner-left-container {
@@ -19,6 +19,7 @@
   height: auto;
   border-radius: 10px;
   margin-bottom: 24px;
+  border: 2px solid white;
 }
 
 .profile-inner-right-container {
@@ -36,6 +37,7 @@
   height: auto;
   border-radius: 10px;
   margin-bottom: 24px;
+  border: 2px solid white;
 }
 
 .profile-label {
@@ -43,13 +45,15 @@
   font-size: 1.5rem;
 }
 
+/*This is the same as .profile-container*/
+/*Todo: Remove this class if not needed*/
 .buttons-container-profile-a {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  /*border: 2px solid green;*/
   padding: 12px;
+  /*border: 3px solid green;*/
 }
 
 .buttons-container-profile-b {
@@ -58,13 +62,21 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  /*border: 2px dashed yellow;*/
+  /*border: 2px dashed blue;*/
   padding: 12px;
 }
 
 .counters-container-profile {
   display: flex;
   flex-direction: column;
+  /*border: 3px dashed yellow;*/
+  margin-bottom: 24px;
+}
+
+.profile-picture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /*border: 3px dashed yellow;*/
   margin-bottom: 24px;
 }

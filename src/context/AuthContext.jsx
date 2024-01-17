@@ -1,59 +1,55 @@
-import React, {createContext, useState} from "react"
+import React, {createContext, useState, useEffect} from "react"
 import { useNavigate} from "react-router-dom"
-
 
 export const AuthContext = createContext({})
 
 // eslint-disable-next-line react/prop-types
 function AuthContextProvider( {children} ) {
-    const [authStatus, setAuthStatus] = useState(false)
-    const [isAuthenticated, setIsAuthenticated] = useState({
-        isAuthenticated: false,
-        username: ""
-    })
-
-
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [loading, setLoading] = useState(true)
+    const [username, setUsername] = useState(null) // Define username and setUsername
     const navigate = useNavigate()
 
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+        if (token) {
+            setIsAuthenticated(true)
+        }
+        setLoading(false)
+    }, [])
+
+    useEffect(() => {
+        const storedUsername = localStorage.getItem("username")
+        if (storedUsername) {
+            setUsername(storedUsername)
+        }
+    }, [])
+
     async function login(username, token) {
-
         localStorage.setItem("token", token)
-
-        console.log("User: " + username + " logged in")
-        setIsAuthenticated({
-            isAuthenticated: true,
-            username: username,
-            token: token
-        })
-        setAuthStatus(true)
+        localStorage.setItem("username", username)
+        setIsAuthenticated(true)
         navigate(`/user-profile/${username}`)
     }
 
-
     function logout() {
-        console.log("User logged out")
-        setIsAuthenticated({
-            isAuthenticated: false,
-            username: ""
-        })
-        setAuthStatus(false)
+        setIsAuthenticated(false)
         localStorage.removeItem("token")
+        localStorage.removeItem("username")
         navigate("/")
     }
 
     const contextData = {
-        isAuthenticated: isAuthenticated.isAuthenticated,
-        username: isAuthenticated.username,
-        login: login,
-        logout: logout,
-        setIsAuthenticated: setIsAuthenticated,
-        authStatus: authStatus,
-        setAuthStatus: setAuthStatus
+        isAuthenticated,
+        login,
+        logout,
+        loading,
+        setIsAuthenticated,
+        username // Include username in contextData
     }
 
     return (
         <AuthContext.Provider value={contextData}>
-            {/*{isAuthenticated.status === "done" ? children : <p>Loading...</p>}*/}
             {children}
         </AuthContext.Provider>
     )

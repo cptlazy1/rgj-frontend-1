@@ -14,7 +14,7 @@ function Signup() {
     const [confirmPassword, setConfirmPassword] = useState("")
     const [message, setMessage] = useState("")
     const navigate = useNavigate()
-    const { setIsAuthenticated, setAuthStatus } = useContext(AuthContext)
+    const { setIsAuthenticated } = useContext(AuthContext)
 
 
     async function handleSubmit(event) {
@@ -28,7 +28,6 @@ function Signup() {
                     setMessage(response)
                     localStorage.setItem("token", response.jwToken)
                     setIsAuthenticated(true)
-                    setAuthStatus(true)
                     console.log(`Navigating to /user-profile/${username}`)
                     navigate(`/user-profile/${username}`)
                 })

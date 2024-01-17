@@ -1,20 +1,28 @@
-import React, { useContext, useEffect } from 'react'
+import {useContext, useEffect, useState} from 'react'
 import logo from "../assets/RGJ logo.png"
 import './Header.css'
 import NavigationBar from "./NavigationBar.jsx";
 import { AuthContext } from '../context/AuthContext.jsx'
+import {useParams} from "react-router-dom";
 
 function Header() {
-
-    const {logout, authStatus } = useContext(AuthContext)
-
-    const [links, setLinks] = React.useState([]);
+    const {isAuthenticated, logout } = useContext(AuthContext)
+    const [links, setLinks] = useState([])
+    // const username = localStorage.getItem("username")
+    const [username, setUsername] = useState(localStorage.getItem("username"))
 
     useEffect(() => {
-        setLinks(authStatus
+
+        console.log("Use effect triggered")
+        console.log(isAuthenticated)
+
+        setUsername(localStorage.getItem("username"))
+        console.log(username)
+        setLinks(isAuthenticated
             ? [
                 {name: "Home", path: "/"},
                 {name: "FAQ", path: "/faq"},
+                {name: username, path: "/user-profile/" + username},
                 {name: "Log out", path: "/"},
 
             ]
@@ -24,7 +32,7 @@ function Header() {
                 {name: "Sign up", path: "/sign-up"},
                 {name: "Log in", path: "/log-in"},
             ]);
-    }, [authStatus, logout]);
+    }, [isAuthenticated, logout, username]);
 
 
 
@@ -37,7 +45,7 @@ function Header() {
                     </div>
 
                     <div>
-                        <NavigationBar links={links}/>
+                        <NavigationBar links={links} logout={logout} key={isAuthenticated}/>
                     </div>
                 </div>
             </header>

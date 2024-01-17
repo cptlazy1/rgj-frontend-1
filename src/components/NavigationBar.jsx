@@ -1,40 +1,21 @@
-import React, {useContext, useEffect} from 'react'
-import {NavLink, useLocation} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 import './NavigationBar.css'
-import {AuthContext} from "../context/AuthContext.jsx";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
-function NavigationBar() {
-
-    const {logout, authStatus} = useContext(AuthContext)
-    const location = useLocation()
-
-    useEffect(() => {
-        if (location.pathname === '/logout') {
-            logout()
-        }
-    }, [location, logout])
-
-    const links = authStatus
-        ? [
-            {name: "Home", path: "/"},
-            {name: "FAQ", path: "/faq"},
-            {name: "Logout", path: "/logout"},
-        ]
-        : [
-            {name: "Home", path: "/"},
-            {name: "FAQ", path: "/faq"},
-            {name: "Sign up", path: "/sign-up"},
-            {name: "Log in", path: "/log-in"},
-        ];
-
+function NavigationBar({links, logout}) {
     return (
         <nav className="navigation-bar">
             <ul>
                 {/* eslint-disable-next-line react/prop-types */}
                 {links.map((link, index) => (
                     <li key={index}>
-                        <NavLink className="navigation-links" to={link.path}>{link.name}</NavLink>
+                        <NavLink
+                            className="navigation-links"
+                            to={link.path}
+                            onClick={link.name === "Log out" ? logout : null}
+                        >
+                            {link.name}
+                        </NavLink>
                     </li>
                 ))}
             </ul>
@@ -42,4 +23,13 @@ function NavigationBar() {
     )
 }
 
+NavigationBar.propTypes = {
+    links: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            path: PropTypes.string.isRequired
+        })
+    ).isRequired,
+    logout: PropTypes.func.isRequired
+}
 export default NavigationBar

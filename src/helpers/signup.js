@@ -7,6 +7,7 @@ async function signup(username, password, email) {
         email: email
     })
     console.log(response.data)
+    localStorage.setItem("username", username)
     return response.data;
 }
 

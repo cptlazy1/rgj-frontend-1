@@ -1,5 +1,5 @@
 import './App.css'
-import {Route, Routes} from "react-router-dom"
+import {Navigate, Route, Routes} from "react-router-dom"
 import Home from "./pages/Home.jsx"
 import Footer from "./components/Footer.jsx"
 import Header from "./components/Header.jsx"
@@ -28,7 +28,11 @@ import {useContext} from "react";
 
 function App() {
 
-    const { isAuthenticated } = useContext(AuthContext)
+    const { isAuthenticated, loading } = useContext(AuthContext)
+
+    if (loading) {
+        return <h1>Loading...</h1>
+    }
 
     return (
         <>
@@ -44,7 +48,8 @@ function App() {
                 <Route path="/about" element={<About/>}/>
                 <Route path="/contact" element={<Contact/>}/>
 
-                <Route path="/user-profile/:username" element={<Profile/>}/>
+                <Route path="/user-profile/:username" element={isAuthenticated ? <Profile/> : <Navigate to="/"/> }/>
+                {/*<Route path="/user-profile/:username" element={<Profile/>}/>*/}
                 <Route path="/user-profile/:username/game/:gameID" element={<Game/>}/>
                 <Route path="/user-profile/:username/system/:systemID" element={<System/>}/>
 
