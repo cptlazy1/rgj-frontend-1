@@ -12,7 +12,7 @@ async function getRandomGame(username) {
 
         if (!Array.isArray(response.data) || response.data.length === 0) {
             console.error('No data returned from server or no games found!')
-            return []
+            return null
         }
 
         // Generate a random index
@@ -26,7 +26,7 @@ async function getRandomGame(username) {
     }
     catch (error) {
         console.error('An error occurred while fetching the game:', error)
-        return []
+        return null
     }
 }
 
