@@ -1,7 +1,7 @@
 import {NavLink} from "react-router-dom"
 import './NavigationBar.css'
-import PropTypes from "prop-types";
 
+// eslint-disable-next-line react/prop-types
 function NavigationBar({links, logout}) {
     return (
         <nav className="navigation-bar">
@@ -23,13 +23,4 @@ function NavigationBar({links, logout}) {
     )
 }
 
-NavigationBar.propTypes = {
-    links: PropTypes.arrayOf(
-        PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            path: PropTypes.string.isRequired
-        })
-    ).isRequired,
-    logout: PropTypes.func.isRequired
-}
 export default NavigationBar

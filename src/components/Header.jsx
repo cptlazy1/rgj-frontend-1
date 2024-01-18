@@ -3,12 +3,11 @@ import logo from "../assets/RGJ logo.png"
 import './Header.css'
 import NavigationBar from "./NavigationBar.jsx";
 import { AuthContext } from '../context/AuthContext.jsx'
-import {useParams} from "react-router-dom";
+
 
 function Header() {
     const {isAuthenticated, logout } = useContext(AuthContext)
     const [links, setLinks] = useState([])
-    // const username = localStorage.getItem("username")
     const [username, setUsername] = useState(localStorage.getItem("username"))
 
     useEffect(() => {

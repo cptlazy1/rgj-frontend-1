@@ -27,7 +27,6 @@ function AddGame() {
 
     const handleFileChange = (event) => {
         const file = event.target.files[0]
-        console.log(file)
         setGamePictureFile(file)
         setPreviewURL(URL.createObjectURL(file))
     }

@@ -18,14 +18,14 @@ function Game() {
     const [loading, setLoading] = useState(false)
     const {username, gameID} = useParams()
 
-    useEffect(() => {
-        if (game && game.gameID) {
-            navigate(`/user-profile/${username}/game/${game.gameID}`, {
-                replace: false,
-                state: {gameID: game.gameID}
-            })
-        }
-    }, [game, navigate, username]);
+    // useEffect(() => {
+    //     if (game && game.gameID) {
+    //         navigate(`/user-profile/${username}/game/${game.gameID}`, {
+    //             replace: false,
+    //             state: {gameID: game.gameID}
+    //         })
+    //     }
+    // }, [game, navigate, username]);
 
     useEffect(() => {
         const fetchGame = async () => {
