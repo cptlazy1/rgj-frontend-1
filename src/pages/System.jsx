@@ -18,14 +18,14 @@ function System() {
     const { username, systemID } = useParams()
 
 
-    useEffect(() => {
-        if (system && system.gameID) {
-            navigate(`/user-profile/${username}/system/${system.gameID}`, {
-                replace: false,
-                state: {systemID: system.gameID}
-            })
-        }
-    }, [system, navigate, username]);
+    // useEffect(() => {
+    //     if (system && system.gameID) {
+    //         navigate(`/user-profile/${username}/system/${system.gameID}`, {
+    //             replace: false,
+    //             state: {systemID: system.gameID}
+    //         })
+    //     }
+    // }, [system, navigate, username]);
 
     useEffect(() => {
         const fetchSystem = async () => {
@@ -38,7 +38,7 @@ function System() {
         }
 
         void fetchSystem()
-    }, [])
+    }, [systemID, username])
 
     useEffect(() => {
         const fetchSystemImage = async () => {

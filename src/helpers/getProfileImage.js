@@ -17,10 +17,8 @@ async function getProfileImage(username) {
             console.error('No data returned from server!')
             return []
         }
-        // console.log(response.data)
         return response.data;
-    }
-    catch (error) {
+    } catch (error) {
         console.error('An error occurred while fetching the game:', error)
         return []
     }

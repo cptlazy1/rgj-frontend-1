@@ -35,6 +35,7 @@ function Profile() {
             const profileImage = await getProfileImage(username)
             if (!profileImage) {
                 setError('No profile image returned')
+                setProfilePhotoPreviewURL(defaultProfileImage)
             } else {
                 const profileImageUrl = URL.createObjectURL(profileImage)
                 setProfilePhoto(profileImageUrl)
@@ -46,12 +47,16 @@ function Profile() {
         void fetchProfileImage()
     }, [username])
 
+
     useEffect(() => {
         const fetchGameRoomImage = async () => {
             setLoading(true)
             const gameRoomImage = await getGameRoomImage(username)
+
             if (!gameRoomImage) {
                 setError('No game room image returned')
+                setGameRoomPhoto(defaultGameRoomImage)
+                setGameRoomPhotoPreviewURL(defaultGameRoomImage)
             } else {
                 const gameRoomImageUrl = URL.createObjectURL(gameRoomImage)
                 setGameRoomPhoto(gameRoomImageUrl)
@@ -177,7 +182,7 @@ function Profile() {
                     <img src={profilePhotoPreviewURL ? profilePhotoPreviewURL : defaultProfileImage}
                          alt="gamer profile picture"/>
                     <input type="file" onChange={(event) => handleFileChange(event, 'profile')}/>
-                    <Button text="Change profile picture" onClick={() => handleSubmit('profile')}/>
+                    <Button text="Upload profile picture" onClick={() => handleSubmit('profile')}/>
                 </div>
 
                 <section className="counters-container-profile">
@@ -208,7 +213,7 @@ function Profile() {
                 <img src={gameRoomPhotoPreviewURL ? gameRoomPhotoPreviewURL : defaultGameRoomImage}
                      alt={"game room picture"}/>
                 <input type="file" onChange={(event) => handleFileChange(event, 'gameRoom')}/>
-                <Button text="Change game room picture" onClick={() => handleSubmit('gameRoom')}/>
+                <Button text="Upload game room picture" onClick={() => handleSubmit('gameRoom')}/>
 
                 <div className="buttons-container-profile-b">
                     <Button text="My systems" onClick={() => navigate(`/user-profile/${username}/my-systems`)}/>
@@ -218,12 +223,22 @@ function Profile() {
 
                     <Button text="Random Game" onClick={async () => {
                         const randomGame = await getRandomGame(username)
+                        if (userData.length > 0) {
                         navigate(`/user-profile/${username}/game/${randomGame.gameID}`)
+                        } else {
+                            navigate(`/user-profile/${username}/my-games`)
+                        }
+
                     }}/>
 
                     <Button text="Random system" onClick={async () => {
                         const randomSystem = await getRandomSystem(username)
-                        navigate(`/user-profile/${username}/system/${randomSystem.gameSystemID}`)
+                        if (userData.length > 0) {
+                            navigate(`/user-profile/${username}/system/${randomSystem.gameSystemID}`)
+                        } else {
+                            navigate(`/user-profile/${username}/my-systems`)
+                        }
+
                     }}/>
                 </div>
             </div>
