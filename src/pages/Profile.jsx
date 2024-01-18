@@ -161,6 +161,7 @@ function Profile() {
     const handleSubmit = async (photoType) => {
         try {
             await uploadFile(username, photoType)
+            window.location.reload()
         } catch (error) {
             console.error(`Error uploading ${photoType} photo`, error)
         }
