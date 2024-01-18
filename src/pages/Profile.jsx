@@ -203,7 +203,7 @@ function Profile() {
 
                 <div className="buttons-container-profile-a">
                     <Button text="Account Settings"
-                            onClick={() => navigate("/user-profile/account")}/>
+                            onClick={() => navigate(`/user-profile/${username}/account`)}/>
                 </div>
             </div>
 
@@ -221,25 +221,34 @@ function Profile() {
                     <Button text="My games" onClick={() => navigate(`/user-profile/${username}/my-games`)}/>
                     <Button text="Add a game" onClick={() => navigate(`/user-profile/${username}/add-game`)}/>
 
+                    {/*<Button text="Random Game" onClick={async () => {*/}
+                    {/*    const randomGame = await getRandomGame(username)*/}
+                    {/*    navigate(`/user-profile/${username}/game/${randomGame.gameID}`)*/}
+                    {/*}}/>*/}
+
                     <Button text="Random Game" onClick={async () => {
                         const randomGame = await getRandomGame(username)
-                        if (userData.length > 0) {
-                        navigate(`/user-profile/${username}/game/${randomGame.gameID}`)
-                        } else {
+                        if (!randomGame) {
                             navigate(`/user-profile/${username}/my-games`)
+                        } else {
+                            navigate(`/user-profile/${username}/game/${randomGame.gameID}`)
                         }
-
                     }}/>
+
+                    {/*<Button text="Random system" onClick={async () => {*/}
+                    {/*    const randomSystem = await getRandomSystem(username)*/}
+                    {/*    navigate(`/user-profile/${username}/system/${randomSystem.gameSystemID}`)*/}
+                    {/*}}/>*/}
 
                     <Button text="Random system" onClick={async () => {
                         const randomSystem = await getRandomSystem(username)
-                        if (userData.length > 0) {
-                            navigate(`/user-profile/${username}/system/${randomSystem.gameSystemID}`)
-                        } else {
+                        if (!randomSystem) {
                             navigate(`/user-profile/${username}/my-systems`)
+                        } else {
+                            navigate(`/user-profile/${username}/system/${randomSystem.gameSystemID}`)
                         }
-
                     }}/>
+
                 </div>
             </div>
         </div>

@@ -49,20 +49,16 @@ function App() {
                 <Route path="/contact" element={<Contact/>}/>
 
                 <Route path="/user-profile/:username" element={isAuthenticated ? <Profile/> : <Navigate to="/"/> }/>
-                {/*<Route path="/user-profile/:username" element={<Profile/>}/>*/}
+
                 <Route path="/user-profile/:username/game/:gameID" element={<Game/>}/>
                 <Route path="/user-profile/:username/system/:systemID" element={<System/>}/>
-
                 <Route path="/user-profile/:username/add-game" element={<AddGame/>}/>
                 <Route path="/user-profile/:username/add-system" element={<AddSystem/>}/>
-
                 <Route path="/user-profile/:username/my-games" element={<MyGames/>}/>
                 <Route path="/user-profile/:username/my-systems" element={<MySystems/>}/>
-
-
-                <Route path="/user-profile/account" element={<Account/>}/>
-                <Route path="/user-profile/password" element={<Password/>}/>
-                <Route path="/user-profile/email" element={<Email/>}/>
+                <Route path="/user-profile/:username/account" element={<Account/>}/>
+                <Route path="/user-profile/:username/password" element={<Password/>}/>
+                <Route path="/user-profile/:username/email" element={<Email/>}/>
 
                 <Route path="/admin" element={<Admin/>}/>
                 <Route path="/admin/users" element={<Users/>}/>
