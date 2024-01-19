@@ -9,6 +9,7 @@ function Login() {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [message, setMessage] = useState("")
 
     const {login} = useContext(AuthContext)
 
@@ -25,11 +26,10 @@ function Login() {
             login(username, response.data.jwToken)
 
         } catch (error) {
-            console.log("Login failed")
+            setMessage("Username or password incorrect.")
         }
 
     }
-
 
 
     return (
@@ -64,6 +64,10 @@ function Login() {
 
                 </form>
             </div>
+
+
+            {message && <div className="message">{message}</div>}
+
         </>
     )
 }

@@ -4,10 +4,21 @@
     align-items: center;
 }
 
-.users Button {
+.users-list-buttons {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 36px;
-    width: 88px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 12px;
+}
+
+.users-list-page-number {
+    margin: 12px;
+    font-size: 24px;
+}
+
+.delete-message {
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 16px;
 }
