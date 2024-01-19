@@ -82,6 +82,7 @@ function Profile() {
                 })
 
                 setUserData(response.data)
+                console.log(response.data)
 
                 const games = await getUsersGames(response.data.username)
                 const systems = await getUsersSystems(response.data.username)
@@ -205,6 +206,10 @@ function Profile() {
                     <Button text="Account Settings"
                             onClick={() => navigate(`/user-profile/${username}/account`)}/>
                 </div>
+                {userData && userData.role === "ADMIN" && (
+                    <Button text="Users list" onClick={() => navigate(`/admin/users`)}/>
+                )}
+
             </div>
 
             <div className="profile-inner-right-container">
@@ -221,11 +226,6 @@ function Profile() {
                     <Button text="My games" onClick={() => navigate(`/user-profile/${username}/my-games`)}/>
                     <Button text="Add a game" onClick={() => navigate(`/user-profile/${username}/add-game`)}/>
 
-                    {/*<Button text="Random Game" onClick={async () => {*/}
-                    {/*    const randomGame = await getRandomGame(username)*/}
-                    {/*    navigate(`/user-profile/${username}/game/${randomGame.gameID}`)*/}
-                    {/*}}/>*/}
-
                     <Button text="Random Game" onClick={async () => {
                         const randomGame = await getRandomGame(username)
                         if (!randomGame) {
@@ -234,11 +234,6 @@ function Profile() {
                             navigate(`/user-profile/${username}/game/${randomGame.gameID}`)
                         }
                     }}/>
-
-                    {/*<Button text="Random system" onClick={async () => {*/}
-                    {/*    const randomSystem = await getRandomSystem(username)*/}
-                    {/*    navigate(`/user-profile/${username}/system/${randomSystem.gameSystemID}`)*/}
-                    {/*}}/>*/}
 
                     <Button text="Random system" onClick={async () => {
                         const randomSystem = await getRandomSystem(username)

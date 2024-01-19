@@ -16,6 +16,7 @@ function Users() {
     const [loading, setLoading] = useState(false)
     const [deleteMessage, setDeleteMessage] = useState('')
     const navigate = useNavigate()
+    const username = localStorage.getItem('username')
 
 
     useEffect(() => {
@@ -76,7 +77,9 @@ function Users() {
                 <h1>Users</h1>
                 <div className="delete-message">
                 {deleteMessage && <div className="delete-message">{deleteMessage}</div>}
+                    <Button text="Profile" onClick={() => navigate(`/user-profile/${username}`)}/>
                 </div>
+
                 <table>
                     <thead>
                     <tr>
