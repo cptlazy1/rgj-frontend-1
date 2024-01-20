@@ -16,17 +16,22 @@ function Profile() {
     const [userData, setUserData] = useState(null)
     const [games, setGames] = useState([])
     const [systems, setSystems] = useState([])
-
-
     const [profilePhoto, setProfilePhoto] = useState([])
     const [gameRoomPhoto, setGameRoomPhoto] = useState([])
     const [profilePhotoPreviewURL, setProfilePhotoPreviewURL] = useState('')
     const [gameRoomPhotoPreviewURL, setGameRoomPhotoPreviewURL] = useState('')
-
     const {username} = useParams()
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
+    const [message, setMessage] = useState("")
+
+    useEffect(() => {
+        if (localStorage.getItem("newUser") === "true") {
+            setMessage(`Welcome to the RGJ ${username}! Please upload a profile picture and a game room picture.`)
+            localStorage.removeItem("newUser")
+        }
+    }, [username]);
 
 
     useEffect(() => {
@@ -82,7 +87,7 @@ function Profile() {
                 })
 
                 setUserData(response.data)
-                console.log(response.data)
+
 
                 const games = await getUsersGames(response.data.username)
                 const systems = await getUsersSystems(response.data.username)
@@ -101,8 +106,10 @@ function Profile() {
     }, [profilePhoto, username])
 
     if (!userData || loading) {
-        return <div>Loading...</div>
+        return <div className="loading">Loading...</div>
     }
+
+
 
     if (error) {
         return <div>Error: {error}</div>
@@ -175,75 +182,79 @@ function Profile() {
 
 
     return (
-        <div className="profile-container">
-            <div className="profile-inner-left-container">
+        <div className="outer-profile-container">
+            <h1 className="">{message ? message : "Welcome " + username}</h1>
+            <div className="profile-container">
 
-                <div className="profile-picture">
-                    <label className="profile-label">{userData.username}</label>
-                    <img src={profilePhotoPreviewURL ? profilePhotoPreviewURL : defaultProfileImage}
-                         alt="gamer profile picture"/>
-                    <input type="file" onChange={(event) => handleFileChange(event, 'profile')}/>
-                    <Button text="Upload profile picture" onClick={() => handleSubmit('profile')}/>
-                </div>
+                <div className="profile-inner-left-container">
 
-                <section className="counters-container-profile">
-                    <div className="total-games">
-                        <label className="counter-label">Total games</label>
-                        <p className="counter">
-                            {games && games.length > 0 ? games.length.toString().padStart(10, '0') : '0000000000'}
-                        </p>
+                    <div className="profile-picture">
+                        <label className="profile-label">{userData.username}</label>
+                        <img src={profilePhotoPreviewURL ? profilePhotoPreviewURL : defaultProfileImage}
+                             alt="gamer profile picture"/>
+                        <input type="file" onChange={(event) => handleFileChange(event, 'profile')}/>
+                        <Button text="Upload profile picture" onClick={() => handleSubmit('profile')}/>
                     </div>
 
-                    <div className="total-systems">
-                        <label className="counter-label">Total systems</label>
-                        <p className="counter">
-                            {systems && systems.length > 0 ? systems.length.toString().padStart(10, '0') : '0000000000'}
-                        </p>
+                    <section className="counters-container-profile">
+                        <div className="total-games">
+                            <label className="counter-label">Total games</label>
+                            <p className="counter">
+                                {games && games.length > 0 ? games.length.toString().padStart(10, '0') : '0000000000'}
+                            </p>
+                        </div>
+
+                        <div className="total-systems">
+                            <label className="counter-label">Total systems</label>
+                            <p className="counter">
+                                {systems && systems.length > 0 ? systems.length.toString().padStart(10, '0') : '0000000000'}
+                            </p>
+                        </div>
+                    </section>
+
+                    <div className="buttons-container-profile-a">
+                        <Button text="Account Settings"
+                                onClick={() => navigate(`/user-profile/${username}/account`)}/>
                     </div>
-                </section>
+                    {userData && userData.role === "ADMIN" && (
+                        <Button text="Users list" onClick={() => navigate(`/admin/users`)}/>
+                    )}
 
-                <div className="buttons-container-profile-a">
-                    <Button text="Account Settings"
-                            onClick={() => navigate(`/user-profile/${username}/account`)}/>
                 </div>
-                {userData && userData.role === "ADMIN" && (
-                    <Button text="Users list" onClick={() => navigate(`/admin/users`)}/>
-                )}
 
-            </div>
+                <div className="profile-inner-right-container">
 
-            <div className="profile-inner-right-container">
+                    <label className="profile-label">My game room</label>
+                    <img src={gameRoomPhotoPreviewURL ? gameRoomPhotoPreviewURL : defaultGameRoomImage}
+                         alt={"game room picture"}/>
+                    <input type="file" onChange={(event) => handleFileChange(event, 'gameRoom')}/>
+                    <Button text="Upload game room picture" onClick={() => handleSubmit('gameRoom')}/>
 
-                <label className="profile-label">My game room</label>
-                <img src={gameRoomPhotoPreviewURL ? gameRoomPhotoPreviewURL : defaultGameRoomImage}
-                     alt={"game room picture"}/>
-                <input type="file" onChange={(event) => handleFileChange(event, 'gameRoom')}/>
-                <Button text="Upload game room picture" onClick={() => handleSubmit('gameRoom')}/>
+                    <div className="buttons-container-profile-b">
+                        <Button text="My systems" onClick={() => navigate(`/user-profile/${username}/my-systems`)}/>
+                        <Button text="Add a system" onClick={() => navigate(`/user-profile/${username}/add-system`)}/>
+                        <Button text="My games" onClick={() => navigate(`/user-profile/${username}/my-games`)}/>
+                        <Button text="Add a game" onClick={() => navigate(`/user-profile/${username}/add-game`)}/>
 
-                <div className="buttons-container-profile-b">
-                    <Button text="My systems" onClick={() => navigate(`/user-profile/${username}/my-systems`)}/>
-                    <Button text="Add a system" onClick={() => navigate(`/user-profile/${username}/add-system`)}/>
-                    <Button text="My games" onClick={() => navigate(`/user-profile/${username}/my-games`)}/>
-                    <Button text="Add a game" onClick={() => navigate(`/user-profile/${username}/add-game`)}/>
+                        <Button text="Random Game" onClick={async () => {
+                            const randomGame = await getRandomGame(username)
+                            if (!randomGame) {
+                                navigate(`/user-profile/${username}/my-games`)
+                            } else {
+                                navigate(`/user-profile/${username}/game/${randomGame.gameID}`)
+                            }
+                        }}/>
 
-                    <Button text="Random Game" onClick={async () => {
-                        const randomGame = await getRandomGame(username)
-                        if (!randomGame) {
-                            navigate(`/user-profile/${username}/my-games`)
-                        } else {
-                            navigate(`/user-profile/${username}/game/${randomGame.gameID}`)
-                        }
-                    }}/>
+                        <Button text="Random system" onClick={async () => {
+                            const randomSystem = await getRandomSystem(username)
+                            if (!randomSystem) {
+                                navigate(`/user-profile/${username}/my-systems`)
+                            } else {
+                                navigate(`/user-profile/${username}/system/${randomSystem.gameSystemID}`)
+                            }
+                        }}/>
 
-                    <Button text="Random system" onClick={async () => {
-                        const randomSystem = await getRandomSystem(username)
-                        if (!randomSystem) {
-                            navigate(`/user-profile/${username}/my-systems`)
-                        } else {
-                            navigate(`/user-profile/${username}/system/${randomSystem.gameSystemID}`)
-                        }
-                    }}/>
-
+                    </div>
                 </div>
             </div>
         </div>

@@ -12,7 +12,7 @@ function Users() {
     const [users, setUsers] = useState([])
     const [error, setError] = useState('')
     const [page, setPage] = useState(0)
-    const [rowsPerPage] = useState(25)
+    const [rowsPerPage] = useState(10)
     const [loading, setLoading] = useState(false)
     const [deleteMessage, setDeleteMessage] = useState('')
     const navigate = useNavigate()
@@ -54,7 +54,7 @@ function Users() {
     }
 
     if (loading) {
-        return <div>Loading...</div>
+        return <div className="loading">Loading...</div>
     }
 
     const handleDeleteUser = async (username) => {

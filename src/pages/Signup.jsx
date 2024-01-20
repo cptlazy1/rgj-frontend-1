@@ -27,8 +27,8 @@ function Signup() {
                 .then(response => {
                     setMessage(response)
                     localStorage.setItem("token", response.jwToken)
+                    localStorage.setItem("newUser", "true")
                     setIsAuthenticated(true)
-                    console.log(`Navigating to /user-profile/${username}`)
                     navigate(`/user-profile/${username}`)
                 })
                 .catch(error => {

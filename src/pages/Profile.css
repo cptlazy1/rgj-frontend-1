@@ -1,3 +1,11 @@
+.outer-profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /*border: 2px dashed red;*/
+}
+
 .profile-container {
   display: flex;
   flex-direction: row;
@@ -19,7 +27,7 @@
   height: auto;
   border-radius: 10px;
   margin-bottom: 24px;
-  border: 2px solid white;
+  border: 2px solid white; /*This border is needed*/
 }
 
 .profile-inner-right-container {
@@ -79,4 +87,23 @@
   align-items: center;
   /*border: 3px dashed yellow;*/
   margin-bottom: 24px;
+}
+
+/*.message {*/
+/*  font-size: 24px;*/
+/*  color: var(--black);*/
+/*}*/
+
+.outer-profile-container h1 {
+  font-size: 1rem;
+  color: var(--black);
+}
+
+.loading {
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
 }

@@ -36,13 +36,13 @@ function AddGame() {
         formData.append('file', gamePictureFile)
 
         try {
-            const result = await axios.post(`http://localhost:8080/users/${username}/games/${gameID}/upload-game-photo`, formData, {
+            await axios.post(`http://localhost:8080/users/${username}/games/${gameID}/upload-game-photo`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 },
             })
-            console.log(result.data)
+
         } catch (error) {
             console.error(error)
         }

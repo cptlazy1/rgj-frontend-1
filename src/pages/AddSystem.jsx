@@ -24,7 +24,6 @@ function AddSystem() {
 
     const handleFileChange = (event) => {
         const file = event.target.files[0]
-        console.log(file)
         setFile(file)
         setPreviewURL(URL.createObjectURL(file))
     }
@@ -34,13 +33,12 @@ function AddSystem() {
         formData.append('file', file)
 
         try {
-            const result = await axios.post(`http://localhost:8080/users/${username}/game-systems/${gameSystemID}/upload-game-system-photo`, formData, {
+            await axios.post(`http://localhost:8080/users/${username}/game-systems/${gameSystemID}/upload-game-system-photo`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${localStorage.getItem('token')}`
                 },
             })
-            console.log(result.data)
         } catch (error) {
             console.error(error)
         }

@@ -48,20 +48,19 @@ function App() {
                 <Route path="/about" element={<About/>}/>
                 <Route path="/contact" element={<Contact/>}/>
 
-                <Route path="/user-profile/:username" element={isAuthenticated ? <Profile/> : <Navigate to="/"/> }/>
+                <Route path="/user-profile/:username" element={isAuthenticated ? <Profile/> : <Navigate to="/log-in"/> }/>
+                <Route path="/user-profile/:username/game/:gameID" element={isAuthenticated ? <Game/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/system/:systemID" element={isAuthenticated ? <System/>: <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/add-game" element={isAuthenticated ? <AddGame/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/add-system" element={isAuthenticated? <AddSystem/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/my-games" element={isAuthenticated ? <MyGames/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/my-systems" element={isAuthenticated ? <MySystems/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/account" element={isAuthenticated ? <Account/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/password" element={isAuthenticated ? <Password/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/email" element={isAuthenticated ? <Email/> : <Navigate to="/log-in"/>}/>
 
-                <Route path="/user-profile/:username/game/:gameID" element={<Game/>}/>
-                <Route path="/user-profile/:username/system/:systemID" element={<System/>}/>
-                <Route path="/user-profile/:username/add-game" element={<AddGame/>}/>
-                <Route path="/user-profile/:username/add-system" element={<AddSystem/>}/>
-                <Route path="/user-profile/:username/my-games" element={<MyGames/>}/>
-                <Route path="/user-profile/:username/my-systems" element={<MySystems/>}/>
-                <Route path="/user-profile/:username/account" element={<Account/>}/>
-                <Route path="/user-profile/:username/password" element={<Password/>}/>
-                <Route path="/user-profile/:username/email" element={<Email/>}/>
-
-                <Route path="/admin" element={<Admin/>}/>
-                <Route path="/admin/users" element={<Users/>}/>
+                <Route path="/admin" element={isAuthenticated ? <Admin/> : <Navigate to="/log-in"/>}/>
+                <Route path="/admin/users" element={isAuthenticated ? <Users/> : <Navigate to="/log-in"/>}/>
 
                 <Route path="*" element={<PageNotFound/>}/>
             </Routes>
