@@ -60,7 +60,7 @@ function App() {
                 <Route path="/user-profile/:username/email" element={isAuthenticated ? <Email/> : <Navigate to="/log-in"/>}/>
 
                 <Route path="/admin" element={isAuthenticated && role === "ADMIN" ? <Admin/> : !isAuthenticated ? <Navigate to="/log-in"/> : <Navigate to={`/user-profile/${username}`}/>  }/>
-                <Route path="/admin/users" element={isAuthenticated && role === "USER" ? <Users/> : !isAuthenticated ?  <Navigate to="/log-in"/> : <Navigate to={`/user-profile/${username}`}/>}/>
+                <Route path="/admin/users" element={isAuthenticated && role === "ADMIN" ? <Users/> : !isAuthenticated ?  <Navigate to="/log-in"/> : <Navigate to={`/user-profile/${username}`}/>}/>
 
                 <Route path="*" element={<PageNotFound/>}/>
             </Routes>

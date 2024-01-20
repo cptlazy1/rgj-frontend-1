@@ -16,15 +16,21 @@ function Profile() {
     const [userData, setUserData] = useState(null)
     const [games, setGames] = useState([])
     const [systems, setSystems] = useState([])
-    const [profilePhoto, setProfilePhoto] = useState([])
-    const [gameRoomPhoto, setGameRoomPhoto] = useState([])
+
+    const [profilePhoto, setProfilePhoto] = useState('')
+    const [gameRoomPhoto, setGameRoomPhoto] = useState('')
     const [profilePhotoPreviewURL, setProfilePhotoPreviewURL] = useState('')
     const [gameRoomPhotoPreviewURL, setGameRoomPhotoPreviewURL] = useState('')
+
     const {username} = useParams()
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null)
+    const [error] = useState(null)
     const [message, setMessage] = useState("")
+
+    useEffect(() => {
+        console.log(profilePhotoPreviewURL);
+    }, [profilePhotoPreviewURL]);
 
     useEffect(() => {
         if (localStorage.getItem("newUser") === "true") {
@@ -38,11 +44,12 @@ function Profile() {
         const fetchProfileImage = async () => {
             setLoading(true)
             const profileImage = await getProfileImage(username)
-            if (!profileImage) {
-                setError('No profile image returned')
+            if (profileImage.size === 0) {
+                setProfilePhoto(defaultProfileImage)
                 setProfilePhotoPreviewURL(defaultProfileImage)
+
             } else {
-                const profileImageUrl = URL.createObjectURL(profileImage)
+                const profileImageUrl = profileImage instanceof Blob ? URL.createObjectURL(profileImage) : profileImage
                 setProfilePhoto(profileImageUrl)
                 setProfilePhotoPreviewURL(profileImageUrl)
             }
@@ -58,12 +65,11 @@ function Profile() {
             setLoading(true)
             const gameRoomImage = await getGameRoomImage(username)
 
-            if (!gameRoomImage) {
-                setError('No game room image returned')
+            if (gameRoomImage.size === 0) {
                 setGameRoomPhoto(defaultGameRoomImage)
                 setGameRoomPhotoPreviewURL(defaultGameRoomImage)
             } else {
-                const gameRoomImageUrl = URL.createObjectURL(gameRoomImage)
+                const gameRoomImageUrl = gameRoomImage instanceof Blob ? URL.createObjectURL(gameRoomImage) : gameRoomImage
                 setGameRoomPhoto(gameRoomImageUrl)
                 setGameRoomPhotoPreviewURL(gameRoomImageUrl)
             }
@@ -102,7 +108,7 @@ function Profile() {
 
         void fetchUserData()
 
-    }, [profilePhoto, username])
+    }, [username])
 
     if (!userData || loading) {
         return <div className="loading">Loading...</div>
@@ -226,6 +232,7 @@ function Profile() {
                     <label className="profile-label">My game room</label>
                     <img src={gameRoomPhotoPreviewURL ? gameRoomPhotoPreviewURL : defaultGameRoomImage}
                          alt={"game room picture"}/>
+
                     <input type="file" onChange={(event) => handleFileChange(event, 'gameRoom')}/>
                     <Button text="Upload game room picture" onClick={() => handleSubmit('gameRoom')}/>
 

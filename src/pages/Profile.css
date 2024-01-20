@@ -53,8 +53,6 @@
   font-size: 1.5rem;
 }
 
-/*This is the same as .profile-container*/
-/*Todo: Remove this class if not needed*/
 .buttons-container-profile-a {
   display: flex;
   flex-direction: column;
@@ -89,21 +87,23 @@
   margin-bottom: 24px;
 }
 
-/*.message {*/
-/*  font-size: 24px;*/
-/*  color: var(--black);*/
-/*}*/
-
 .outer-profile-container h1 {
   font-size: 1rem;
   color: var(--black);
 }
 
 .loading {
-
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
 
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 6px 0;
+  box-sizing: border-box;
+  border: 2px solid var(--white);
+  border-radius: 4px;
 }

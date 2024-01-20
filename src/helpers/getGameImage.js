@@ -17,14 +17,12 @@ async function getGameImage(username, gameID) {
             return []
         }
 
-
         return response.data
-    }
-    catch (error) {
+
+    } catch (error) {
         console.error('An error occurred while fetching the game:', error)
         return []
     }
-
 }
 
 export default getGameImage
