@@ -19,10 +19,7 @@ async function getRandomGame(username) {
         const randomIndex = Math.floor(Math.random() * response.data.length);
 
         // Get the game at the random index
-        const randomGame = response.data[randomIndex];
-
-        console.log(randomGame)
-        return randomGame;
+        return response.data[randomIndex];
     }
     catch (error) {
         console.error('An error occurred while fetching the game:', error)

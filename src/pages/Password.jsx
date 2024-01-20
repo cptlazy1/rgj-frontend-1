@@ -13,25 +13,6 @@ function Password() {
     const [confirmNewPassword, setConfirmNewPassword] = useState('')
     const [message, setMessage] = useState('')
 
-    // async function handleChangePassword(event) {
-    //     event.preventDefault()
-    //
-    //     if (newPassword !== confirmNewPassword) {
-    //         setMessage("Passwords don't match")
-    //     } else {
-    //         try {
-    //             await changePassword(username, oldPassword, newPassword)
-    //             setMessage('Password changed successfully')
-    //         } catch (error) {
-    //             console.log(error.response.data)
-    //             console.log(JSON.stringify(error.response.data))
-    //             setMessage(error.response.data.newPassword)
-    //             setMessage(error.response.data.password)
-    //             // setMessage(error.response.data)
-    //         }
-    //     }
-    // }
-
     async function handleChangePassword(event) {
         event.preventDefault()
 
@@ -45,10 +26,10 @@ function Password() {
                 if (error.response && error.response.data) {
                     if (error.response.data.newPassword) {
                         setMessage(error.response.data.newPassword)
-                        console.log(error.response.data.newPassword)
+
                     } else if (error.response.data.password) {
                         setMessage(error.response.data.password)
-                        console.log(error.response.data.password)
+
                     }
                 } else {
                     console.log(error)
