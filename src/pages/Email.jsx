@@ -14,11 +14,15 @@ function Email() {
     async function handleChangeEmail(event) {
         event.preventDefault()
 
-        try {
-            await changeEmail(username, newEmail)
-            setMessage('Email changed successfully')
-        } catch (error) {
-            setMessage('An error occurred while changing the email: ' + error.message)
+        if (newEmail !== confirmNewEmail) {
+            setMessage("Emails don't match")
+        } else {
+            try {
+                await changeEmail(username, newEmail)
+                setMessage('Email changed successfully')
+            } catch (error) {
+                setMessage('Please enter a correct e-mail address')
+            }
         }
     }
 

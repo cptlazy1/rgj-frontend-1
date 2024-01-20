@@ -28,7 +28,7 @@ import {useContext} from "react";
 
 function App() {
 
-    const { isAuthenticated, loading } = useContext(AuthContext)
+    const { isAuthenticated, loading, role, username } = useContext(AuthContext)
 
     if (loading) {
         return <h1>Loading...</h1>
@@ -59,8 +59,8 @@ function App() {
                 <Route path="/user-profile/:username/password" element={isAuthenticated ? <Password/> : <Navigate to="/log-in"/>}/>
                 <Route path="/user-profile/:username/email" element={isAuthenticated ? <Email/> : <Navigate to="/log-in"/>}/>
 
-                <Route path="/admin" element={isAuthenticated ? <Admin/> : <Navigate to="/log-in"/>}/>
-                <Route path="/admin/users" element={isAuthenticated ? <Users/> : <Navigate to="/log-in"/>}/>
+                <Route path="/admin" element={isAuthenticated && role === "ADMIN" ? <Admin/> : !isAuthenticated ? <Navigate to="/log-in"/> : <Navigate to={`/user-profile/${username}`}/>  }/>
+                <Route path="/admin/users" element={isAuthenticated && role === "USER" ? <Users/> : !isAuthenticated ?  <Navigate to="/log-in"/> : <Navigate to={`/user-profile/${username}`}/>}/>
 
                 <Route path="*" element={<PageNotFound/>}/>
             </Routes>

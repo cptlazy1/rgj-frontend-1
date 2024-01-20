@@ -22,8 +22,8 @@ function Login() {
                 password: password
             })
 
-            // console.log(response.data.jwToken)
-            login(username, response.data.jwToken)
+            const { jwToken, role } = response.data
+            login(username, jwToken, role)
 
         } catch (error) {
             setMessage("Username or password incorrect.")

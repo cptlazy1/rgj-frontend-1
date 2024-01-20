@@ -7,7 +7,8 @@ export const AuthContext = createContext({})
 function AuthContextProvider( {children} ) {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [loading, setLoading] = useState(true)
-    const [username, setUsername] = useState(null) // Define username and setUsername
+    const [username, setUsername] = useState("")
+    const [role, setRole] = useState(null)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -20,15 +21,21 @@ function AuthContextProvider( {children} ) {
 
     useEffect(() => {
         const storedUsername = localStorage.getItem("username")
+        const storedRole = localStorage.getItem("role")
         if (storedUsername) {
             setUsername(storedUsername)
         }
+        if (storedRole) {
+            setRole(storedRole)
+        }
     }, [])
 
-    async function login(username, token) {
+    async function login(username, token, role) {
         localStorage.setItem("token", token)
         localStorage.setItem("username", username)
+        localStorage.setItem("role", role)
         setIsAuthenticated(true)
+        setRole(role)
         navigate(`/user-profile/${username}`)
     }
 
@@ -36,6 +43,7 @@ function AuthContextProvider( {children} ) {
         setIsAuthenticated(false)
         localStorage.removeItem("token")
         localStorage.removeItem("username")
+        localStorage.removeItem("role")
         navigate("/")
     }
 
@@ -45,7 +53,8 @@ function AuthContextProvider( {children} ) {
         logout,
         loading,
         setIsAuthenticated,
-        username // Include username in contextData
+        username, // Include username in contextData
+        role // Include role in contextData
     }
 
     return (

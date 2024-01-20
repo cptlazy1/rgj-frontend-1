@@ -88,7 +88,6 @@ function Profile() {
 
                 setUserData(response.data)
 
-
                 const games = await getUsersGames(response.data.username)
                 const systems = await getUsersSystems(response.data.username)
 
