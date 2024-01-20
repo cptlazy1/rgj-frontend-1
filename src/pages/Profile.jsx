@@ -28,9 +28,9 @@ function Profile() {
     const [error] = useState(null)
     const [message, setMessage] = useState("")
 
-    useEffect(() => {
-        console.log(profilePhotoPreviewURL);
-    }, [profilePhotoPreviewURL]);
+   // useEffect(() => {
+   //      console.log(profilePhotoPreviewURL);
+   //  }, [profilePhotoPreviewURL]);
 
     useEffect(() => {
         if (localStorage.getItem("newUser") === "true") {
@@ -127,9 +127,11 @@ function Profile() {
         if (photoType === 'profile') {
             setProfilePhoto(file)
             setProfilePhotoPreviewURL(fileURL)
+
         } else if (photoType === 'gameRoom') {
             setGameRoomPhoto(file)
             setGameRoomPhotoPreviewURL(fileURL)
+
         }
     }
 

@@ -25,13 +25,14 @@ function Home() {
 
                 <div className="inner-body-container">
                     <span className="welcome-text">
-                        <h2 className="welcome">Welcome to the RGJ</h2>
-                        Lorem50 ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget
-                        consequat ultricies, nunc nisl placerat quam, a ultrices quam nisi eget nisl. Donec auctor
-                        nisl eget nisl aliquam, eget aliquam nisl ultricies. Donec euismod, nisl eget consequat
-                        ultricies, nunc nisl placerat quam, a ultrices quam nisi eget nisl. Donec auctor nisl eget
-                        nisl aliquam, eget aliquam nisl ultricies. Donec euismod, nisl eget consequat ultricies,
-                        nunc nisl placerat quam, a ultrices quam nisi eget nisl. Donec auctor nisl eget nisl.
+                        <h2 className="welcome">Hello Gamer!</h2>
+                       Welcome to Retro Game Jockey, the ultimate destination for all retro gaming enthusiasts!
+                        This is your personal hub for managing and showcasing your impressive retro game collection.
+                        Here, you can discover hidden gems from the past, organize your collection in a way that suits
+                        you, and keep track of your favorite games with ease. Revel in the nostalgia of the golden age
+                        of gaming. Whether you are a seasoned collector or just starting your journey into the world of
+                        retro gaming, Retro Game Jockey is here to enhance your experience. Start your nostalgic journey
+                        today and dive into the rich history of gaming!
                     </span>
 
 

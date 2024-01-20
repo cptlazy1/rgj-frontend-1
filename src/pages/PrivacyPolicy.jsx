@@ -11,9 +11,9 @@ function PrivacyPolicy() {
                     <ul>
                         <li>
                             <p>
-                                Your privacy is important to us. It is My Company Name's policy to respect your privacy
+                                Your privacy is important to us. It is Retro Game Jockey's policy to respect your privacy
                                 regarding any information we may collect from you across our website, <a
-                                href="https://mywebsite.com">https://mywebsite.com</a>, and other sites we own and operate.
+                                href="https://retrogamejockey.com">https://retrogamejockey.com</a>, and other sites we own and operate.
                             </p>
                         </li>
                         <li>
@@ -60,7 +60,7 @@ function PrivacyPolicy() {
                         </li>
                         <li>
                             <p>
-                                This policy is effective as of 1 January 2020.
+                                This policy is effective as of 1 January 2024.
                             </p>
                         </li>
                     </ul>

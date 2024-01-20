@@ -8,8 +8,8 @@ function Faq() {
                 <h1>FAQ</h1>
                 <div className="faq-questions-container">
                     <div className="faq-question">
-                        <h3>What is the RGJ?</h3>
-                        <p>The RGJ is a non-profit organization that helps people with their mental health.</p>
+                        <h3>What is the Retro Game Jockey?</h3>
+                        <p>The Retro Game Jockey is a platform designed for retro gaming enthusiasts.</p>
                     </div>
                     <div className="faq-question">
                         <h3>How do I sign up?</h3>
@@ -21,7 +21,7 @@ function Faq() {
                     </div>
                     <div className="faq-question">
                         <h3>How do I contact you?</h3>
-                        <p>Click on the contact button in the navigation bar.</p>
+                        <p>Click on the contact button in the footer.</p>
                     </div>
 
 

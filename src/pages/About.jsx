@@ -6,26 +6,27 @@ function About() {
             <h1>About</h1>
             <div className="about-inner-container">
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam asperiores atque autem
-                    blanditiis commodi consequatur corporis cumque cupiditate dolor dolores doloribus ducimus ea earum
-                    eligendi eos error est eum eveniet excepturi expedita facilis fugiat fugit harum hic id illum
-                    incidunt ipsa ipsum iure iusto labore laboriosam laborum libero magnam magni maiores maxime minima
-                    minus molestiae natus necessitatibus nemo neque nihil nisi nobis nostrum nulla obcaecati officia
-                    officiis omnis optio pariatur perferendis perspiciatis porro possimus praesentium provident quae
-                    quaerat quam quasi qui quia quisquam quod quos ratione recusandae rem repellat reprehenderit
-                    repudiandae rerum saepe sapiente similique sit soluta sunt suscipit tempora temporibus tenetur totam
-                    ullam unde ut vel veniam veritatis voluptas voluptate voluptatem voluptatibus voluptatum. A
-                    accusamus
-                    accusantium adipisci alias aliquam aperiam architecto asperiores aspernatur assumenda at atque aut
-                    autem beatae blanditiis consequatur consequuntur corporis culpa cum cupiditate debitis delectus
-                    deleniti deserunt dicta dignissimos distinctio dolor dolorem doloremque doloribus dolorum ducimus ea
-                    eius eligendi eos error esse est et eum eveniet excepturi exercitationem expedita explicabo facere
-                    facilis fugiat fugit harum hic id illum impedit in incidunt ipsa ipsum iste itaque iure iusto labore
-                    laboriosam laborum laudantium libero magnam magni maiores maxime minus molestiae mollitia nam natus
-                    necessitatibus nemo neque nihil nisi nobis nostrum nulla numquam obcaecati officia officiis omnis
-                    optio pariatur perferendis perspiciatis placeat porro possimus praesentium provident quae quasi quia
-                    quisquam quo ratione recusand
+                <p>Welcome to the 'About Us' page of Retro Game Jockey, the ultimate platform for retro gaming
+                    enthusiasts. Born out of a deep love for the golden age of gaming, Retro Game Jockey is more than
+                    just a platform - it's a community. Our mission is to provide a space where gamers can manage their
+                    retro game collections, discover hidden gems, and connect with like-minded individuals.
                 </p>
+                <p>
+                    Retro Game Jockey was created by a team of passionate gamers who understand the joy of rediscovering
+                    a classic game and the thrill of adding a rare find to your collection. We believe that every game
+                    has a story to tell, and we're here to help you tell it. Our platform allows you to organize your
+                    collection, track your favorite games, and share your experiences with a community that shares your
+                    passion.
+                </p>
+                <p>But Retro Game Jockey is not just for seasoned collectors. If you're new to the world of retro
+                    gaming, you'll find a wealth of resources to help you get started. From discovering the classics to
+                    understanding the value of rare games, we're here to guide you on your journey.
+                </p>
+                <p>
+                    Join us today and start your nostalgic journey into the rich history of gaming.
+                    Retro Game Jockey - where the past meets the present, and gamers of all ages come together.
+                </p>
+
 
             </div>
         </div>
