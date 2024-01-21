@@ -32,7 +32,6 @@ function Password() {
 
                     }
                 } else {
-                    console.log(error)
                     setMessage('An error occurred')
                 }
             }

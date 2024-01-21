@@ -11,17 +11,26 @@ function Email() {
     const [confirmNewEmail, setConfirmNewEmail] = useState('')
     const [message, setMessage] = useState('')
 
+    function validateEmail(email) {
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        return regex.test(String(email).toLowerCase())
+    }
+
     async function handleChangeEmail(event) {
         event.preventDefault()
 
-        if (newEmail !== confirmNewEmail) {
+        if (newEmail.length < 1) {
+            setMessage("Email is required")
+        } else if (!validateEmail(newEmail)) {
+            setMessage("Email is invalid")
+        } else if (newEmail !== confirmNewEmail) {
             setMessage("Emails don't match")
         } else {
             try {
                 await changeEmail(username, newEmail)
                 setMessage('Email changed successfully')
             } catch (error) {
-                setMessage('Please enter a correct e-mail address')
+                setMessage('Please enter a correct e-mail address' + error)
             }
         }
     }
