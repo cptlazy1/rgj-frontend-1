@@ -12,7 +12,7 @@ function Users() {
     const [users, setUsers] = useState([])
     const [error, setError] = useState('')
     const [page, setPage] = useState(0)
-    const [rowsPerPage] = useState(10)
+    const [rowsPerPage] = useState(15)
     const [loading, setLoading] = useState(false)
     const [deleteMessage, setDeleteMessage] = useState('')
     const navigate = useNavigate()

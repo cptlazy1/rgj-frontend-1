@@ -12,7 +12,7 @@ function MyGames() {
     const [error, setError] = useState(null)
     const {username} = useParams()
     const [page, setPage] = useState(0)
-    const [rowsPerPage] = useState(25)
+    const [rowsPerPage] = useState(15)
     const navigate = useNavigate()
 
 
