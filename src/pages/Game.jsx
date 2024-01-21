@@ -10,7 +10,7 @@ import deleteGame from "../helpers/deleteGame.js"
 
 function Game() {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const [game, setGame] = useState({})
     const [gameImage, setGameImage] = useState([])

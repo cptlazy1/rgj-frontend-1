@@ -10,13 +10,13 @@ function Home() {
     const [systemsCount, setSystemsCount] = useState(0)
 
     useEffect(() => {
-            getTotalGames().then(count => setGamesCount(count));
+            getTotalGames().then(count => setGamesCount(count))
         },
         [])
 
     useEffect(() => {
-        getTotalSystems().then(count => setSystemsCount(count));
-    }, []);
+        getTotalSystems().then(count => setSystemsCount(count))
+    }, [])
 
 
     return (

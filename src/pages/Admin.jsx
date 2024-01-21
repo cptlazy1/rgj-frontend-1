@@ -1,6 +1,6 @@
 import './Admin.css'
-import Button from "../components/Button.jsx";
-import {useNavigate} from "react-router-dom";
+import Button from "../components/Button.jsx"
+import {useNavigate} from "react-router-dom"
 
 function Admin() {
 
@@ -21,7 +21,7 @@ function Admin() {
 
             </div>
         </div>
-    );
+    )
 }
 
 export default Admin

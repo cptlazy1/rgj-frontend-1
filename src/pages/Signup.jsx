@@ -2,10 +2,10 @@ import './Signup.css'
 import Button from "../components/Button.jsx"
 import {useContext, useState} from "react"
 import signup from "../helpers/signup.js"
-import axios from "axios";
+import axios from "axios"
 import {useNavigate} from "react-router-dom"
 import { AuthContext } from "../context/AuthContext.jsx"
-import Login from "./Login.jsx";
+
 
 function Signup() {
 
@@ -18,6 +18,12 @@ function Signup() {
     const { setIsAuthenticated } = useContext(AuthContext)
 
 
+    function validateEmail(email) {
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        return regex.test(String(email).toLowerCase())
+    }
+
+
     async function handleSubmit(event) {
         event.preventDefault()
 
@@ -27,6 +33,8 @@ function Signup() {
             setMessage("Username must be between 8 and 20 characters")
         } else if (email.length < 1) {
             setMessage("Email is required")
+        } else if (!validateEmail(email)) {
+            setMessage("Email is invalid")
         } else if (password.length < 1) {
             setMessage("Password is required")
         } else {
@@ -43,7 +51,7 @@ function Signup() {
                 .catch(error => {
                     if (axios.isAxiosError(error) && error.response) {
                         console.error(error.response.data)
-                        const errorMessages = Object.values(error.response.data).join('\n');
+                        const errorMessages = Object.values(error.response.data).join('\n')
                         setMessage(errorMessages)
                     } else {
                         console.error(error)
@@ -104,10 +112,6 @@ function Signup() {
 
                 </form>
 
-                {/*<div className="message">*/}
-                {/*    {message && <p>{typeof message === 'object' ? message.message : message}</p>}*/}
-                {/*</div>*/}
-
                 <div className="message">
                     {message &&
                         <p>{typeof message === 'object' ? message.message : message.split('\n').map((item, key) => {
@@ -117,7 +121,7 @@ function Signup() {
 
             </div>
         </>
-    );
+    )
 }
 
 export default Signup

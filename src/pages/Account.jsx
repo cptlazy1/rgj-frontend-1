@@ -1,6 +1,6 @@
 import './Account.css'
-import Button from "../components/Button.jsx";
-import {useNavigate} from "react-router-dom";
+import Button from "../components/Button.jsx"
+import {useNavigate} from "react-router-dom"
 
 function Account() {
 
@@ -15,7 +15,7 @@ function Account() {
                 <Button text="Change email" onClick={() => navigate(`/user-profile/${username}/email`)}/>
             </div>
         </div>
-    );
+    )
 }
 
 export default Account

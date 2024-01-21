@@ -1,8 +1,8 @@
 import './Email.css'
-import Button from "../components/Button.jsx";
-import {AuthContext} from "../context/AuthContext.jsx";
-import {useContext, useState} from "react";
-import changeEmail from "../helpers/changeEmail.js";
+import Button from "../components/Button.jsx"
+import {AuthContext} from "../context/AuthContext.jsx"
+import {useContext, useState} from "react"
+import changeEmail from "../helpers/changeEmail.js"
 
 function Email() {
 
@@ -45,7 +45,7 @@ function Email() {
 
             {message && <div className="message">{message}</div>}
         </div>
-    );
+    )
 }
 
 export default Email

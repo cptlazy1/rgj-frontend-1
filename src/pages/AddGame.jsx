@@ -5,7 +5,7 @@ import ToggleSwitch from "../components/ToggleSwitch.jsx"
 import gamePicture from "../assets/Super Mario Bros 3.jpg"
 import addGame from "../helpers/addGame.js"
 import axios from "axios"
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom"
 
 
 function AddGame() {
@@ -66,7 +66,7 @@ function AddGame() {
             return
         }
 
-        const yearRegex = /^\d{4}$/;
+        const yearRegex = /^\d{4}$/
         if (!yearRegex.test(year)) {
             setMessage('Year must be a 4 digit number')
             return

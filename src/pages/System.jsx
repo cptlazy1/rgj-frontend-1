@@ -1,16 +1,16 @@
 import './System.css'
 import systemPicture from '../assets/Megadrive.jpg'
-import ToggleSwitch from "../components/ToggleSwitch.jsx";
-import Button from "../components/Button.jsx";
-import {useNavigate, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import getSystem from "../helpers/getSystem.js";
-import getSystemImage from "../helpers/getSystemImage.js";
-import deleteSystem from "../helpers/deleteSystem.js";
+import ToggleSwitch from "../components/ToggleSwitch.jsx"
+import Button from "../components/Button.jsx"
+import {useNavigate, useParams} from "react-router-dom"
+import {useEffect, useState} from "react"
+import getSystem from "../helpers/getSystem.js"
+import getSystemImage from "../helpers/getSystemImage.js"
+import deleteSystem from "../helpers/deleteSystem.js"
 
 function System() {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const [system, setSystem] = useState({})
     const [systemImage, setSystemImage] = useState([])
