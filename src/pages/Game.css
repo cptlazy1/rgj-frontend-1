@@ -54,3 +54,11 @@
     margin-top: 24px;
 }
 
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+

@@ -16,15 +16,18 @@ function System() {
     const [systemImage, setSystemImage] = useState([])
     const [error, setError] = useState(null)
     const { username, systemID } = useParams()
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         const fetchSystem = async () => {
+            setLoading(true)
             const system = await getSystem(username, systemID)
             if (!system) {
                 setError('No system data returned')
             } else {
                 setSystem(system)
             }
+            setLoading(false)
         }
 
         void fetchSystem()
@@ -32,6 +35,7 @@ function System() {
 
     useEffect(() => {
         const fetchSystemImage = async () => {
+            setLoading(true)
             const systemImage = await getSystemImage(username, systemID)
             if (!systemImage) {
                 setError('No system image returned')
@@ -39,11 +43,16 @@ function System() {
                 // const systemImageUrl = URL.createObjectURL(systemImage)
                 setSystemImage(systemImage)
             }
+            setLoading(false)
         }
 
         void fetchSystemImage()
     }, [systemID, username])
 
+
+    if (loading) {
+        return <div className="loading">Loading...</div>
+    }
 
     if (error) {
         return <div>Error: {error}</div>
