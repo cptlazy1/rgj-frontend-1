@@ -1,5 +1,5 @@
 import './Game.css'
-import gamePicture from '../assets/super-mario-bros-3-poster-nes-cover-61x91-5cm.jpg'
+import gamePicture from '../assets/Super Mario Bros 3.jpg'
 import ToggleSwitch from "../components/ToggleSwitch.jsx"
 import Button from "../components/Button.jsx"
 import {useNavigate, useParams} from "react-router-dom"
