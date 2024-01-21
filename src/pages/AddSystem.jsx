@@ -46,6 +46,28 @@ function AddSystem() {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+
+        if (name.length < 1 || name.length > 50) {
+            setMessage('Game system name must be between 1 and 50 characters')
+            return
+        }
+
+        if (brand.length < 1 || brand.length > 50) {
+            setMessage('Game system brand must be between 1 and 50 characters')
+            return
+        }
+
+        const yearRegex = /^\d{4}$/;
+        if (!yearRegex.test(year)) {
+            setMessage('Year must be a 4 digit number')
+            return
+        }
+
+        if (file.length === 0) {
+            setMessage('Please upload a system image')
+            return
+        }
+
         const system = {
             gameSystemDto: {
                 gameSystemName: name,
@@ -69,8 +91,6 @@ function AddSystem() {
             console.error(error)
             setMessage('Failed to add system to collection')
         }
-
-
     }
 
     return (

@@ -10,13 +10,14 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    flex-basis: 400px;
+    flex-basis: 360px;
     /*border: 2px dashed green;*/
 }
 
 .details-container input, label{
     margin: 0 0 8px 0;
     font-size: 1.2rem;
+    /*border: 2px solid var(--white);*/
 }
 
 .conditions-container-game {
@@ -52,6 +53,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 32px;
+    margin-right: 16px;
     /*border: 2px solid yellow;*/
 }

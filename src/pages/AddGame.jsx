@@ -50,6 +50,33 @@ function AddGame() {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+
+        if (title.length < 1 || title.length > 50) {
+            setMessage('Game title must be between 1 and 50 characters')
+            return
+        }
+
+        if (publisher.length < 1 || publisher.length > 50) {
+            setMessage('Game publisher must be between 1 and 50 characters')
+            return
+        }
+
+        if (system.length < 1 || system.length > 50) {
+            setMessage('Game system must be between 1 and 50 characters')
+            return
+        }
+
+        const yearRegex = /^\d{4}$/;
+        if (!yearRegex.test(year)) {
+            setMessage('Year must be a 4 digit number')
+            return
+        }
+
+        if (gamePictureFile.length === 0) {
+            setMessage('Please upload a game image')
+            return
+        }
+
         const game = {
             gameDto: {
                 gameName: title,
