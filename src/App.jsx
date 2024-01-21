@@ -23,15 +23,15 @@ import Email from "./pages/Email.jsx"
 import Admin from "./pages/Admin.jsx"
 import Users from "./pages/Users.jsx"
 
-import { AuthContext } from "./context/AuthContext.jsx"
+import {AuthContext} from "./context/AuthContext.jsx"
 import {useContext} from "react";
 
 function App() {
 
-    const { isAuthenticated, loading, role, username } = useContext(AuthContext)
+    const {isAuthenticated, loading, role, username} = useContext(AuthContext)
 
     if (loading) {
-        return <h1>Loading...</h1>
+        return <h1>Authenticating...</h1>
     }
 
     return (
@@ -48,19 +48,31 @@ function App() {
                 <Route path="/about" element={<About/>}/>
                 <Route path="/contact" element={<Contact/>}/>
 
-                <Route path="/user-profile/:username" element={isAuthenticated ? <Profile/> : <Navigate to="/log-in"/> }/>
-                <Route path="/user-profile/:username/game/:gameID" element={isAuthenticated ? <Game/> : <Navigate to="/log-in"/>}/>
-                <Route path="/user-profile/:username/system/:systemID" element={isAuthenticated ? <System/>: <Navigate to="/log-in"/>}/>
-                <Route path="/user-profile/:username/add-game" element={isAuthenticated ? <AddGame/> : <Navigate to="/log-in"/>}/>
-                <Route path="/user-profile/:username/add-system" element={isAuthenticated? <AddSystem/> : <Navigate to="/log-in"/>}/>
-                <Route path="/user-profile/:username/my-games" element={isAuthenticated ? <MyGames/> : <Navigate to="/log-in"/>}/>
-                <Route path="/user-profile/:username/my-systems" element={isAuthenticated ? <MySystems/> : <Navigate to="/log-in"/>}/>
-                <Route path="/user-profile/:username/account" element={isAuthenticated ? <Account/> : <Navigate to="/log-in"/>}/>
-                <Route path="/user-profile/:username/password" element={isAuthenticated ? <Password/> : <Navigate to="/log-in"/>}/>
-                <Route path="/user-profile/:username/email" element={isAuthenticated ? <Email/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username"
+                       element={isAuthenticated ? <Profile/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/game/:gameID"
+                       element={isAuthenticated ? <Game/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/system/:systemID"
+                       element={isAuthenticated ? <System/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/add-game"
+                       element={isAuthenticated ? <AddGame/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/add-system"
+                       element={isAuthenticated ? <AddSystem/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/my-games"
+                       element={isAuthenticated ? <MyGames/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/my-systems"
+                       element={isAuthenticated ? <MySystems/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/account"
+                       element={isAuthenticated ? <Account/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/password"
+                       element={isAuthenticated ? <Password/> : <Navigate to="/log-in"/>}/>
+                <Route path="/user-profile/:username/email"
+                       element={isAuthenticated ? <Email/> : <Navigate to="/log-in"/>}/>
 
-                <Route path="/admin" element={isAuthenticated && role === "ADMIN" ? <Admin/> : !isAuthenticated ? <Navigate to="/log-in"/> : <Navigate to={`/user-profile/${username}`}/>  }/>
-                <Route path="/admin/users" element={isAuthenticated && role === "ADMIN" ? <Users/> : !isAuthenticated ?  <Navigate to="/log-in"/> : <Navigate to={`/user-profile/${username}`}/>}/>
+                <Route path="/admin" element={isAuthenticated && role === "ADMIN" ? <Admin/> : !isAuthenticated ?
+                    <Navigate to="/log-in"/> : <Navigate to={`/user-profile/${username}`}/>}/>
+                <Route path="/admin/users" element={isAuthenticated && role === "ADMIN" ? <Users/> : !isAuthenticated ?
+                    <Navigate to="/log-in"/> : <Navigate to={`/user-profile/${username}`}/>}/>
 
                 <Route path="*" element={<PageNotFound/>}/>
             </Routes>

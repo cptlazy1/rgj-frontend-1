@@ -43,3 +43,7 @@ td {
     color: white;
     overflow-wrap: break-word;
 }
+
+body {
+    padding-bottom: 100px;
+}
