@@ -5,6 +5,7 @@ import signup from "../helpers/signup.js"
 import axios from "axios";
 import {useNavigate} from "react-router-dom"
 import { AuthContext } from "../context/AuthContext.jsx"
+import Login from "./Login.jsx";
 
 function Signup() {
 
@@ -22,7 +23,15 @@ function Signup() {
 
         if (password !== confirmPassword) {
             setMessage("Passwords don't match")
+        } else if (username.length < 8 || username.length > 20) {
+            setMessage("Username must be between 8 and 20 characters")
+        } else if (email.length < 1) {
+            setMessage("Email is required")
+        } else if (password.length < 1) {
+            setMessage("Password is required")
         } else {
+            // Alternative method to the try catch block in Login.jsx:
+            // All messages from the backend are displayed on a separate line
             signup(username, password, email)
                 .then(response => {
                     setMessage(response)
@@ -32,16 +41,13 @@ function Signup() {
                     navigate(`/user-profile/${username}`)
                 })
                 .catch(error => {
-                    if (axios.isAxiosError(error) && error.response.status === 400) {
+                    if (axios.isAxiosError(error) && error.response) {
                         console.error(error.response.data)
-                        setMessage(
-                            error.response.data.email ||
-                            error.response.data.username ||
-                            error.response.data.password ||
-                            error.response.data)
+                        const errorMessages = Object.values(error.response.data).join('\n');
+                        setMessage(errorMessages)
                     } else {
                         console.error(error)
-                        setMessage("Error signing up")
+                        setMessage("Error signing up: " + error)
                     }
                 })
         }
@@ -98,8 +104,15 @@ function Signup() {
 
                 </form>
 
+                {/*<div className="message">*/}
+                {/*    {message && <p>{typeof message === 'object' ? message.message : message}</p>}*/}
+                {/*</div>*/}
+
                 <div className="message">
-                    {message && <p>{typeof message === 'object' ? message.message : message}</p>}
+                    {message &&
+                        <p>{typeof message === 'object' ? message.message : message.split('\n').map((item, key) => {
+                            return <span key={key}>{item}<br/></span>
+                        })}</p>}
                 </div>
 
             </div>

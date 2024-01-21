@@ -13,8 +13,20 @@ function Login() {
 
     const {login} = useContext(AuthContext)
 
+
+
     async function handleSubmit(event) {
         event.preventDefault()
+
+        if (username.length < 1) {
+            setMessage("Username is required")
+            return
+        }
+
+        if (password.length < 1) {
+            setMessage("Password is required")
+            return
+        }
 
         try {
             const response = await axios.post(`http://localhost:8080/authentication/login`, {
