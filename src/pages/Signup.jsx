@@ -4,7 +4,7 @@ import {useContext, useState} from "react"
 import signup from "../helpers/signup.js"
 import axios from "axios"
 import {useNavigate} from "react-router-dom"
-import { AuthContext } from "../context/AuthContext.jsx"
+import {AuthContext} from "../context/AuthContext.jsx"
 
 
 function Signup() {
@@ -15,14 +15,13 @@ function Signup() {
     const [confirmPassword, setConfirmPassword] = useState("")
     const [message, setMessage] = useState("")
     const navigate = useNavigate()
-    const { setIsAuthenticated } = useContext(AuthContext)
+    const {setIsAuthenticated} = useContext(AuthContext)
 
 
     function validateEmail(email) {
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
         return regex.test(String(email).toLowerCase())
     }
-
 
     async function handleSubmit(event) {
         event.preventDefault()

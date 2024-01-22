@@ -12,11 +12,7 @@ function Header() {
 
     useEffect(() => {
 
-        // console.log("Use effect triggered")
-        // console.log(isAuthenticated)
-
         setUsername(localStorage.getItem("username"))
-        // console.log(username)
         setLinks(isAuthenticated
             ? [
                 {name: "Home", path: "/"},
@@ -32,7 +28,6 @@ function Header() {
                 {name: "Log in", path: "/log-in"},
             ]);
     }, [isAuthenticated, logout, username]);
-
 
 
     return (
