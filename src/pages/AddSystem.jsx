@@ -47,13 +47,13 @@ function AddSystem() {
     const handleSubmit = async (event) => {
         event.preventDefault()
 
-        if (name.length < 1 || name.length > 50) {
-            setMessage('Game system name must be between 1 and 50 characters')
+        if (name.length < 1 || name.length > 20) {
+            setMessage('Game system name must be between 1 and 20 characters')
             return
         }
 
-        if (brand.length < 1 || brand.length > 50) {
-            setMessage('Game system brand must be between 1 and 50 characters')
+        if (brand.length < 1 || brand.length > 20) {
+            setMessage('Game system brand must be between 1 and 20 characters')
             return
         }
 

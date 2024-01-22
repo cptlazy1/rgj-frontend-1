@@ -13,7 +13,7 @@ function Game() {
     const navigate = useNavigate()
 
     const [game, setGame] = useState({})
-    const [gameImage, setGameImage] = useState([])
+    const [gameImage, setGameImage] = useState("")
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
     const {username, gameID} = useParams()
@@ -82,7 +82,7 @@ function Game() {
                 <div className="game-condition-and-image-container">
                     <div className="game-picture-container">
                         <img className="game-picture" src={gameImage || gamePicture} alt="game picture"/>
-                        <label>Year of release {game?.gameDto?.gameYearOfRelease || "N/A"}</label>
+                        <label>Year of release: {game?.gameDto?.gameYearOfRelease || "N/A"}</label>
                     </div>
                     <div className="game-condition-container">
                         <label>Box</label>

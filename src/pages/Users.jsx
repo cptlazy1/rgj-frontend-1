@@ -49,15 +49,13 @@ function Users() {
         setPage(newPage)
     }
 
-    if (error) {
-        return <div>Error: {error}</div>
-    }
-
-    if (loading) {
-        return <div className="loading">Loading...</div>
-    }
-
     const handleDeleteUser = async (username) => {
+
+        if (username === localStorage.getItem('username')) {
+            setError('You cannot delete yourself')
+            return
+        }
+
         try {
             await deleteUser(username)
             localStorage.setItem('deleteMessage', `User ${username} deleted successfully`)
@@ -69,7 +67,13 @@ function Users() {
         }
     }
 
+    if (error) {
+        return <div className="error">Error: {error}</div>
+    }
 
+    if (loading) {
+        return <div className="loading">Loading...</div>
+    }
 
     return (
         <>

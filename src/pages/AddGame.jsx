@@ -51,18 +51,18 @@ function AddGame() {
     const handleSubmit = async (event) => {
         event.preventDefault()
 
-        if (title.length < 1 || title.length > 50) {
-            setMessage('Game title must be between 1 and 50 characters')
+        if (title.length < 1 || title.length > 30) {
+            setMessage('Game title must be between 1 and 30 characters')
             return
         }
 
-        if (publisher.length < 1 || publisher.length > 50) {
-            setMessage('Game publisher must be between 1 and 50 characters')
+        if (publisher.length < 1 || publisher.length > 30) {
+            setMessage('Game publisher must be between 1 and 30 characters')
             return
         }
 
-        if (system.length < 1 || system.length > 50) {
-            setMessage('Game system must be between 1 and 50 characters')
+        if (system.length < 1 || system.length > 30) {
+            setMessage('Game system must be between 1 and 30 characters')
             return
         }
 

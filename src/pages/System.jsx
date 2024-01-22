@@ -13,7 +13,7 @@ function System() {
     const navigate = useNavigate()
 
     const [system, setSystem] = useState({})
-    const [systemImage, setSystemImage] = useState([])
+    const [systemImage, setSystemImage] = useState("")
     const [error, setError] = useState(null)
     const { username, systemID } = useParams()
     const [loading, setLoading] = useState(false)
@@ -40,7 +40,6 @@ function System() {
             if (!systemImage) {
                 setError('No system image returned')
             } else {
-                // const systemImageUrl = URL.createObjectURL(systemImage)
                 setSystemImage(systemImage)
             }
             setLoading(false)
@@ -84,13 +83,15 @@ function System() {
 
                     <div className="system-picture-container">
 
-                        <img className="system-picture" src={systemImage || systemPicture} alt="system picture"/>
+                        {/*<img className="system-picture" src={systemImage || systemPicture} alt="system picture"/>*/}
+
+                        <img className="system-picture" src={systemImage.length < 1 ? systemPicture : systemImage} alt="system picture"/>
 
                         <label>Year of release: {system?.gameSystemDto?.gameSystemYearOfRelease || 'N/A'}</label>
                     </div>
 
                     <div className="system-condition-container">
-                        <label>Box</label>
+                    <label>Box</label>
                         <ToggleSwitch isOn={system?.gameSystemConditionDto?.hasBox} handleToggle={handleToggle}/>
                         <label>Cables</label>
                         <ToggleSwitch isOn={system?.gameSystemConditionDto?.hasCables} handleToggle={handleToggle}/>
