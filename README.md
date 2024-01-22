@@ -14,4 +14,6 @@ To install and run this project, follow these steps:
 4. Start the application: `npm run dev`
 
 ## Usage
+
 After starting the application, open your web browser and navigate to `http://localhost:5173/` to view the application.
+
