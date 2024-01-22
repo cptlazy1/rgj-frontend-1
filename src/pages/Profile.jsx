@@ -10,7 +10,7 @@ import getUsersSystems from "../helpers/getUsersSystems.js"
 import getRandomGame from "../helpers/getRandomGame.js"
 import getRandomSystem from "../helpers/getRandomSystem.js"
 import getProfileImage from "../helpers/getProfileImage.js"
-import getGameRoomImage from "../helpers/getGameRoomImage.js";
+import getGameRoomImage from "../helpers/getGameRoomImage.js"
 
 function Profile() {
     const [userData, setUserData] = useState(null)
@@ -28,9 +28,6 @@ function Profile() {
     const [error] = useState(null)
     const [message, setMessage] = useState("")
 
-   // useEffect(() => {
-   //      console.log(profilePhotoPreviewURL);
-   //  }, [profilePhotoPreviewURL]);
 
     useEffect(() => {
         if (localStorage.getItem("newUser") === "true") {
@@ -113,8 +110,6 @@ function Profile() {
     if (!userData || loading) {
         return <div className="loading">Loading...</div>
     }
-
-
 
     if (error) {
         return <div>Error: {error}</div>
@@ -269,4 +264,4 @@ function Profile() {
     );
 }
 
-export default Profile;
+export default Profile
