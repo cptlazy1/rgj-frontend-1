@@ -17,9 +17,9 @@ function AuthContextProvider( {children} ) {
         if (token && tokenTime) {
             const currentTime = new Date()
             const timeDifference = currentTime - new Date(tokenTime)
-            const timeDifferenceInMinutes = timeDifference / 1000 / 60
+            const timeDifferenceInMinutes = timeDifference / 1000 / 60 / 60 // Hours
 
-            if (timeDifferenceInMinutes >= 2) { // 2 minutes
+            if (timeDifferenceInMinutes >= 48) { // Token expires after 48 hours
                 setIsAuthenticated(false)
                 localStorage.removeItem("token")
                 localStorage.removeItem("tokenTime")
