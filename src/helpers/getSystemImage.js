@@ -1,9 +1,9 @@
-import axios from "axios"
+import {instance} from "./axiosInstance"
 
 async function getSystemImage(username, gameSystemID) {
 
     try {
-        const response = await axios.get(`http://localhost:8080/users/${username}/game-systems/${gameSystemID}/download-game-system-photo`, {
+        const response = await instance.get(`/users/${username}/game-systems/${gameSystemID}/download-game-system-photo`, {
             // server will be sending binary data
             responseType: "blob",
             'headers': {
@@ -14,14 +14,13 @@ async function getSystemImage(username, gameSystemID) {
 
         if (!response.data) {
             console.error('No data returned from server!')
-            return []
+            return null
         }
 
-        const blob = new Blob([response.data], {type: response.data.type})
-        return URL.createObjectURL(blob)
+        return response.data
     }
     catch (error) {
-        console.error('An error occurred while fetching the system:', error)
+        console.error('An error occurred while fetching the system photo:')
         return null
     }
 }

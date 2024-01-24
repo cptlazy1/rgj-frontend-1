@@ -1,9 +1,9 @@
-import axios from "axios"
+import {instance} from "./axiosInstance.js"
 
 async function getProfileImage(username) {
 
     try {
-        const response = await axios.get(`http://localhost:8080/users/${username}/download-pp`, {
+        const response = await instance.get(`/users/${username}/download-pp`, {
             // server will be sending binary data
             responseType: "blob",
             'headers': {

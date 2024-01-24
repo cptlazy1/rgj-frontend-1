@@ -1,12 +1,12 @@
 import './Email.css'
 import Button from "../components/Button.jsx"
-import {AuthContext} from "../context/AuthContext.jsx"
-import {useContext, useState} from "react"
+import { useState} from "react"
 import changeEmail from "../helpers/changeEmail.js"
 
 function Email() {
 
-    const { username } = useContext(AuthContext)
+    // const { username } = useContext(AuthContext)
+    const username = localStorage.getItem('username')
     const [newEmail, setNewEmail] = useState('')
     const [confirmNewEmail, setConfirmNewEmail] = useState('')
     const [message, setMessage] = useState('')

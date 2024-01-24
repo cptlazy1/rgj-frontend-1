@@ -33,16 +33,63 @@ function System() {
         void fetchSystem()
     }, [systemID, username])
 
+    // useEffect(() => {
+    //     const fetchSystemImage = async () => {
+    //         setLoading(true)
+    //         const systemImage = await getSystemImage(username, systemID)
+    //         if (!systemImage) {
+    //             // setError('No system image returned')
+    //             setSystemImage(systemPicture)
+    //         } else {
+    //             setSystemImage(systemImage)
+    //         }
+    //         setLoading(false)
+    //     }
+    //
+    //     void fetchSystemImage()
+    // }, [systemID, username])
+
+
+    // useEffect(() => {
+    //     const fetchSystemImage = async () => {
+    //         try {
+    //             setLoading(true)
+    //             const systemImage = await getSystemImage(username, systemID)
+    //             if (!systemImage) {
+    //                 setSystemImage(systemPicture)
+    //             } else {
+    //                 setSystemImage(systemImage)
+    //             }
+    //         } catch (error) {
+    //             console.error('An error occurred while fetching the system image:')
+    //         } finally {
+    //             setLoading(false)
+    //         }
+    //     }
+    //
+    //     void fetchSystemImage()
+    // }, [systemID, username])
+
     useEffect(() => {
         const fetchSystemImage = async () => {
-            setLoading(true)
-            const systemImage = await getSystemImage(username, systemID)
-            if (!systemImage) {
-                setError('No system image returned')
-            } else {
-                setSystemImage(systemImage)
+            try {
+                setLoading(true)
+                const systemImage = await getSystemImage(username, systemID)
+                if (!systemImage) {
+                    setSystemImage(systemPicture)
+                } else {
+                    if (systemImage instanceof Blob) {
+                        const systemImageUrl = URL.createObjectURL(systemImage)
+                        setSystemImage(systemImageUrl)
+                    } else {
+                        console.error('systemImage is not a Blob')
+                    }
+                }
+            } catch (error) {
+                console.error('An error occurred while fetching the system image:')
+            } finally {
+                setLoading(false)
             }
-            setLoading(false)
         }
 
         void fetchSystemImage()
@@ -80,16 +127,10 @@ function System() {
 
                 <h1>{system?.gameSystemDto?.gameSystemBrand + " " + system?.gameSystemDto?.gameSystemName || "Default System Name"}</h1>
                 <div className="system-condition-and-image-container">
-
                     <div className="system-picture-container">
-
-                        {/*<img className="system-picture" src={systemImage || systemPicture} alt="system picture"/>*/}
-
-                        <img className="system-picture" src={systemImage.length < 1 ? systemPicture : systemImage} alt="system picture"/>
-
+                        <img className="system-picture" src={systemImage || systemPicture} alt="system picture"/>
                         <label>Year of release: {system?.gameSystemDto?.gameSystemYearOfRelease || 'N/A'}</label>
                     </div>
-
                     <div className="system-condition-container">
                     <label>Box</label>
                         <ToggleSwitch isOn={system?.gameSystemConditionDto?.hasBox} handleToggle={handleToggle}/>
@@ -100,7 +141,6 @@ function System() {
                         <label>Ready to play</label>
                         <ToggleSwitch isOn={system?.gameSystemDto?.isReadyToPlay} handleToggle={handleToggle}/>
                     </div>
-
                 </div>
 
                 <div className="system-buttons-container">

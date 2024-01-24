@@ -4,8 +4,8 @@ import Button from "../components/Button.jsx"
 import ToggleSwitch from "../components/ToggleSwitch.jsx"
 import gamePicture from "../assets/Super Mario Bros 3.jpg"
 import addGame from "../helpers/addGame.js"
-import axios from "axios"
 import {useNavigate, useParams} from "react-router-dom"
+import { instance } from "../helpers/axiosInstance.js"
 
 
 function AddGame() {
@@ -36,7 +36,7 @@ function AddGame() {
         formData.append('file', gamePictureFile)
 
         try {
-            await axios.post(`http://localhost:8080/users/${username}/games/${gameID}/upload-game-photo`, formData, {
+            await instance.post(`/users/${username}/games/${gameID}/upload-game-photo`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${localStorage.getItem('token')}`

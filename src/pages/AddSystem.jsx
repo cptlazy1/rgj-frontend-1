@@ -4,8 +4,8 @@ import Button from "../components/Button.jsx"
 import ToggleSwitch from "../components/ToggleSwitch.jsx"
 import systemPicture from "../assets/Megadrive.jpg"
 import addSystem from "../helpers/addSystem.js"
-import axios from "axios";
-import {useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom"
+import {instance} from "../helpers/axiosInstance.js"
 
 
 function AddSystem() {
@@ -33,7 +33,7 @@ function AddSystem() {
         formData.append('file', file)
 
         try {
-            await axios.post(`http://localhost:8080/users/${username}/game-systems/${gameSystemID}/upload-game-system-photo`, formData, {
+            await instance.post(`/users/${username}/game-systems/${gameSystemID}/upload-game-system-photo`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${localStorage.getItem('token')}`

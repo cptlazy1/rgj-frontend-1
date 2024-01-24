@@ -34,21 +34,70 @@ function Game() {
     }, [gameID, username])
 
 
+    // useEffect(() => {
+    //     const fetchGameImage = async () => {
+    //         setLoading(true)
+    //         const gameImage = await getGameImage(username, gameID)
+    //         if (!gameImage) {
+    //             // setError('No game image returned')
+    //             setGameImage(gamePicture)
+    //         } else {
+    //             const gameImageUrl = URL.createObjectURL(gameImage)
+    //             setGameImage(gameImageUrl)
+    //         }
+    //         setLoading(false)
+    //     }
+    //
+    //     void fetchGameImage()
+    // }, [gameID, username])
+
+
+    // useEffect(() => {
+    //     const fetchGameImage = async () => {
+    //         setLoading(true)
+    //         const gameImage = await getGameImage(username, gameID)
+    //         if (!gameImage) {
+    //             setGameImage(gamePicture)
+    //         } else {
+    //             if (gameImage instanceof Blob) {
+    //                 const gameImageUrl = URL.createObjectURL(gameImage)
+    //                 setGameImage(gameImageUrl)
+    //             } else {
+    //                 console.error('gameImage is not a Blob')
+    //             }
+    //         }
+    //         setLoading(false)
+    //     }
+    //
+    //     void fetchGameImage()
+    // }, [gameID, username])
+
+
     useEffect(() => {
         const fetchGameImage = async () => {
-            setLoading(true)
-            const gameImage = await getGameImage(username, gameID)
-            if (!gameImage) {
-                setError('No game image returned')
-            } else {
-                const gameImageUrl = URL.createObjectURL(gameImage)
-                setGameImage(gameImageUrl)
+            try {
+                setLoading(true)
+                const gameImage = await getGameImage(username, gameID)
+                if (!gameImage) {
+                    setGameImage(gamePicture)
+                } else {
+                    if (gameImage instanceof Blob) {
+                        const gameImageUrl = URL.createObjectURL(gameImage)
+                        setGameImage(gameImageUrl)
+                    } else {
+                        console.error('gameImage is not a Blob')
+                    }
+                }
+            } catch (error) {
+                console.error('An error occurred while fetching the game photo:')
+            } finally {
+                setLoading(false)
             }
-            setLoading(false)
         }
 
         void fetchGameImage()
     }, [gameID, username])
+
 
     if (loading) {
         return <div className="loading">Loading...</div>
@@ -78,7 +127,7 @@ function Game() {
 
             <div className="game-container">
 
-                <h1>{game?.gameDto?.gameName}</h1>
+                <h1>{game?.gameDto?.gameName || "Default game name"}</h1>
                 <div className="game-condition-and-image-container">
                     <div className="game-picture-container">
                         <img className="game-picture" src={gameImage || gamePicture} alt="game picture"/>
@@ -97,6 +146,7 @@ function Game() {
                         <ToggleSwitch isOn={game?.gameConditionDto?.hasWriting} handleToggle={handleToggle}/>
                     </div>
                 </div>
+
                 <div className="game-buttons-container">
 
                     <Button text="My games" onClick={() => navigate(`/user-profile/${username}/my-games`)}/>

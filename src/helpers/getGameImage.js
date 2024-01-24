@@ -1,9 +1,9 @@
-import axios from "axios"
+import {instance} from "./axiosInstance"
 
 async function getGameImage(username, gameID) {
 
     try {
-        const response = await axios.get(`http://localhost:8080/users/${username}/games/${gameID}/download-game-photo`, {
+        const response = await instance.get(`/users/${username}/games/${gameID}/download-game-photo`, {
             // server will be sending binary data
             responseType: "blob",
             'headers': {
@@ -14,14 +14,14 @@ async function getGameImage(username, gameID) {
 
         if (!response.data) {
             console.error('No data returned from server!')
-            return []
+            return null
         }
 
         return response.data
 
     } catch (error) {
-        console.error('An error occurred while fetching the game:', error)
-        return []
+        console.error('An error occurred while fetching the game image:')
+        return null
     }
 }
 
