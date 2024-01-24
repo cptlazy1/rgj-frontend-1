@@ -2,10 +2,11 @@ import {useState} from 'react'
 import './AddSystem.css'
 import Button from "../components/Button.jsx"
 import ToggleSwitch from "../components/ToggleSwitch.jsx"
-import systemPicture from "../assets/Megadrive.jpg"
+import defaultSystemPicture from "../assets/default system image.png"
 import addSystem from "../helpers/addSystem.js"
 import {useNavigate, useParams} from "react-router-dom"
 import {instance} from "../helpers/axiosInstance.js"
+
 
 
 function AddSystem() {
@@ -117,7 +118,7 @@ function AddSystem() {
 
                     </div>
                     <div className="add-system-picture-container">
-                        <img className="system-picture" src={previewURL || systemPicture} alt="system picture"/>
+                        <img className="system-picture" src={previewURL || defaultSystemPicture} alt="system picture"/>
 
                         <label htmlFor="system-image">
                             Upload system image:

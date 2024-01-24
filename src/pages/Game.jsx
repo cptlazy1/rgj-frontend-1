@@ -1,5 +1,5 @@
 import './Game.css'
-import gamePicture from '../assets/Super Mario Bros 3.jpg'
+import defaultGamePicture from '../assets/default game image.png'
 import ToggleSwitch from "../components/ToggleSwitch.jsx"
 import Button from "../components/Button.jsx"
 import {useNavigate, useParams} from "react-router-dom"
@@ -40,7 +40,7 @@ function Game() {
                 setLoading(true)
                 const gameImage = await getGameImage(username, gameID)
                 if (!gameImage) {
-                    setGameImage(gamePicture)
+                    setGameImage(defaultGamePicture)
                 } else {
                     if (gameImage instanceof Blob) {
                         const gameImageUrl = URL.createObjectURL(gameImage)
@@ -91,7 +91,7 @@ function Game() {
                 <h1>{game?.gameDto?.gameName || "Default game name"}</h1>
                 <div className="game-condition-and-image-container">
                     <div className="game-picture-container">
-                        <img className="game-picture" src={gameImage || gamePicture} alt="game picture"/>
+                        <img className="game-picture" src={gameImage || defaultGamePicture} alt="game picture"/>
                         <label>Year of release: {game?.gameDto?.gameYearOfRelease || "N/A"}</label>
                     </div>
                     <div className="game-condition-container">

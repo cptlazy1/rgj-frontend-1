@@ -2,10 +2,12 @@ import {useState} from 'react'
 import './AddGame.css'
 import Button from "../components/Button.jsx"
 import ToggleSwitch from "../components/ToggleSwitch.jsx"
-import gamePicture from "../assets/Super Mario Bros 3.jpg"
+import defaultGamePicture from "../assets/default game image.png"
 import addGame from "../helpers/addGame.js"
 import {useNavigate, useParams} from "react-router-dom"
 import { instance } from "../helpers/axiosInstance.js"
+
+
 
 
 function AddGame() {
@@ -137,7 +139,7 @@ function AddGame() {
                     </div>
 
                     <div className="add-game-picture-container">
-                        <img className="game-picture" src={previewURL || gamePicture} alt="game picture"/>
+                        <img className="game-picture" src={previewURL || defaultGamePicture} alt="game picture"/>
 
                         <label htmlFor="game-image">
                             Upload game image

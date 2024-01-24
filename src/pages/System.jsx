@@ -1,5 +1,5 @@
 import './System.css'
-import systemPicture from '../assets/Megadrive.jpg'
+import defaultSystemPicture from '../assets/default system image.png'
 import ToggleSwitch from "../components/ToggleSwitch.jsx"
 import Button from "../components/Button.jsx"
 import {useNavigate, useParams} from "react-router-dom"
@@ -40,7 +40,7 @@ function System() {
                 setLoading(true)
                 const systemImage = await getSystemImage(username, systemID)
                 if (!systemImage) {
-                    setSystemImage(systemPicture)
+                    setSystemImage(defaultSystemPicture)
                 } else {
                     if (systemImage instanceof Blob) {
                         const systemImageUrl = URL.createObjectURL(systemImage)
@@ -92,7 +92,7 @@ function System() {
                 <h1>{system?.gameSystemDto?.gameSystemBrand + " " + system?.gameSystemDto?.gameSystemName || "Default System Name"}</h1>
                 <div className="system-condition-and-image-container">
                     <div className="system-picture-container">
-                        <img className="system-picture" src={systemImage || systemPicture} alt="system picture"/>
+                        <img className="system-picture" src={systemImage || defaultSystemPicture} alt="system picture"/>
                         <label>Year of release: {system?.gameSystemDto?.gameSystemYearOfRelease || 'N/A'}</label>
                     </div>
                     <div className="system-condition-container">
