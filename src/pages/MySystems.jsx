@@ -1,5 +1,5 @@
 import './MySystems.css'
-import React, {useState, useEffect} from "react"
+import {useState, useEffect} from "react"
 import truncateString from "../helpers/truncateString"
 import getUsersSystems from "../helpers/getUsersSystems.js"
 import {useNavigate, useParams} from "react-router-dom";

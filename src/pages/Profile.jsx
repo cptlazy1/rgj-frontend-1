@@ -2,7 +2,6 @@ import './Profile.css'
 import defaultProfileImage from '../assets/default profile.png'
 import defaultGameRoomImage from '../assets/default game room.png'
 import {useEffect, useState} from "react"
-import axios from "axios"
 import {useNavigate, useParams} from "react-router-dom"
 import Button from "../components/Button.jsx"
 import getUsersGames from "../helpers/getUsersGames.js"
@@ -30,12 +29,15 @@ function Profile() {
     const [message, setMessage] = useState("")
 
 
+
     useEffect(() => {
         if (localStorage.getItem("newUser") === "true") {
             setMessage(`Welcome to the RGJ ${username}! Please upload a profile picture and a game room picture.`)
             localStorage.removeItem("newUser")
         }
     }, [username]);
+
+
 
 
     useEffect(() => {
@@ -78,35 +80,7 @@ function Profile() {
 
     }, [username])
 
-    // useEffect(() => {
-    //     const fetchUserData = async () => {
-    //         setLoading(true)
-    //         try {
-    //             const response = await axios.get(`http://localhost:8080/users/${username}`, {
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                     Authorization: `Bearer ${localStorage.getItem("token")}`
-    //                 }
-    //
-    //             })
-    //
-    //             setUserData(response.data)
-    //
-    //             const games = await getUsersGames(response.data.username)
-    //             const systems = await getUsersSystems(response.data.username)
-    //
-    //             setGames(games)
-    //             setSystems(systems)
-    //
-    //         } catch (error) {
-    //             console.error("Error fetching user data", error)
-    //         }
-    //         setLoading(false)
-    //     }
-    //
-    //     void fetchUserData()
-    //
-    // }, [username])
+
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -137,8 +111,12 @@ function Profile() {
 
     }, [username])
 
+
+
+
     if (!userData || loading) {
         return <div className="loading">Loading...</div>
+
     }
 
     if (error) {
@@ -160,48 +138,6 @@ function Profile() {
         }
     }
 
-
-    // const uploadFile = async (username, photoType) => {
-    //     const formData = new FormData()
-    //
-    //     if (photoType === 'profile') {
-    //         formData.append("file", profilePhoto)
-    //     } else if (photoType === 'gameRoom') {
-    //         formData.append("file", gameRoomPhoto)
-    //     }
-    //
-    //     const endpoint = photoType === 'profile' ?
-    //         `http://localhost:8080/users/${username}/upload-pp` :
-    //         `http://localhost:8080/users/${username}/upload-grp`;
-    //
-    //     try {
-    //         const response = await axios.post(endpoint, formData, {
-    //             headers: {
-    //                 "Content-Type": "multipart/form-data",
-    //                 Authorization: `Bearer ${localStorage.getItem("token")}`
-    //             }
-    //         })
-    //
-    //         if (photoType === 'profile') {
-    //             setProfilePhoto(response.data.profilePhotoData)
-    //             if (response.data.profilePhotoData instanceof Blob) {
-    //                 setProfilePhotoPreviewURL(URL.createObjectURL(response.data.profilePhotoData))
-    //             } else {
-    //                 setProfilePhotoPreviewURL(response.data.profilePhotoData)
-    //             }
-    //         } else if (photoType === 'gameRoom') {
-    //             setGameRoomPhoto(response.data.gameRoomPhotoData)
-    //             if (response.data.gameRoomPhotoData instanceof Blob) {
-    //                 setGameRoomPhotoPreviewURL(URL.createObjectURL(response.data.gameRoomPhotoData))
-    //             } else {
-    //                 setGameRoomPhotoPreviewURL(response.data.gameRoomPhotoData)
-    //             }
-    //         }
-    //
-    //     } catch (error) {
-    //         console.error(`Error uploading ${photoType} photo`, error)
-    //     }
-    // }
 
     const uploadFile = async (username, photoType) => {
         const formData = new FormData()

@@ -8,9 +8,9 @@ export const useCheckTokenAndRedirect = (navigate) => {
         if (token && tokenTime) {
             const currentTime = new Date()
             const timeDifference = currentTime - new Date(tokenTime)
-            const timeDifferenceInHours = timeDifference / 1000 / 60 / 60
+            const timeDifferenceInHours = timeDifference / 1000 / 60 / 60// in hours
 
-            if (timeDifferenceInHours >= 6) {
+            if (timeDifferenceInHours >= 48) { // 48 hours
                 localStorage.removeItem('token')
                 localStorage.removeItem('tokenTime')
                 navigate('/login')

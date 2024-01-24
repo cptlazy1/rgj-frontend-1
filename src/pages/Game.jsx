@@ -34,45 +34,6 @@ function Game() {
     }, [gameID, username])
 
 
-    // useEffect(() => {
-    //     const fetchGameImage = async () => {
-    //         setLoading(true)
-    //         const gameImage = await getGameImage(username, gameID)
-    //         if (!gameImage) {
-    //             // setError('No game image returned')
-    //             setGameImage(gamePicture)
-    //         } else {
-    //             const gameImageUrl = URL.createObjectURL(gameImage)
-    //             setGameImage(gameImageUrl)
-    //         }
-    //         setLoading(false)
-    //     }
-    //
-    //     void fetchGameImage()
-    // }, [gameID, username])
-
-
-    // useEffect(() => {
-    //     const fetchGameImage = async () => {
-    //         setLoading(true)
-    //         const gameImage = await getGameImage(username, gameID)
-    //         if (!gameImage) {
-    //             setGameImage(gamePicture)
-    //         } else {
-    //             if (gameImage instanceof Blob) {
-    //                 const gameImageUrl = URL.createObjectURL(gameImage)
-    //                 setGameImage(gameImageUrl)
-    //             } else {
-    //                 console.error('gameImage is not a Blob')
-    //             }
-    //         }
-    //         setLoading(false)
-    //     }
-    //
-    //     void fetchGameImage()
-    // }, [gameID, username])
-
-
     useEffect(() => {
         const fetchGameImage = async () => {
             try {

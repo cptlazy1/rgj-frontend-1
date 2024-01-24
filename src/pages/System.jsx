@@ -33,42 +33,6 @@ function System() {
         void fetchSystem()
     }, [systemID, username])
 
-    // useEffect(() => {
-    //     const fetchSystemImage = async () => {
-    //         setLoading(true)
-    //         const systemImage = await getSystemImage(username, systemID)
-    //         if (!systemImage) {
-    //             // setError('No system image returned')
-    //             setSystemImage(systemPicture)
-    //         } else {
-    //             setSystemImage(systemImage)
-    //         }
-    //         setLoading(false)
-    //     }
-    //
-    //     void fetchSystemImage()
-    // }, [systemID, username])
-
-
-    // useEffect(() => {
-    //     const fetchSystemImage = async () => {
-    //         try {
-    //             setLoading(true)
-    //             const systemImage = await getSystemImage(username, systemID)
-    //             if (!systemImage) {
-    //                 setSystemImage(systemPicture)
-    //             } else {
-    //                 setSystemImage(systemImage)
-    //             }
-    //         } catch (error) {
-    //             console.error('An error occurred while fetching the system image:')
-    //         } finally {
-    //             setLoading(false)
-    //         }
-    //     }
-    //
-    //     void fetchSystemImage()
-    // }, [systemID, username])
 
     useEffect(() => {
         const fetchSystemImage = async () => {

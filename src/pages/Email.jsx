@@ -5,7 +5,6 @@ import changeEmail from "../helpers/changeEmail.js"
 
 function Email() {
 
-    // const { username } = useContext(AuthContext)
     const username = localStorage.getItem('username')
     const [newEmail, setNewEmail] = useState('')
     const [confirmNewEmail, setConfirmNewEmail] = useState('')

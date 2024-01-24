@@ -20,7 +20,7 @@ async function getProfileImage(username) {
         return response.data
 
     } catch (error) {
-        console.error('An error occurred while fetching the game:', error)
+        console.error('An error occurred while fetching the profile image:')
         return []
     }
 }

@@ -1,5 +1,5 @@
 import './MyGames.css'
-import React, {useState, useEffect} from "react"
+import {useState, useEffect} from "react"
 import truncateString from "../helpers/truncateString"
 import getUsersGames from "../helpers/getUsersGames.js"
 import {useNavigate, useParams} from "react-router-dom"
