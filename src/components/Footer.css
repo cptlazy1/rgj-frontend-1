@@ -34,6 +34,7 @@ footer button {
 
 footer button:hover {
     background-color: var(--green);
+    cursor: none;
 }
 
 

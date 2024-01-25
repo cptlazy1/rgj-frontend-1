@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /*border: 2px solid var(--white);*/
 }
 
 .users-list-buttons {
@@ -9,6 +10,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 12px;
+    /*border: 2px solid var(--red);*/
 }
 
 .users-list-page-number {
@@ -17,15 +19,19 @@
 }
 
 .delete-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: var(--white);
-    font-size: 16px;
+    font-size: 24px;
     font-weight: 500;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
+    /*border: 2px solid var(--red);*/
 }
 
 .error {
     color: var(--white);
-    font-size: 16px;
+    font-size: 24px;
     font-weight: 500;
     margin-bottom: 16px;
     display: flex;

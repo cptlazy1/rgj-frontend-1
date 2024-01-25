@@ -1,6 +1,6 @@
 import './Email.css'
 import Button from "../components/Button.jsx"
-import { useState} from "react"
+import {useState} from "react"
 import changeEmail from "../helpers/changeEmail.js"
 
 function Email() {
@@ -38,17 +38,16 @@ function Email() {
         <div className="email">
             <h1>Change email</h1>
             <form className="email-form" onSubmit={handleChangeEmail}>
-            <div className="email-settings">
-                <p>New email</p>
-                <input type="email" value={newEmail} onChange={event => setNewEmail(event.target.value)}/>
-                <p>Confirm new email</p>
-                <input type="email" value={confirmNewEmail} onChange={event => setConfirmNewEmail(event.target.value) }/>
-
-
-            </div>
-            <div className="change-email">
-                <Button text="Change email" onClick={handleChangeEmail}/>
-            </div>
+                <div className="email-settings">
+                    <p>New email</p>
+                    <input type="email" value={newEmail} onChange={event => setNewEmail(event.target.value)}/>
+                    <p>Confirm new email</p>
+                    <input type="email" value={confirmNewEmail}
+                           onChange={event => setConfirmNewEmail(event.target.value)}/>
+                </div>
+                <div className="change-email">
+                    <Button text="Change email" onClick={handleChangeEmail}/>
+                </div>
             </form>
 
             {message && <div className="message">{message}</div>}
