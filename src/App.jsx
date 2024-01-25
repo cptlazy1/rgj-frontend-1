@@ -24,7 +24,7 @@ import Admin from "./pages/Admin.jsx"
 import Users from "./pages/Users.jsx"
 
 import {AuthContext} from "./context/AuthContext.jsx"
-import {useContext} from "react";
+import {useContext} from "react"
 
 function App() {
 
