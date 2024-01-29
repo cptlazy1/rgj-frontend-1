@@ -11,4 +11,7 @@
     align-items: center;
     width: 600px;
     margin-top: 12px;
+    color: var(--white);
+    font-size: 12px;
 }
+
