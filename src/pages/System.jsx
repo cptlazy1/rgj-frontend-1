@@ -94,8 +94,7 @@ function System() {
                 <div className="system-condition-and-image-container">
                     <div className="system-picture-container">
                         <img className="system-picture" src={systemImage || defaultSystemPicture} alt="system picture"/>
-                        <label>{system?.gameSystemDto?.gameSystemBrand || 'N/A'}
-                            {system?.gameSystemDto?.gameSystemYearOfRelease || 'N/A'}</label>
+                        <label>{system?.gameSystemDto?.gameSystemBrand || 'N/A'} {system?.gameSystemDto?.gameSystemYearOfRelease || 'N/A'}</label>
                     </div>
                     <div className="system-condition-container">
                         <label>Box</label>
