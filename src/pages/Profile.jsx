@@ -112,8 +112,6 @@ function Profile() {
     }, [username])
 
 
-
-
     if (!userData || loading) {
         return <div className="loading">Loading...</div>
 

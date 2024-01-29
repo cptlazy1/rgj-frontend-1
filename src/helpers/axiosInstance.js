@@ -10,6 +10,10 @@ export const useCheckTokenAndRedirect = (navigate) => {
             const timeDifference = currentTime - new Date(tokenTime)
             const timeDifferenceInHours = timeDifference / 1000 / 60 / 60// in hours
 
+            // check if the token is valid before making any request
+
+
+
             if (timeDifferenceInHours >= 48) { // 48 hours
                 localStorage.removeItem('token')
                 localStorage.removeItem('username')
@@ -39,3 +43,5 @@ instance.interceptors.request.use((config) => {
 }, (error) => {
     return Promise.reject(error)
 })
+
+
