@@ -90,8 +90,7 @@ function System() {
 
             <div className="system-container">
 
-                <h1>{truncateString(system?.gameSystemDto?.gameSystemBrand) + " " +
-                    truncateString(system?.gameSystemDto?.gameSystemName) || "Default System Name"}</h1>
+                <h1>{system?.gameSystemDto?.gameSystemName || "Default System Name"}</h1>
                 <div className="system-condition-and-image-container">
                     <div className="system-picture-container">
                         <img className="system-picture" src={systemImage || defaultSystemPicture} alt="system picture"/>
