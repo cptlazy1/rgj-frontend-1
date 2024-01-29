@@ -23,8 +23,11 @@
 }
 
 .profile-inner-left-container img {
-  max-width: 250px;
-  height: auto;
+  object-fit: contain;
+  min-width: 260px;
+  max-width: 260px;
+  min-height: 260px;
+  max-height: 260px;
   border-radius: 10px;
   margin-bottom: 24px;
   border: 2px solid white; /*This border is needed*/
@@ -41,11 +44,14 @@
 }
 
 .profile-inner-right-container img {
+  object-fit: contain;
+  min-width: 450px;
   max-width: 450px;
-  height: auto;
+  max-height: 260px;
+  min-height: 260px;
   border-radius: 10px;
   margin-bottom: 24px;
-  border: 2px solid white;
+  border: 2px solid white; /*This border is needed*/
 }
 
 .profile-label {
