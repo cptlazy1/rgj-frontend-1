@@ -143,7 +143,7 @@ function AddGame() {
 
                         <label htmlFor="game-image">
                             Upload game image
-                            <input type="file" id="game-image" name="game-image" accept="image/*"
+                            <input type="file" id="game-image" name="game-image" accept="image/jpg, image/jpeg, image/png"
                                    onChange={handleFileChange}/>
                         </label>
 

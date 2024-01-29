@@ -51,7 +51,7 @@ function Password() {
                     <input
                         type="password"
                         value={newPassword} onChange={e => setNewPassword(e.target.value)}/>
-                    <p>Confirm new password</p>
+                    <p>Confirm password</p>
                     <input
                         type="password"
                         value={confirmNewPassword} onChange={e => setConfirmNewPassword(e.target.value)}/>

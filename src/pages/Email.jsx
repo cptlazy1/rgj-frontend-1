@@ -41,7 +41,7 @@ function Email() {
                 <div className="email-settings">
                     <p>New email</p>
                     <input type="email" value={newEmail} onChange={event => setNewEmail(event.target.value)}/>
-                    <p>Confirm new email</p>
+                    <p>Confirm email</p>
                     <input type="email" value={confirmNewEmail}
                            onChange={event => setConfirmNewEmail(event.target.value)}/>
                 </div>

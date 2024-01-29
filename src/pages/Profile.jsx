@@ -200,7 +200,10 @@ function Profile() {
                         <label className="profile-label">{userData.username}</label>
                         <img src={profilePhotoPreviewURL ? profilePhotoPreviewURL : defaultProfileImage}
                              alt="gamer profile picture"/>
-                        <input type="file" onChange={(event) => handleFileChange(event, 'profile')}/>
+                        <input
+                            type="file"
+                            accept="image/jpg, image/jpeg, image/png"
+                            onChange={(event) => handleFileChange(event, 'profile')}/>
                         <Button text="Upload profile picture" onClick={() => handleSubmit('profile')}/>
                     </div>
 
@@ -236,7 +239,10 @@ function Profile() {
                     <img src={gameRoomPhotoPreviewURL ? gameRoomPhotoPreviewURL : defaultGameRoomImage}
                          alt={"game room picture"}/>
 
-                    <input type="file" onChange={(event) => handleFileChange(event, 'gameRoom')}/>
+                    <input
+                        type="file"
+                        accept="image/jpg, image/jpeg, image/png"
+                        onChange={(event) => handleFileChange(event, 'gameRoom')}/>
                     <Button text="Upload game room picture" onClick={() => handleSubmit('gameRoom')}/>
 
                     <div className="buttons-container-profile-b">

@@ -7,6 +7,7 @@ import {useEffect, useState} from "react"
 import getGame from "../helpers/getGame.js"
 import getGameImage from "../helpers/getGameImage.js"
 import deleteGame from "../helpers/deleteGame.js"
+import truncateString from "../helpers/truncateString.js";
 
 function Game() {
 
@@ -88,7 +89,7 @@ function Game() {
 
             <div className="game-container">
 
-                <h1>{game?.gameDto?.gameName || "Default game name"}</h1>
+                <h1>{truncateString(game?.gameDto?.gameName || "Default game name")}</h1>
                 <div className="game-condition-and-image-container">
                     <div className="game-picture-container">
                         <img className="game-picture" src={gameImage || defaultGamePicture} alt="game picture"/>

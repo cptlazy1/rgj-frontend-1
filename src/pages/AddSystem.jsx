@@ -122,7 +122,7 @@ function AddSystem() {
 
                         <label htmlFor="system-image">
                             Upload system image:
-                            <input type="file" id="system-image" name="system-image" accept="image/*"
+                            <input type="file" id="system-image" name="system-image" accept="image/jpg, image/jpeg, image/png"
                                    onChange={handleFileChange}/>
                         </label>
 

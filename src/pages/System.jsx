@@ -7,6 +7,7 @@ import {useEffect, useState} from "react"
 import getSystem from "../helpers/getSystem.js"
 import getSystemImage from "../helpers/getSystemImage.js"
 import deleteSystem from "../helpers/deleteSystem.js"
+import truncateString from "../helpers/truncateString.js";
 
 function System() {
 
@@ -89,7 +90,8 @@ function System() {
 
             <div className="system-container">
 
-                <h1>{system?.gameSystemDto?.gameSystemBrand + " " + system?.gameSystemDto?.gameSystemName || "Default System Name"}</h1>
+                <h1>{truncateString(system?.gameSystemDto?.gameSystemBrand) + " " +
+                    truncateString(system?.gameSystemDto?.gameSystemName) || "Default System Name"}</h1>
                 <div className="system-condition-and-image-container">
                     <div className="system-picture-container">
                         <img className="system-picture" src={systemImage || defaultSystemPicture} alt="system picture"/>

@@ -20,7 +20,7 @@
     margin-top: 8px;
 }
 
-.change-email Button {
-    margin-left: 8px;
+.email-form input {
+    width: 100%;
 }
 
