@@ -30,7 +30,7 @@
   max-height: 260px;
   border-radius: 10px;
   margin-bottom: 24px;
-  border: 2px solid white; /*This border is needed*/
+  /*border: 2px solid white; !*This border is needed*!*/
 }
 
 .profile-inner-right-container {
@@ -51,7 +51,7 @@
   min-height: 260px;
   border-radius: 10px;
   margin-bottom: 24px;
-  border: 2px solid white; /*This border is needed*/
+  /*border: 2px solid white; */
 }
 
 .profile-label {
@@ -110,8 +110,17 @@
   transform: translate(-50%, -50%);
 }
 
-input {
-  width: 100%;
+.profile-inner-left-container input {
+  width: 80%;
+  padding: 12px;
+  margin: 6px 0;
+  box-sizing: border-box;
+  border: 2px solid var(--white);
+  border-radius: 4px;
+}
+
+.profile-inner-right-container input {
+  width: 50%;
   padding: 12px;
   margin: 6px 0;
   box-sizing: border-box;
