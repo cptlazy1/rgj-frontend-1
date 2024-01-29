@@ -38,7 +38,6 @@ function Signup() {
             setMessage("Password is required")
         } else {
             // Alternative method to the try catch block in Login.jsx:
-            // All messages from the backend are displayed on a separate line
             signup(username, password, email)
                 .then(response => {
                     setMessage(response)
@@ -50,7 +49,7 @@ function Signup() {
                 .catch(error => {
                     if (axios.isAxiosError(error) && error.response) {
                         console.error(error.response.data)
-                        const errorMessages = Object.values(error.response.data).join('\n')
+                        const errorMessages = Object.values(error.response.data).join('')
                         setMessage(errorMessages)
                     } else {
                         console.error(error)
@@ -112,10 +111,12 @@ function Signup() {
                 </form>
 
                 <div className="message">
-                    {message &&
-                        <p>{typeof message === 'object' ? message.message : message.split('\n').map((item, key) => {
-                            return <span key={key}>{item}<br/></span>
-                        })}</p>}
+                    {/*{message &&*/}
+                    {/*    <p>{typeof message === 'object' ? message.message : message.split('\n').map((item, key) => {*/}
+                    {/*        return <span key={key}>{item}<br/></span>*/}
+                    {/*    })}</p>}*/}
+
+                    {message && <p>{message}</p>}
                 </div>
 
             </div>

@@ -7,6 +7,8 @@ async function signup(username, password, email) {
         email: email
     })
     localStorage.setItem("username", username)
+    localStorage.setItem("token", response.data.token)
+    localStorage.setItem("tokenTime", new Date().toISOString())
     return response.data
 }
 

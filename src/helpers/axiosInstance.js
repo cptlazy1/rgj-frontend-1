@@ -12,8 +12,10 @@ export const useCheckTokenAndRedirect = (navigate) => {
 
             if (timeDifferenceInHours >= 48) { // 48 hours
                 localStorage.removeItem('token')
+                localStorage.removeItem('username')
+                localStorage.removeItem('role')
                 localStorage.removeItem('tokenTime')
-                navigate('/login')
+                navigate('/log-in')
                 return false
             }
         }
