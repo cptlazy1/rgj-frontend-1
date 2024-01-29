@@ -49,7 +49,7 @@ function Signup() {
                 .catch(error => {
                     if (axios.isAxiosError(error) && error.response) {
                         console.error(error.response.data)
-                        const errorMessages = Object.values(error.response.data).join('')
+                        const errorMessages = Object.values(error.response.data).join('\n')
                         setMessage(errorMessages)
                     } else {
                         console.error(error)
@@ -111,12 +111,10 @@ function Signup() {
                 </form>
 
                 <div className="message">
-                    {/*{message &&*/}
-                    {/*    <p>{typeof message === 'object' ? message.message : message.split('\n').map((item, key) => {*/}
-                    {/*        return <span key={key}>{item}<br/></span>*/}
-                    {/*    })}</p>}*/}
-
-                    {message && <p>{message}</p>}
+                    {message &&
+                        <p>{typeof message === 'object' ? message.message : message.split('\n').map((item, key) => {
+                            return <span key={key}>{item}<br/></span>
+                        })}</p>}
                 </div>
 
             </div>
